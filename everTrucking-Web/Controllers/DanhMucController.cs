@@ -10,6 +10,7 @@ using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.Mvc;
 using PagedList;
+using everTrucking_Web.Code.BUS;
 
 namespace everTrucking_Web.Controllers
 {
@@ -22,18 +23,60 @@ namespace everTrucking_Web.Controllers
             List<DanhMucKhachHang> listKhachHang = new List<DanhMucKhachHang>();
             foreach (DataRow drKhachHang in dtDanhMucKhachHang.Rows)
             {
-                listKhachHang.Add(new DanhMucKhachHang()
+               listKhachHang.Add(new DanhMucKhachHang()
                 {
                     ID = drKhachHang["ID"].ToString(),
-                    Ma = drKhachHang["Ma"].ToString(),
+                   Ma = drKhachHang["Ma"].ToString(),
                     Ten = drKhachHang["Ten"].ToString(),
-                    MaCS = drKhachHang["MaCS"].ToString(),
+                   MaCS = drKhachHang["MaCS"].ToString(),
+                      IDDanhMucDonVi = drKhachHang["IDDanhMucDonVi"].ToString(),
+                     IDDanhMucLoaiDoiTuong = drKhachHang["IDDanhMucLoaiDoiTuong"].ToString(),
+                     TenEN = drKhachHang["TenEN"].ToString(),
+                     DiaChi = drKhachHang["DiaChi"].ToString(),
+                     MaSoThue = drKhachHang["MaSoThue"].ToString(),
+                    Nhom = drKhachHang["Nhom"].ToString(),
+                     ViTri = drKhachHang["ViTri"].ToString(),
+                     GhiChu = drKhachHang["GhiChu"].ToString(),
+                     IDDanhMucNguoiSuDungCreate = drKhachHang["IDDanhMucNguoiSuDungCreate"].ToString(),
+                      IDDanhMucNguoiSuDungEdit = drKhachHang["IDDanhMucNguoiSuDungEdit"].ToString(),
+                      CreateDate = drKhachHang["CreateDate"].ToString(),
+                     EditDate = drKhachHang["EditDate"].ToString(),
 
-                });
+
+               });
 
             }
             ViewBag.ListKhachHang = listKhachHang;
-            return View();
+            return View(listKhachHang);
+        }
+
+        [HttpGet]
+        public ActionResult Create()
+        {
+
+            return View("KhachHangIndex");
+        }
+        [HttpPost]
+        public ActionResult Create(DanhMucKhachHang model)
+        {
+            if (ModelState.IsValid)
+            {
+                var bus = new DanhMucKhachHangBUS();
+                bool id = bus.Insert(ref model);
+
+                if (id)
+                {
+
+                    return RedirectToAction("KhachHangIndex", "DanhMuc");
+                }
+
+                else
+                {
+                    ModelState.AddModelError("", "Thêm User không thành công");
+                }
+            }
+
+            return View("KhachHangIndex");
         }
         public ActionResult SaleIndex()
         {

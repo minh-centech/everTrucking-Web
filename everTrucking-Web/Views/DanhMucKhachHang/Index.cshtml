@@ -1,6 +1,4 @@
 ﻿@model IEnumerable<everTrucking_Web.Code.DTO.DanhMucKhachHang>
-
-
 @{
     ViewBag.Title = "Trang Chủ";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -50,7 +48,7 @@
     </div>
 </div>
 
-@using (Html.BeginForm("Create", "DanhMuc", FormMethod.Post))
+@using (Html.BeginForm("Create", "DanhMucKhachHang", FormMethod.Post))
 {
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog  modal-lg" role="document">

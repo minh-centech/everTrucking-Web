@@ -147,6 +147,7 @@
     <Compile Include="Code\DTO\DanhMucDoiTuong.cs" />
     <Compile Include="Code\DTO\DanhMucDiaDiemGiaoNhan.cs" />
     <Compile Include="Code\DTO\DanhMucKhachHang.cs" />
+    <Compile Include="Controllers\DanhMucKhachHangController.cs" />
     <Compile Include="Controllers\DonHangController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\KeHoachVanTaiController.cs" />
@@ -259,6 +260,7 @@
     <Content Include="Views\KeHoachVanTai\IndexPost.cshtml" />
     <Content Include="Views\KeHoachVanTai\ThemChungTu.cshtml" />
     <Content Include="Views\KeHoachVanTai\Insert.cshtml" />
+    <Content Include="Views\DanhMucKhachHang\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
