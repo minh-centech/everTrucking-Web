@@ -5,7 +5,7 @@ using System.Web;
 
 namespace everTrucking_Web.Code.DTO
 {
-    public class DanhMucKhachHang
+    public partial class DanhMucKhachHang
     {
         public object ID { get; set; }
         public object IDDanhMucDonVi { get; set; }

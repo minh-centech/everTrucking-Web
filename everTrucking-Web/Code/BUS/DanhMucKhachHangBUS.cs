@@ -34,7 +34,7 @@ namespace everTrucking_Web.Code.BUS
                 return null;
             }
         }
-        public static bool Insert(ref DanhMucKhachHang obj)
+        public  bool Insert(ref DanhMucKhachHang obj)
         {
             try
             {
@@ -46,7 +46,7 @@ namespace everTrucking_Web.Code.BUS
                 return false;
             }
         }
-        public static bool Update(ref DanhMucKhachHang obj)
+        public  bool Update(ref DanhMucKhachHang obj)
         {
             try
             {
@@ -58,7 +58,7 @@ namespace everTrucking_Web.Code.BUS
                 return false;
             }
         }
-        public static bool Delete(DanhMucKhachHang obj)
+        public bool Delete(DanhMucKhachHang obj)
         {
             try
             {
