@@ -1,4 +1,4 @@
-﻿@model IEnumerable<everTrucking_Web.Code.DTO.DanhMucKhachHang>
+﻿@model List<everTrucking_Web.Code.DTO.DanhMucKhachHang>
 
 
 @{
@@ -6,7 +6,21 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<style>
 
+    table.table-fit {
+        width: auto !important;
+        table-layout: auto !important;
+    }
+
+        table.table-fit thead th, table.table-fit tfoot th {
+            width: auto !important;
+        }
+
+        table.table-fit tbody td, table.table-fit tfoot td {
+            width: auto !important;
+        }
+</style>
 @*<h2 class="mt-3">Lựa chọn số hàng hiển thị</h2>
     <div class="form-group">
                 Show Numbers Of Rows
@@ -25,9 +39,9 @@
         </div>
     </div>
     <div class="card-body">
-        <button type="button" class="btn btn-primary mb-3" data-toggle="modal" data-target="#myModal"> <i class="fa fa-plus"></i> Thêm hàng hóa</button>
+        <button type="button" class="btn btn-primary mb-3" data-toggle="modal" data-target="#myModal2"> <i class="fa fa-plus"></i> Thêm hàng hóa</button>
         <div class="table-responsive">
-            <table class="table table-bordered" id="table" width="100%" height="100%" cellspacing="0">
+            <table class="table table-bordered" id="table">
                 <thead>
                     <tr>
                         <th>Mã khách hàng</th>
@@ -42,6 +56,8 @@
                             <td id="row_@item.ID">@item.Ma</td>
                             <td>@item.Ten</td>
                             <td>@item.MaCS</td>
+
+
                         </tr>
                     }
                 </tbody>
@@ -50,9 +66,7 @@
     </div>
 </div>
 
-@using (Html.BeginForm("Create", "DanhMuc", FormMethod.Post))
-{
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog  modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -62,107 +76,211 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <div class="row">
+                    <div class="row" id="dvPartial">
                         <div class="col-6">
                             <div class="form-group">
-                                <input type="hidden" name="ID" />
-                                <label>Danh mục đơn vị:</label>
-                                <input type="text" name="IDDanhMucDonVi" value="" class="form-control" />
+                                <input id="ID" type="hidden" name="ID" />
+                                <label>IDDanhMucDonVi :</label>
+                                <input id="IDDanhMucDonVi" type="text" name="IDDanhMucDonVi" value="" class="form-control" />
                             </div>
                         </div>
                         <div class="col-6">
                             <div class="form-group">
-
-                                <label>Danh mục loại đối tượng:</label>
-                                <input type="text" name="IDDanhMucLoaiDoiTuong" value="" class="form-control" />
+                                <label>IDDanhMucLoaiDoiTuong :</label>
+                                <input id="IDDanhMucLoaiDoiTuong" type="text" name="IDDanhMucLoaiDoiTuong" value="" class="form-control" />
                             </div>
                         </div>
                         <div class="col-6">
                             <div class="form-group">
                                 <label>Mã :</label>
-                                <input type="text" name="Ma" value="" class="form-control" />
+                                <input id="Ma" type="text" name="Ma" value="" class="form-control" />
                             </div>
                         </div>
                         <div class="col-6">
                             <div class="form-group">
                                 <label>Tên:</label>
-                                <input type="text" name="Ten" value="" class="form-control" />
+                                <input id="Ten" type="text" name="Ten" value="" class="form-control" />
                             </div>
                         </div>
                         <div class="col-6">
                             <div class="form-group">
                                 <label>Tên EN:</label>
-                                <input type="text" name="TenEN" value="" class="form-control" />
+                                <input id="TenEN" type="text" name="TenEN" value="" class="form-control" />
                             </div>
                         </div>
                         <div class="col-6">
                             <div class="form-group">
                                 <label>Mã CS:</label>
-                                <input type="text" name="MaCS" value="" class="form-control" />
+                                <input id="MaCS" type="text" name="MaCS" value="" class="form-control" />
                             </div>
                         </div>
                         <div class="col-6">
                             <div class="form-group">
                                 <label>Địa chỉ:</label>
-                                <input type="text" name="DiaChi" value="" class="form-control" />
+                                <input id="Diachi" type="text" name="DiaChi" value="" class="form-control" />
                             </div>
                         </div>
                         <div class="col-6">
                             <div class="form-group">
                                 <label>Mã số thuế:</label>
-                                <input type="text" name="MaSoThue" value="" class="form-control" />
+                                <input id="Masothue" type="text" name="MaSoThue" value="" class="form-control" />
                             </div>
                         </div>
                         <div class="col-6">
                             <div class="form-group">
                                 <label>Nhóm:</label>
-                                <input type="text" name="Nhom" value="" class="form-control" />
+                                <input id="Nhom" type="text" name="Nhom" value="" class="form-control" />
                             </div>
                         </div>
                         <div class="col-6">
                             <div class="form-group">
                                 <label>Vị trí:</label>
-                                <input type="text" name="ViTri" value="" class="form-control" />
+                                <input id="Vitri" type="text" name="ViTri" value="" class="form-control" />
                             </div>
                         </div>
                         <div class="col-6">
                             <div class="form-group">
                                 <label>Ghi chú:</label>
-                                <input type="text" name="GhiChu" value="" class="form-control" />
+                                <input id="Ghichu" type="text" name="GhiChu" value="" class="form-control" />
                             </div>
                         </div>
                         <div class="col-6">
                             <div class="form-group">
                                 <label>Danh mục người sử dụng Create:</label>
-                                <input type="text" name="IDDanhMucNguoiSuDungCreate" value="" class="form-control" />
+                                <input id="IDDanhMucNguoiSuDungCreate" type="text" name="IDDanhMucNguoiSuDungCreate" value="" class="form-control" />
                             </div>
                         </div>
 
                         <div class="col-6">
                             <div class="form-group">
                                 <label>Danh mục người sử dụng Edit:</label>
-                                <input type="text" name="IDDanhMucNguoiSuDungEdit" value="" class="form-control" />
+                                <input id="IDDanhMucNguoiSuDungEdit" type="text" name="IDDanhMucNguoiSuDungEdit" value="" class="form-control" />
                             </div>
                         </div>
                         <div class="col-6">
                             <div class="form-group">
                                 <label>Ngày tạo:</label>
-                                <input type="date" name="CreateDate" value="" class="form-control" />
+                                <input id="Ngaytao" type="date" name="CreateDate" value="" class="form-control" />
                             </div>
                         </div>
                         <div class="col-6">
                             <div class="form-group">
                                 <label>Ngày sửa</label>
-                                <input type="date" name="EditDate" value="" class="form-control" />
+                                <input id="Ngaysua" type="date" name="EditDate" value="" class="form-control" />
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary">Save changes</button>
+                    <button type="submit" id="btnAdd" class="btn btn-primary" onclick="Add()">Save changes</button>
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>
     </div>
+    
+    <script>
+    //Add Data Function
+    function Add() {
+
+       var listChiTiet2 = [
+            { DiaChi: '1', TinhThanh: 'yellow' },
+            { DiaChi: '2', TinhThanh: 'blue' },
+            { DiaChi: '3', TinhThanh: 'grean' }
+        ];
+       
+        var empObj = {
+            
+            ID: $('#ID').val(),
+            IDDanhMucDonVi: $('#IDDanhMucDonVi').val(),
+            IDDanhMucLoaiDoiTuong: $('#IDDanhMucLoaiDoiTuong').val(),
+            Ma: $('#Ma').val(),
+            Ten: $('#Ten').val(),
+            TenEN: $('#TenEN').val(),
+            MaCS: $('#MaCS').val(),
+            Diachi: $('#Diachi').val(),
+            Masothue: $('#Masothue').val(),
+            Nhom: $('#Nhom').val(),
+            Vitri: $('#Vitri').val(),
+            Ghichu: $('#Ghichu').val(),
+            strChiTiet: JSON.stringify(listChiTiet2),
+            IDDanhMucNguoiSuDungCreate: $('#IDDanhMucNguoiSuDungCreate').val(),
+            IDDanhMucNguoiSuDungEdit: $('#IDDanhMucNguoiSuDungEdit').val(),
+            Ngaytao: $('#Ngaytao').val(),
+            Ngaysua: $('#Ngaysua').val(),
+        };
+        console.log(empObj)
+    var url = "@Url.Action("Create","DanhMuc")"
+        $.ajax({
+          url: url,
+            data: JSON.stringify(
+
+              empObj
+           ),
+            type: "POST",
+            contentType: "application/json;charset=utf-8",
+            dataType: "json",
+            success: function (result) {
+            //loadData();
+              $('#myModal2').modal('hide');
+            $('#table').append('<tr><td>' + $('#Ma').val() + '</td><td>' + $('#Ten').val() + '</td><td>' + $('#MaCS').val()+'</td></tr>')
+        },
+            error: function (errormessage) {
+               $('#myModal2').modal('hide');
+               $('#table').append('<tbody><td>' + $('#Ma').val() + '</td><td>' + $('#Ten').val() + '</td><td>' + $('#MaCS').val() + '</td></tbody>')
+
+             alert(errormessage.responseText);
+        }
+    });
 }
+
+    </script>
+    <script>
+      //  var url = "@Url.Action("Create","DanhMuc")"
+       // $("body").on('click', '#btnAdd', function () {
+        //    $("#MyModal").modal("hide");
+        //    $.ajax({
+        //        url: url,
+        //        data: {},
+        //        type: 'POST',
+         //       dataType: 'html',
+         //       contentType: "application/json; charset=utf-8",
+          //      success: function (response) {
+           //         $("#dvPartial").html(response);
+            ///        $("#MyModal ").modal("show");
+            //    }
+           // });
+        //});
+
+    </script>
+    <script>
+       // function insertDB(IDDanhMucDonVi, IDDanhMucLoaiDoiTuong, Ma, Ten, TenEN, MaCS, DiaChi, MaSoThue, Nhom, ViTri, IDDanhMucNguoiSuDungCreate, IDDanhMucNguoiSuDungEdit, CreateDate) {
+           // var formdata = new FormData(); //FormData object
+            //Iterating through each files selected in fileInput
+           // formdata.append("IDDanhMucDonVi", IDDanhMucDonVi);
+           // formdata.append("IDDanhMucLoaiDoiTuong", IDDanhMucLoaiDoiTuong);
+          ///  formdata.append("Ma", Ma);
+           // formdata.append("Ten", Ten);
+          //  formdata.append("TenEN", TenEN);
+           // formdata.append("MaCS", MaCS);
+           // formdata.append("DiaChi", DiaChi);
+           // formdata.append("MaSoThue", MaSoThue);
+           // formdata.append("Nhom", Nhom);
+
+           // formdata.append("IDDanhMucNguoiSuDungCreate", IDDanhMucNguoiSuDungCreate);
+           // formdata.append("IDDanhMucNguoiSuDungEdit", IDDanhMucNguoiSuDungEdit);
+           // formdata.append("CreateDate", CreateDate);
+           // formdata.append("EditDate", EditDate);
+
+
+            //Creating an XMLHttpRequest and sending
+           // var xhr = new XMLHttpRequest();
+           // xhr.open('POST', '/DanhMuc/InsertToDB');//controller/action
+           // xhr.send(formdata);
+           // xhr.onreadystatechange = function () {
+            //    if (xhr.readyState == 4 && xhr.status == 200) {
+                    //if success
+               // }
+           // }
+       // }
+    </script>
