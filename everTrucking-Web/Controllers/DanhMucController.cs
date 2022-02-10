@@ -26,21 +26,18 @@ namespace everTrucking_Web.Controllers
                listKhachHang.Add(new DanhMucKhachHang()
                 {
                     ID = drKhachHang["ID"].ToString(),
-                    Ma = drKhachHang["Ma"].ToString(),
+                   Ma = drKhachHang["Ma"].ToString(),
                     Ten = drKhachHang["Ten"].ToString(),
-                    MaCS = drKhachHang["MaCS"].ToString(),
-                    IDDanhMucDonVi = drKhachHang["IDDanhMucDonVi"].ToString(),
-                    IDDanhMucLoaiDoiTuong = drKhachHang["IDDanhMucLoaiDoiTuong"].ToString(),
-                    TenEN = drKhachHang["TenEN"].ToString(),
-                    DiaChi = drKhachHang["DiaChi"].ToString(),
-                    MaSoThue = drKhachHang["MaSoThue"].ToString(),
-                    Nhom = drKhachHang["Nhom"].ToString(),
-                    ViTri = drKhachHang["ViTri"].ToString(),
-                    GhiChu = drKhachHang["GhiChu"].ToString(),
-                    IDDanhMucNguoiSuDungCreate = drKhachHang["IDDanhMucNguoiSuDungCreate"].ToString(),
-                    IDDanhMucNguoiSuDungEdit = drKhachHang["IDDanhMucNguoiSuDungEdit"].ToString(),
-                    CreateDate = drKhachHang["CreateDate"].ToString(),
-                    EditDate = drKhachHang["EditDate"].ToString(),
+                   MaCS = drKhachHang["MaCS"].ToString(),
+                   IDDanhMucDonVi = drKhachHang["IDDanhMucDonVi"].ToString(),
+                   IDDanhMucLoaiDoiTuong = drKhachHang["IDDanhMucLoaiDoiTuong"].ToString(),
+                   IDDanhMucNguoiSuDungEdit = drKhachHang["IDDanhMucNguoiSuDungEdit"].ToString(),
+                   IDDanhMucNguoiSuDungCreate = drKhachHang["IDDanhMucNguoiSuDungCreate"].ToString(),
+
+
+
+
+
                });
 
             }
@@ -61,19 +58,20 @@ namespace everTrucking_Web.Controllers
             {
                 var bus = new DanhMucKhachHangBUS();
                 bool id = bus.Insert(ref model);
-
+                model.listChiTiet = JsonConvert.DeserializeObject<List<DanhMucKhachHang.ChiTiet>>(model.strChiTiet);
                 if (id)
                 {
 
                     return RedirectToAction("KhachHangIndex", "DanhMuc");
                 }
 
-                else
-                {
-                    ModelState.AddModelError("", "Thêm User không thành công");
-                }
+               // else
+                //{
+                //    ModelState.AddModelError("", "Thêm User không thành công");
+                //}
             }
-            return View("KhachHangIndex");
+
+            return View("");
         }
         public ActionResult SaleIndex()
         {
@@ -126,5 +124,18 @@ namespace everTrucking_Web.Controllers
             ViewBag.ListDiaDiemGiaoNhan = listDiaDiemGiaoNhan;
             return View();
         }
+
+
+        //public void InsertToDB(string username, string phone, string email, string code, string filename)
+      //  {
+            //this.resumeRepository.Entity.Create(
+            //    new Resume
+            //    {
+
+            //    }
+            //    );
+          //  var resume_results = Request.Form.Keys;
+          //  resume_results.Add("");
+        //}
     }
 }

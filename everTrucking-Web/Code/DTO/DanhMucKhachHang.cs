@@ -19,6 +19,16 @@ namespace everTrucking_Web.Code.DTO
         public object Nhom { get; set; }
         public object ViTri { get; set; }
         public object GhiChu { get; set; }
+
+        public class ChiTiet
+        {
+            public string DiaChi { get; set; }
+            public string TinhThanh { get; set; }
+        }
+
+        public List<ChiTiet> listChiTiet;
+        public string strChiTiet { get; set; }
+
         public object IDDanhMucNguoiSuDungCreate { get; set; }
         public object IDDanhMucNguoiSuDungEdit { get; set; }
         public object CreateDate { get; set; }
@@ -45,6 +55,8 @@ namespace everTrucking_Web.Code.DTO
             Nhom = null;
             ViTri = null;
             GhiChu = null;
+            strChiTiet = string.Empty;
+            listChiTiet = new List<ChiTiet>();
             IDDanhMucNguoiSuDungCreate = null;
             IDDanhMucNguoiSuDungEdit = null;
             CreateDate = null;
