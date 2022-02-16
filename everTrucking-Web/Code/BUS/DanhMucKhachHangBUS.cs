@@ -58,7 +58,7 @@ namespace everTrucking_Web.Code.BUS
                 return false;
             }
         }
-        public bool Delete(DanhMucKhachHang obj)
+        public bool Delete(string obj)
         {
             try
             {

@@ -11,6 +11,7 @@ using System.Web;
 using System.Web.Mvc;
 using PagedList;
 using everTrucking_Web.Code.BUS;
+using everTrucking_Web.Code.DAO;
 
 namespace everTrucking_Web.Controllers
 {
@@ -33,7 +34,14 @@ namespace everTrucking_Web.Controllers
                    IDDanhMucLoaiDoiTuong = drKhachHang["IDDanhMucLoaiDoiTuong"].ToString(),
                    IDDanhMucNguoiSuDungEdit = drKhachHang["IDDanhMucNguoiSuDungEdit"].ToString(),
                    IDDanhMucNguoiSuDungCreate = drKhachHang["IDDanhMucNguoiSuDungCreate"].ToString(),
-
+                   TenEN = drKhachHang["TenEN"].ToString(),
+                   DiaChi = drKhachHang["DiaChi"].ToString(),
+                   MaSoThue = drKhachHang["MaSoThue"].ToString(),
+                   Nhom = drKhachHang["Nhom"].ToString(),
+                   ViTri = drKhachHang["ViTri"].ToString(),
+                   GhiChu = drKhachHang["GhiChu"].ToString(),
+                   CreateDate = drKhachHang["CreateDate"].ToString(),
+                   EditDate = drKhachHang["EditDate"].ToString(),
 
 
 
@@ -44,35 +52,90 @@ namespace everTrucking_Web.Controllers
             ViewBag.ListKhachHang = listKhachHang;
             return View(listKhachHang);
         }
-
-        [HttpGet]
-        public ActionResult Create()
+        public JsonResult List()
         {
-
-            return View("KhachHangIndex");
-        }
-        [HttpPost]
-        public ActionResult Create(DanhMucKhachHang model)
-        {
-            if (ModelState.IsValid)
+            DataTable dtDanhMucKhachHang = Code.BUS.DanhMucKhachHangBUS.List(null, Code.GlobalVariables.IDDanhMucLoaiDoiTuongKhachHang, null);
+            List<DanhMucKhachHang> listKhachHang = new List<DanhMucKhachHang>();
+            foreach (DataRow drKhachHang in dtDanhMucKhachHang.Rows)
             {
-                var bus = new DanhMucKhachHangBUS();
-                bool id = bus.Insert(ref model);
-                model.listChiTiet = JsonConvert.DeserializeObject<List<DanhMucKhachHang.ChiTiet>>(model.strChiTiet);
-                if (id)
+                listKhachHang.Add(new DanhMucKhachHang()
                 {
+                    ID = drKhachHang["ID"].ToString(),
+                    Ma = drKhachHang["Ma"].ToString(),
+                    Ten = drKhachHang["Ten"].ToString(),
+                    MaCS = drKhachHang["MaCS"].ToString(),
+                    IDDanhMucDonVi = drKhachHang["IDDanhMucDonVi"].ToString(),
+                    IDDanhMucLoaiDoiTuong = drKhachHang["IDDanhMucLoaiDoiTuong"].ToString(),
+                    IDDanhMucNguoiSuDungEdit = drKhachHang["IDDanhMucNguoiSuDungEdit"].ToString(),
+                    IDDanhMucNguoiSuDungCreate = drKhachHang["IDDanhMucNguoiSuDungCreate"].ToString(),
+                    TenEN = drKhachHang["TenEN"].ToString(),
+                    DiaChi = drKhachHang["DiaChi"].ToString(),
+                    MaSoThue = drKhachHang["MaSoThue"].ToString(),
+                    Nhom = drKhachHang["Nhom"].ToString(),
+                    ViTri = drKhachHang["ViTri"].ToString(),
+                    GhiChu = drKhachHang["GhiChu"].ToString(),
+                    CreateDate = drKhachHang["CreateDate"].ToString(),
+                    EditDate = drKhachHang["EditDate"].ToString(),
 
-                    return RedirectToAction("KhachHangIndex", "DanhMuc");
-                }
 
-               // else
-                //{
-                //    ModelState.AddModelError("", "Thêm User không thành công");
-                //}
+
+
+                });
+
             }
-
-            return View("");
+            ViewBag.ListKhachHang = listKhachHang;
+           
+            return Json(listKhachHang, JsonRequestBehavior.AllowGet);
         }
+        public JsonResult GetbyID(string ID)
+        {
+            DataTable dtDanhMucKhachHang = Code.BUS.DanhMucKhachHangBUS.List(null, Code.GlobalVariables.IDDanhMucLoaiDoiTuongKhachHang, null);
+            List<DanhMucKhachHang> listKhachHang = new List<DanhMucKhachHang>();
+            foreach (DataRow drKhachHang in dtDanhMucKhachHang.Rows)
+            {
+                listKhachHang.Add(new DanhMucKhachHang()
+                {
+                    ID = drKhachHang["ID"].ToString(),
+                    Ma = drKhachHang["Ma"].ToString(),
+                    Ten = drKhachHang["Ten"].ToString(),
+                    MaCS = drKhachHang["MaCS"].ToString(),
+                    IDDanhMucDonVi = drKhachHang["IDDanhMucDonVi"].ToString(),
+                    IDDanhMucLoaiDoiTuong = drKhachHang["IDDanhMucLoaiDoiTuong"].ToString(),
+                    IDDanhMucNguoiSuDungEdit = drKhachHang["IDDanhMucNguoiSuDungEdit"].ToString(),
+                    IDDanhMucNguoiSuDungCreate = drKhachHang["IDDanhMucNguoiSuDungCreate"].ToString(),
+                    TenEN = drKhachHang["TenEN"].ToString(),
+                    DiaChi = drKhachHang["DiaChi"].ToString(),
+                    MaSoThue = drKhachHang["MaSoThue"].ToString(),
+                    Nhom = drKhachHang["Nhom"].ToString(),
+                    ViTri = drKhachHang["ViTri"].ToString(),
+                    GhiChu = drKhachHang["GhiChu"].ToString(),
+                    CreateDate = drKhachHang["CreateDate"].ToString(),
+                    EditDate = drKhachHang["EditDate"].ToString(),
+                });
+
+            }
+            
+            var Employee = listKhachHang.Find(x => x.ID.Equals(ID));
+            return Json(Employee, JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult Update(DanhMucKhachHang emp)
+        {
+            DanhMucKhachHangDAO empDB = new DanhMucKhachHangDAO();
+            return Json(empDB.Update(ref emp), JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult Add(DanhMucKhachHang emp)
+        {
+            DanhMucKhachHangDAO empDB = new DanhMucKhachHangDAO();
+            return Json(empDB.Insert(ref emp), JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult Delete(string ID)
+        {
+            DanhMucKhachHangDAO empDB = new DanhMucKhachHangDAO();
+            return Json(empDB.Delete(ID), JsonRequestBehavior.AllowGet);
+        }
+
+
+      
         public ActionResult SaleIndex()
         {
             DataTable dtDanhMucSale = Code.BUS.DanhMucDoiTuongBUS.List(null, Code.GlobalVariables.IDDanhMucLoaiDoiTuongNhanSu, null);

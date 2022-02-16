@@ -32,7 +32,9 @@ namespace everTrucking_Web.Code.DAO
             DataTable dt = dao.tableList(sqlParameters, DanhMucKhachHang.validProcedureName, DanhMucKhachHang.tableName);
             return dt;
         }
-        public bool Insert(ref DanhMucKhachHang obj)
+
+        
+            public bool Insert(ref DanhMucKhachHang obj)
         {
             try
             {
@@ -50,8 +52,8 @@ namespace everTrucking_Web.Code.DAO
                                 Direction = ParameterDirection.Output,
                                 Size = sizeof(Int64)
                             };
-                            sqlParameters[1] = new SqlParameter("@IDDanhMucDonVi", obj.IDDanhMucDonVi);
-                            sqlParameters[2] = new SqlParameter("@IDDanhMucLoaiDoiTuong", obj.IDDanhMucLoaiDoiTuong);
+                            sqlParameters[1] = new SqlParameter("@IDDanhMucDonVi", "1");
+                            sqlParameters[2] = new SqlParameter("@IDDanhMucLoaiDoiTuong", "69");
                             sqlParameters[3] = new SqlParameter("@Ma", obj.Ma);
                             sqlParameters[4] = new SqlParameter("@Ten", obj.Ten);
                             sqlParameters[5] = new SqlParameter("@TenEN", obj.TenEN);
@@ -61,7 +63,7 @@ namespace everTrucking_Web.Code.DAO
                             sqlParameters[9] = new SqlParameter("@Nhom", obj.Nhom);
                             sqlParameters[10] = new SqlParameter("@ViTri", obj.ViTri);
                             sqlParameters[11] = new SqlParameter("@GhiChu", obj.GhiChu);
-                            sqlParameters[12] = new SqlParameter("@IDDanhMucNguoiSuDungCreate", obj.IDDanhMucNguoiSuDungCreate);
+                            sqlParameters[12] = new SqlParameter("@IDDanhMucNguoiSuDungCreate", "7");
                             sqlParameters[13] = new SqlParameter("@CreateDate", DBNull.Value)
                             {
                                 Direction = ParameterDirection.Output,
@@ -69,7 +71,7 @@ namespace everTrucking_Web.Code.DAO
                             };
                             sqlCommand.Parameters.AddRange(sqlParameters);
                             int rowAffected = sqlCommand.ExecuteNonQuery();
-                            obj.ID = Int64.Parse(sqlParameters[0].Value.ToString());
+                            obj.ID = sqlParameters[0].Value.ToString();
                             obj.CreateDate = DateTime.Parse(sqlParameters[sqlParameters.Length - 1].Value.ToString());
                             sqlTransaction.Commit();
                             return true;
@@ -98,8 +100,7 @@ namespace everTrucking_Web.Code.DAO
                             sqlParameters[0] = new SqlParameter("@ID", obj.ID);
                             sqlParameters[1] = new SqlParameter("@IDDanhMucDonVi", obj.IDDanhMucDonVi);
                             sqlParameters[2] = new SqlParameter("@IDDanhMucLoaiDoiTuong", obj.IDDanhMucLoaiDoiTuong);
-                            sqlParameters[3] = new SqlParameter("@Ma", obj.Ma);
-                            sqlParameters[4] = new SqlParameter("@Ten", obj.Ten);
+                           
                             sqlParameters[3] = new SqlParameter("@Ma", obj.Ma);
                             sqlParameters[4] = new SqlParameter("@Ten", obj.Ten);
                             sqlParameters[5] = new SqlParameter("@TenEN", obj.TenEN);
@@ -109,7 +110,7 @@ namespace everTrucking_Web.Code.DAO
                             sqlParameters[9] = new SqlParameter("@Nhom", obj.Nhom);
                             sqlParameters[10] = new SqlParameter("@ViTri", obj.ViTri);
                             sqlParameters[11] = new SqlParameter("@GhiChu", obj.GhiChu);
-                            sqlParameters[12] = new SqlParameter("@IDDanhMucNguoiSuDungEdit", obj.IDDanhMucNguoiSuDungEdit);
+                            sqlParameters[12] = new SqlParameter("@IDDanhMucNguoiSuDungEdit", "7");
                             sqlParameters[13] = new SqlParameter("@EditDate", DBNull.Value)
                             {
                                 Direction = ParameterDirection.Output,
@@ -117,8 +118,8 @@ namespace everTrucking_Web.Code.DAO
                             };
                             sqlCommand.Parameters.AddRange(sqlParameters);
                             int rowAffected = sqlCommand.ExecuteNonQuery();
-                            obj.ID = Int64.Parse(sqlParameters[0].Value.ToString());
-                            obj.CreateDate = DateTime.Parse(sqlParameters[sqlParameters.Length - 1].Value.ToString());
+                            obj.ID = sqlParameters[0].Value.ToString();
+                            obj.EditDate = DateTime.Parse(sqlParameters[sqlParameters.Length - 1].Value.ToString());
                             sqlTransaction.Commit();
                             return true;
                         }
@@ -130,7 +131,7 @@ namespace everTrucking_Web.Code.DAO
                 return false;
             }
         }
-        public bool Delete(DanhMucKhachHang obj)
+        public bool Delete(string ID)
         {
             try
             {
@@ -143,7 +144,7 @@ namespace everTrucking_Web.Code.DAO
                         {
                             sqlCommand.CommandType = CommandType.StoredProcedure;
                             SqlParameter[] sqlParameters = new SqlParameter[1];
-                            sqlParameters[0] = new SqlParameter("@ID", obj.ID);
+                            sqlParameters[0] = new SqlParameter("@ID", ID);
                             sqlCommand.Parameters.AddRange(sqlParameters);
                             int rowAffected = sqlCommand.ExecuteNonQuery();
                             sqlTransaction.Commit();

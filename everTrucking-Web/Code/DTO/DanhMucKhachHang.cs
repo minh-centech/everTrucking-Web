@@ -7,30 +7,30 @@ namespace everTrucking_Web.Code.DTO
 {
     public partial class DanhMucKhachHang
     {
-        public object ID { get; set; }
-        public object IDDanhMucDonVi { get; set; }
-        public object IDDanhMucLoaiDoiTuong { get; set; }
-        public object Ma { get; set; }
-        public object Ten { get; set; }
-        public object TenEN { get; set; }
-        public object MaCS { get; set; }
-        public object DiaChi { get; set; }
-        public object MaSoThue { get; set; }
-        public object Nhom { get; set; }
-        public object ViTri { get; set; }
-        public object GhiChu { get; set; }
+        public string ID { get; set; }
+        public string IDDanhMucDonVi { get; set; }
+        public string IDDanhMucLoaiDoiTuong { get; set; }
+        public string Ma { get; set; }
+        public string Ten { get; set; }
+        public string TenEN { get; set; }
+        public string MaCS { get; set; }
+        public string DiaChi { get; set; }
+        public string MaSoThue { get; set; }
+        public string Nhom { get; set; }
+        public string ViTri { get; set; }
+        public string GhiChu { get; set; }
 
-        public class ChiTiet
-        {
-            public string DiaChi { get; set; }
-            public string TinhThanh { get; set; }
-        }
+       // public class ChiTiet
+       // {
+         //   public string DiaChi { get; set; }
+           // public string TinhThanh { get; set; }
+       // }
 
-        public List<ChiTiet> listChiTiet;
-        public string strChiTiet { get; set; }
+       // public List<ChiTiet> listChiTiet;
+       // public string strChiTiet { get; set; }
 
-        public object IDDanhMucNguoiSuDungCreate { get; set; }
-        public object IDDanhMucNguoiSuDungEdit { get; set; }
+        public string IDDanhMucNguoiSuDungCreate { get; set; }
+        public string IDDanhMucNguoiSuDungEdit { get; set; }
         public object CreateDate { get; set; }
         public object EditDate { get; set; }
 
@@ -55,8 +55,8 @@ namespace everTrucking_Web.Code.DTO
             Nhom = null;
             ViTri = null;
             GhiChu = null;
-            strChiTiet = string.Empty;
-            listChiTiet = new List<ChiTiet>();
+            //strChiTiet = string.Empty;
+            //listChiTiet = new List<ChiTiet>();
             IDDanhMucNguoiSuDungCreate = null;
             IDDanhMucNguoiSuDungEdit = null;
             CreateDate = null;
