@@ -130,6 +130,7 @@ namespace everTrucking_Web.Controllers
         }
         public JsonResult Delete(string ID)
         {
+
             DanhMucKhachHangDAO empDB = new DanhMucKhachHangDAO();
             return Json(empDB.Delete(ID), JsonRequestBehavior.AllowGet);
         }
