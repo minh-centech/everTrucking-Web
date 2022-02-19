@@ -22,13 +22,11 @@ namespace everTrucking_Web.Code.DTO
 
         public class ChiTiet
         {
-            public string DiaChi { get; set; }
-            public string TinhThanh { get; set; }
+            public string diaChi { get; set; }
+            public string tinhThanh { get; set; }
         }
-
-        public List<ChiTiet> listChiTiet;
+        public IEnumerable<ChiTiet> listChiTiet;
         public string strChiTiet { get; set; }
-
         public object IDDanhMucNguoiSuDungCreate { get; set; }
         public object IDDanhMucNguoiSuDungEdit { get; set; }
         public object CreateDate { get; set; }

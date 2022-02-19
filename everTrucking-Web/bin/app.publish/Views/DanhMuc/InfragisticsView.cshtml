@@ -1,0 +1,117 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+
+    <!-- Ignite UI for jQuery Required Combined CSS Files -->
+    <link href="~/assets/css/Infragistics/InfragisticsThemes.css" rel="stylesheet" />
+    <link href="~/assets/css/Infragistics/Infragistics.css" rel="stylesheet" />
+
+    <script src="~/assets/js/Infragistics/modernizr-2.8.3.js"></script>
+    <script src="~/assets/js/Infragistics/jquery-1.11.3.min.js"></script>
+    <script src="~/assets/js/Infragistics/jquery-ui.min.js"></script>
+
+    <!-- Ignite UI for jQuery Required Combined JavaScript Files -->
+    <script src="~/assets/js/Infragistics/infragistics.core.js"></script>
+    <script src="~/assets/js/Infragistics/infragistics.lob.js"></script>
+</head>
+<body>
+
+    <table id="grid"></table>
+    @*<script src="/data-files/nw-products.js"></script>*@
+    <script>
+        $(function () {
+
+            var northwindProducts = [
+                { "ProductID": 1, "ProductName": "Chai", "CategoryName": "Beverages", "InStock": 39 },
+                { "ProductID": 2, "ProductName": "Chang", "CategoryName": "Beverages", "InStock": 17 },
+                { "ProductID": 3, "ProductName": "Aniseed Syrup", "CategoryName": "Condiments", "InStock": 13 },
+                { "ProductID": 4, "ProductName": "Chef Anton\u0027s Cajun Seasoning", "CategoryName": "Condiments", "InStock": 53 },
+                { "ProductID": 5, "ProductName": "Chef Anton\u0027s Gumbo Mix", "CategoryName": "Condiments", "InStock": 0 },
+                { "ProductID": 6, "ProductName": "Grandma\u0027s Boysenberry Spread", "CategoryName": "Condiments", "InStock": 120 },
+                { "ProductID": 7, "ProductName": "Uncle Bob\u0027s Organic Dried Pears", "CategoryName": "Produce", "InStock": 15 },
+                { "ProductID": 8, "ProductName": "Northwoods Cranberry Sauce", "CategoryName": "Condiments", "InStock": 6 },
+                { "ProductID": 9, "ProductName": "Mishi Kobe Niku", "CategoryName": "Meat/Poultry", "InStock": 29 },
+                { "ProductID": 10, "ProductName": "Ikura", "CategoryName": "Seafood", "InStock": 31 },
+                { "ProductID": 11, "ProductName": "Queso Cabrales", "CategoryName": "Dairy Products", "InStock": 22 },
+                { "ProductID": 12, "ProductName": "Queso Manchego La Pastora", "CategoryName": "Dairy Products", "InStock": 86 },
+                { "ProductID": 13, "ProductName": "Konbu", "CategoryName": "Seafood", "InStock": 24 },
+                { "ProductID": 14, "ProductName": "Tofu", "CategoryName": "Produce", "InStock": 35 },
+                { "ProductID": 15, "ProductName": "Genen Shouyu", "CategoryName": "Condiments", "InStock": 39 },
+                { "ProductID": 16, "ProductName": "Pavlova", "CategoryName": "Confections", "InStock": 29 },
+                { "ProductID": 17, "ProductName": "Alice Mutton", "CategoryName": "Meat/Poultry", "InStock": 0 },
+                { "ProductID": 18, "ProductName": "Carnarvon Tigers", "CategoryName": "Seafood", "InStock": 42 },
+                { "ProductID": 19, "ProductName": "Teatime Chocolate Biscuits", "CategoryName": "Confections", "InStock": 25 },
+                { "ProductID": 20, "ProductName": "Sir Rodney\u0027s Marmalade", "CategoryName": "Confections", "InStock": 40 },
+                { "ProductID": 21, "ProductName": "Sir Rodney\u0027s Scones", "CategoryName": "Confections", "InStock": 3 },
+                { "ProductID": 22, "ProductName": "Gustaf\u0027s Knäckebröd", "CategoryName": "Grains/Cereals", "InStock": 104 },
+                { "ProductID": 23, "ProductName": "Tunnbröd", "CategoryName": "Grains/Cereals", "InStock": 61 },
+                { "ProductID": 24, "ProductName": "Guaraná Fantástica", "CategoryName": "Beverages", "InStock": 20 },
+                { "ProductID": 25, "ProductName": "NuNuCa Nuß-Nougat-Creme", "CategoryName": "Confections", "InStock": 76 },
+                { "ProductID": 26, "ProductName": "Gumbär Gummibärchen", "CategoryName": "Confections", "InStock": 15 },
+                { "ProductID": 27, "ProductName": "Schoggi Schokolade", "CategoryName": "Confections", "InStock": 49 },
+                { "ProductID": 28, "ProductName": "Rössle Sauerkraut", "CategoryName": "Produce", "InStock": 26 },
+                { "ProductID": 29, "ProductName": "Thüringer Rostbratwurst", "CategoryName": "Meat/Poultry", "InStock": 0 },
+                { "ProductID": 30, "ProductName": "Nord-Ost Matjeshering", "CategoryName": "Seafood", "InStock": 10 }
+            ];
+            //for (var i = 0; i < northwindProducts.length; i++) {
+            //    northwindProducts[i].ImageUrl = "../images/samples/grid/" + (i % 10) + ".jpg";
+            //}
+            $("#grid").igGrid({
+            	primaryKey: "ProductID",
+            	caption : "<span>ABC</span>",
+                width: '100%',
+                columns: [
+                    { headerText: "Product ID", key: "ProductID", dataType: "number", width: "15%", fgColor:"black" },
+                    //{ headerText: "Image", key: "ImageUrl", dataType: "string", width: "15%", template: "<img style=\"height:50px;\" src=\"${ImageUrl}\"/>" },
+                    { headerText: "Product Name", key: "ProductName", dataType: "string", width: "25%", fgColor: "black" },
+                    { headerText: "Category", key: "CategoryName", dataType: "string", width: "25%", fgColor: "black" },
+                    { headerText: "Units In Stock", key: "InStock", dataType: "number", width: "35%", fgColor: "black" }
+                ],
+                autofitLastColumn: false,
+                autoGenerateColumns: false,
+                dataSource: northwindProducts,
+                responseDataKey: "results",
+                autoCommit: true,
+                features: [
+                    {
+                        name: "Sorting",
+                        sortingDialogContainment: "window"
+                    },
+                    {
+                        name: "Filtering",
+                        type: "local",
+                        columnSettings: [
+                            {
+                                columnKey: "InStock",
+                                condition: "greaterThan"
+                            }
+                        ]
+                    },
+                    {
+                        name: "Selection"
+                    },
+                    {
+                        name: "Paging",
+                        pageSize: 10
+                    },
+                    {
+                        name: "Resizing"
+                    },
+                    {
+                        name: "Updating",
+                        editMode: "dialog",
+                        enableAddRow: true,
+                        columnSettings: [
+                            {
+                                columnKey: "ImageUrl",
+                                readOnly: false
+                            }
+                        ]
+                    }
+                ]
+            });
+        });
+    </script>
+</body>
+</html>

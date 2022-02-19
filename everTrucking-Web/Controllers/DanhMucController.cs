@@ -58,10 +58,10 @@ namespace everTrucking_Web.Controllers
             {
                 var bus = new DanhMucKhachHangBUS();
                 bool id = bus.Insert(ref model);
-                model.listChiTiet = JsonConvert.DeserializeObject<List<DanhMucKhachHang.ChiTiet>>(model.strChiTiet);
+
+                var T = JsonConvert.DeserializeObject<List<DanhMucKhachHang.ChiTiet>>(model.strChiTiet);
                 if (id)
                 {
-
                     return RedirectToAction("KhachHangIndex", "DanhMuc");
                 }
 
@@ -124,18 +124,36 @@ namespace everTrucking_Web.Controllers
             ViewBag.ListDiaDiemGiaoNhan = listDiaDiemGiaoNhan;
             return View();
         }
+        [HttpGet]
+        public ActionResult InfragisticsView()
+        {
+            //DataTable dtDanhMucSale = Code.BUS.DanhMucDoiTuongBUS.List(null, Code.GlobalVariables.IDDanhMucLoaiDoiTuongNhanSu, null);
+            //List<DanhMucDoiTuong> listSale = new List<DanhMucDoiTuong>();
+            //foreach (DataRow drSale in dtDanhMucSale.Rows)
+            //{
+            //    listSale.Add(new DanhMucDoiTuong()
+            //    {
+            //        ID = drSale["ID"].ToString(),
+            //        Ma = drSale["Ma"].ToString(),
+            //        Ten = drSale["Ten"].ToString(),
+            //    });
+
+            //}
+            //ViewBag.ListSale = listSale;
+            return View();
+        }
 
 
         //public void InsertToDB(string username, string phone, string email, string code, string filename)
-      //  {
-            //this.resumeRepository.Entity.Create(
-            //    new Resume
-            //    {
+        //  {
+        //this.resumeRepository.Entity.Create(
+        //    new Resume
+        //    {
 
-            //    }
-            //    );
-          //  var resume_results = Request.Form.Keys;
-          //  resume_results.Add("");
+        //    }
+        //    );
+        //  var resume_results = Request.Form.Keys;
+        //  resume_results.Add("");
         //}
     }
 }
