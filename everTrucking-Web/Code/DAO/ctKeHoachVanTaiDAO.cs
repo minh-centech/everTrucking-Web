@@ -1,5 +1,6 @@
 ﻿using everTrucking_Web.Code.DTO;
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 namespace everTrucking_Web.Code.DAO
@@ -23,6 +24,8 @@ namespace everTrucking_Web.Code.DAO
                 return null;
             }
         }
+
+     
         public DataTable ListDisplay(object IDDanhMucChungTu, object TuNgay, object DenNgay, object IDDanhMucKhachHang, object ID)
         {
             try
@@ -43,7 +46,7 @@ namespace everTrucking_Web.Code.DAO
                 return null;
             }
         }
-        public bool Insert(ctKeHoachVanTai obj)
+        public string Insert(ctKeHoachVanTai obj)
         {
             SqlConnection connection = null;
             SqlTransaction transaction = null;
@@ -57,19 +60,19 @@ namespace everTrucking_Web.Code.DAO
                 command.CommandType = CommandType.StoredProcedure;
                 SqlParameter[] sqlParameters = new SqlParameter[34];
                 sqlParameters[0] = new SqlParameter("@ID", DBNull.Value)
-                {
+                { 
                     Direction = ParameterDirection.Output,
                     Size = sizeof(Int64)
                 };
                 sqlParameters[1] = new SqlParameter("@IDDanhMucDonVi", Code.GlobalVariables.IDDonVi);
-                sqlParameters[2] = new SqlParameter("@IDDanhMucChungTu", obj.IDDanhMucChungTu);
-                sqlParameters[3] = new SqlParameter("@IDDanhMucChungTuTrangThai", obj.IDDanhMucChungTuTrangThai);
+                sqlParameters[2] = new SqlParameter("@IDDanhMucChungTu", Code.GlobalVariables.IDDanhMucChungTuKeHoachVanTai);
+                sqlParameters[3] = new SqlParameter("@IDDanhMucChungTuTrangThai", Code.GlobalVariables.IDDanhMucChungTuTrangThaiKeHoachVanTai);
                 sqlParameters[4] = new SqlParameter("@So", obj.So)
                 {
-                    Direction = ParameterDirection.Output,
+                    Direction = ParameterDirection.InputOutput,
                     Size = 35
                 };
-                sqlParameters[5] = new SqlParameter("@NgayLap", obj.NgayLap);
+                sqlParameters[5] = new SqlParameter("@NgayLap", DateTime.Now);
                 //
                 sqlParameters[6] = new SqlParameter("@IDDanhMucSale", obj.IDDanhMucSale);
                 sqlParameters[7] = new SqlParameter("@IDDanhMucKhachHang", obj.IDDanhMucKhachHang);
@@ -106,13 +109,13 @@ namespace everTrucking_Web.Code.DAO
                 obj.ID = Code.Common.longParse(sqlParameters[0].Value).ToString();
                 obj.So = Code.Common.stringParse(sqlParameters[4].Value);
                 transaction.Commit();
-                return true;
+                return "00:";
 
             }
             catch (Exception ex)
             {
-                if (transaction != null) transaction.Rollback();
-                return false;
+               
+                return "01:" + ex.Message;
             }
             finally
             {
@@ -122,7 +125,7 @@ namespace everTrucking_Web.Code.DAO
                 connection.Dispose();
             }
         }
-        public bool Update(ctKeHoachVanTai obj)
+        public string Update(ctKeHoachVanTai obj)
         {
             SqlConnection connection = null;
             SqlTransaction transaction = null;
@@ -172,19 +175,20 @@ namespace everTrucking_Web.Code.DAO
                 sqlParameters[31] = new SqlParameter("@SoDienThoaiGiaoNhan", obj.SoDienThoaiGiaoNhan);
                 //
                 sqlParameters[32] = new SqlParameter("@GhiChu", obj.GhiChu);
-                sqlParameters[33] = new SqlParameter("@IDDanhMucNguoiSuDungEdit", obj.IDDanhMucNguoiSuDungEdit);
+                sqlParameters[33] = new SqlParameter("@IDDanhMucNguoiSuDungEdit", Code.GlobalVariables.IDDanhMucNguoiSuDung);
+               
                 command.Parameters.Clear();
                 command.Parameters.AddRange(sqlParameters);
                 int rowAffected = command.ExecuteNonQuery();
-
+              
                 //}
                 transaction.Commit();
-                return true;
+                return "00:";
             }
             catch (Exception ex)
             {
                 if (transaction != null) transaction.Rollback();
-                return false;
+                return "01:" + ex.Message;
             }
             finally
             {
@@ -195,7 +199,7 @@ namespace everTrucking_Web.Code.DAO
                 connection.Dispose();
             }
         }
-        public bool Delete(object ID)
+        public string Delete(object ID)
         {
             try
             {
@@ -213,14 +217,14 @@ namespace everTrucking_Web.Code.DAO
                             sqlCommand.Parameters.AddRange(sqlParameters);
                             int rowAffected = sqlCommand.ExecuteNonQuery();
                             sqlTransaction.Commit();
-                            return true;
+                            return "00:";
                         }
                     }
                 }
             }
             catch (Exception ex)
             {
-                return false;
+                return "01:" + ex.Message;
             }
         }
     }

@@ -34,41 +34,92 @@ namespace everTrucking_Web.Code.BUS
                 return null;
             }
         }
-        public  bool Insert(ref DanhMucKhachHang obj)
+        public static Common.msgResponse Insert(ref DanhMucKhachHang obj)
         {
+            Common.msgResponse msgResponse = new Common.msgResponse();
             try
             {
+                string Response = "01:";
                 DanhMucKhachHangDAO dao = new DanhMucKhachHangDAO();
-                return dao.Insert(ref obj);
+                Response = dao.Insert(ref obj);
+                if (Response.StartsWith("00:"))
+                {
+                    msgResponse.Status = "00";
+                    msgResponse.Data = "";
+                    msgResponse.Message = "Thêm dữ liệu thành công!";
+                }
+                else
+                {
+                    msgResponse.Status = "01";
+                    msgResponse.Data = "";
+                    msgResponse.Message = Response;
+                };
             }
             catch (Exception ex)
             {
-                return false;
+                msgResponse.Status = "01";
+                msgResponse.Data = "";
+                msgResponse.Message = ex.Message;
             }
+            return msgResponse;
         }
-        public  bool Update(ref DanhMucKhachHang obj)
+        public static Common.msgResponse Update(ref DanhMucKhachHang obj)
         {
+            Common.msgResponse msgResponse = new Common.msgResponse();
             try
             {
+                string Response = "01:";
                 DanhMucKhachHangDAO dao = new DanhMucKhachHangDAO();
-                return dao.Update(ref obj);
+                Response = dao.Update(ref obj);
+                if (Response.StartsWith("00:"))
+                {
+                    msgResponse.Status = "00";
+                    msgResponse.Data = "";
+                    msgResponse.Message = "Cập nhập dữ liệu thành công!";
+                }
+                else
+                {
+                    msgResponse.Status = "01";
+                    msgResponse.Data = "";
+                    msgResponse.Message = Response;
+                };
             }
             catch (Exception ex)
             {
-                return false;
+                msgResponse.Status = "01";
+                msgResponse.Data = "";
+                msgResponse.Message = ex.Message;
             }
+            return msgResponse;
         }
-        public bool Delete(string obj)
+        public static Common.msgResponse Delete(string obj)
         {
+            Common.msgResponse msgResponse = new Common.msgResponse();
             try
             {
+                string Response = "01:";
                 DanhMucKhachHangDAO dao = new DanhMucKhachHangDAO();
-                return dao.Delete(obj);
+                Response = dao.Delete(obj);
+                if (Response.StartsWith("00:"))
+                {
+                    msgResponse.Status = "00";
+                    msgResponse.Data = "";
+                    msgResponse.Message = "Xóa dữ liệu thành công!";
+                }
+                else
+                {
+                    msgResponse.Status = "01";
+                    msgResponse.Data = "";
+                    msgResponse.Message = Response;
+                };
             }
             catch (Exception ex)
             {
-                return false;
+                msgResponse.Status = "01";
+                msgResponse.Data = "";
+                msgResponse.Message = ex.Message;
             }
+            return msgResponse;
         }
     }
 }

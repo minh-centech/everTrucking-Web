@@ -126,17 +126,18 @@
         console.log(123)
 
         $(document).ready(function () {
-            $('#table').DataTable();
+            // $('#table').DataTable();
         });
         $(function () {
             $('.selectpicker').selectpicker();
         });
     </script>
+    
     @RenderSection("scripts", required: false)
 
 </body>
 </html>
-@using (Html.BeginForm("ThemChungTu", "KeHoachVanTai", FormMethod.Post))
+@*@using (Html.BeginForm("ThemChungTu", "KeHoachVanTai", FormMethod.Post))
 {
     <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog modal-lg" role="document">
@@ -377,7 +378,7 @@
 
             </div>
         </div>
-    </div>
+    </div>*@
 
 <script>
 
@@ -402,26 +403,26 @@ $(function () {
 </script>
 
 <script>
-    document.querySelector(".show").addEventListener('click', () => {
-        console.log(123)
-        $('#myModal3').modal({
-            show: true
-        });
-    })
+    //document.querySelector(".show").addEventListener('click', () => {
+    //    console.log(123)
+    //    $('#myModal3').modal({
+    //        show: true
+    //    });
+    //})
 
-    document.querySelector("#LuuKeHoachVanTai").addEventListener('click', () => {
-        var objSoChungTu = document.querySelector("#txtSoChungTu");
-        alert(objSoChungTu.value.length);
-    })
+    //document.querySelector("#LuuKeHoachVanTai").addEventListener('click', () => {
+    //    var objSoChungTu = document.querySelector("#txtSoChungTu");
+    //    alert(objSoChungTu.value.length);
+    //})
 
 
-    var ten = document.querySelectorAll(".ten");
+    //var ten = document.querySelectorAll(".ten");
 
-    for (let i = 0; i < ten.length; i++) {
-        ten[i].addEventListener("click", () => {
-            document.querySelector("#textName").value = ten[i].innerText;
-            $("#myModal3").modal('hide');
-        })
-    }
-    $("#table1").DataTable();
+    //for (let i = 0; i < ten.length; i++) {
+    //    ten[i].addEventListener("click", () => {
+    //        document.querySelector("#textName").value = ten[i].innerText;
+    //        $("#myModal3").modal('hide');
+    //    })
+    //}
+    //$("#table1").DataTable();
 </script>

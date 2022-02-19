@@ -34,7 +34,7 @@ namespace everTrucking_Web.Code.DAO
         }
 
         
-            public bool Insert(ref DanhMucKhachHang obj)
+        public string Insert(ref DanhMucKhachHang obj)
         {
             try
             {
@@ -74,17 +74,17 @@ namespace everTrucking_Web.Code.DAO
                             obj.ID = sqlParameters[0].Value.ToString();
                             obj.CreateDate = DateTime.Parse(sqlParameters[sqlParameters.Length - 1].Value.ToString());
                             sqlTransaction.Commit();
-                            return true;
+                            return "00:";
                         }
                     }
                 }
             }
             catch (Exception ex)
             {
-                return false;
+                return "01:" + ex.Message;
             }
         }
-        public bool Update(ref DanhMucKhachHang obj)
+        public string Update(ref DanhMucKhachHang obj)
         {
             try
             {
@@ -121,17 +121,17 @@ namespace everTrucking_Web.Code.DAO
                             obj.ID = sqlParameters[0].Value.ToString();
                             obj.EditDate = DateTime.Parse(sqlParameters[sqlParameters.Length - 1].Value.ToString());
                             sqlTransaction.Commit();
-                            return true;
+                            return "00:";
                         }
                     }
                 }
             }
             catch (Exception ex)
             {
-                return false;
+                return "01:" + ex.Message;
             }
         }
-        public bool Delete(string ID)
+        public string Delete(string ID)
         {
             try
             {
@@ -148,14 +148,14 @@ namespace everTrucking_Web.Code.DAO
                             sqlCommand.Parameters.AddRange(sqlParameters);
                             int rowAffected = sqlCommand.ExecuteNonQuery();
                             sqlTransaction.Commit();
-                            return true;
+                            return "00:";
                         }
                     }
                 }
             }
             catch (Exception ex)
             {
-                return false;
+                return "01:" + ex.Message;
             }
         }
 

@@ -7,7 +7,7 @@
 }
 
 <style>
-    .thead-light tr th {
+    .table-bordered tr th {
         font-size: 14px;
         font-weight: 600 !important;
     }
@@ -21,7 +21,7 @@
     <div class="card-header py-3">
         <div>
             <h6 class="m-0 font-weight-bold text-primary">
-               DANH MỤC KHÁCH HÀNG
+                DANH MỤC KHÁCH HÀNG
             </h6>
         </div>
     </div>
@@ -51,28 +51,30 @@
             </div>
             <div>
                 <button type="button" onclick="clearTextBox()" class="btn btn-primary" data-toggle="modal" data-target="#myModal2"> <i class="fa fa-plus"></i> Thêm mới</button>
-              
+
             </div>
         </div>
     </div>
 </div>
 
+
+
+
 <div class="table-responsive">
-    <table class="table table-hover" id="table2">
-        <thead class="thead-light">
+    <table class="table table-bordered" id="table5">
+        <thead>
             <tr>
                 <th style="width:15%;">Mã khách hàng</th>
                 <th>Tên khách hàng</th>
                 <th style="width:15%;">Mã CS</th>
-              
+
                 <th style="width:10%;">Thao tác</th>
             </tr>
         </thead>
-        <tbody class="tbody">
-          
+        <tbody class="tbody1">
         </tbody>
     </table>
-
+   
 </div>
 
 
@@ -91,8 +93,8 @@
                     <div class="col-6">
                         <div class="form-group">
                             <input id="ID" type="hidden" name="ID" />
-                            <input id="IDDanhMucDonVi" type="hidden" name="IDDanhMucDonVi"  class="form-control" />
-                            <input id="IDDanhMucLoaiDoiTuong" type="hidden" name="IDDanhMucLoaiDoiTuong"  class="form-control" />
+                            <input id="IDDanhMucDonVi" type="hidden" name="IDDanhMucDonVi" class="form-control" />
+                            <input id="IDDanhMucLoaiDoiTuong" type="hidden" name="IDDanhMucLoaiDoiTuong" class="form-control" />
                             <label>Mã :</label>
                             <input id="Ma" type="text" name="Ma" value="" class="form-control" />
                         </div>
@@ -141,15 +143,15 @@
                     </div>
                     <div class="col-12">
                         <div class="form-group">
-                            <input id="IDDanhMucNguoiSuDungCreate" type="hidden" name="IDDanhMucNguoiSuDungCreate"  class="form-control" />
+                            <input id="IDDanhMucNguoiSuDungCreate" type="hidden" name="IDDanhMucNguoiSuDungCreate" class="form-control" />
                             <input id="IDDanhMucNguoiSuDungEdit" type="hidden" name="IDDanhMucNguoiSuDungEdit" value="" class="form-control" />
 
                             <label>Ghi chú:</label>
-                            <textarea id="Ghichu" type="text" name="GhiChu" value="" class="form-control" ></textarea>
+                            <textarea id="Ghichu" type="text" name="GhiChu" value="" class="form-control"></textarea>
                         </div>
                     </div>
 
-                   
+
                 </div>
             </div>
             <div class="modal-footer">
@@ -169,7 +171,7 @@
 <script>
     $(document).ready(function () {
         loadData();
-
+      
     });
     function loadData() {
         $.ajax({
@@ -184,14 +186,17 @@
                     html += '<td>' + item.Ma + '</td>';
                     html += '<td>' + item.Ten + '</td>';
                     html += '<td >' + item.MaCS + '</td>';
-                    html += '<td><a href="#" onclick="return getbyID(' + item.ID + ')"><i class="fa fa-pen fa-1x mr-1"></i></a> | <a href="#" onclick="Delele(' + item.ID + ')"><i class="fa fa-trash  fa-1x ml-1"></i></a></td>';
+                    html += '<td><a href="#" onclick="return getbyID(' + item.ID + ')"><i class="fa fa-pen fa-1x mr-1"></i></a> | <a href="#" onclick="Delele(' + item.ID + ')"><i class="fa fa-trash fa-1x ml-1"></i></a></td>';
                     html += '</tr>';
                 });
-                $('.tbody').html(html);
-                $('#table2').DataTable();
-            },
-            error: function ( result) {
+                $('.tbody1').html(html);
+              
+                $('#table5').DataTable();
+           
 
+            },
+            error: function (errorMesage) {
+                alert(errorMesage.responseText);
             }
         });
     }
@@ -209,32 +214,31 @@
             DiaChi: $('#Diachi').val(),
             MaSoThue: $('#Masothue').val(),
             Nhom: $('#Nhom').val(),
-             ViTri: $('#Vitri').val(),
-             GhiChu: $('#Ghichu').val(),
+            ViTri: $('#Vitri').val(),
+            GhiChu: $('#Ghichu').val(),
           //  IDDanhMucNguoiSuDungCreate: $('#IDDanhMucNguoiSuDungCreate').val(),
          //  IDDanhMucNguoiSuDungEdit: $('#IDDanhMucNguoiSuDungEdit').val(),
-             CreateDate: $('#Ngaytao').val(),
-              EditDate: $('#Ngaysua').val(),
+            CreateDate: $('#Ngaytao').val(),
+            EditDate: $('#Ngaysua').val(),
         };
-
         var url = "@Url.Action("Add","DanhMuc")"
         $.ajax({
-        url: url,
-            data: JSON.stringify(
-                empObj
-           ),
+            url: url,
+            data: JSON.stringify(empObj),
             type: "POST",
             contentType: "application/json;charset=utf-8",
             dataType: "json",
             success: function (result) {
                 loadData();
-                $('#myModal2').modal('hide');        },
+             
+                alert(result.Message);
+              
+                $('#myModal2').modal('hide');
+            },
             error: function (errormessage) {
-
-             alert(errormessage.responseText);
+                alert(errormessage.responseText);
             }
         });
-
         }
 
     function getbyID(EmpID) {
@@ -300,7 +304,10 @@
             contentType: "application/json;charset=utf-8",
             dataType: "json",
             success: function (result) {
+              
                 loadData();
+               
+                alert(result.Message);
                 $('#myModal2').modal('hide');
                 ID: $('#ID').val("");
                 IDDanhMucDonVi: $('#IDDanhMucDonVi').val("");
@@ -318,6 +325,7 @@
                 IDDanhMucNguoiSuDungEdit: $('#IDDanhMucNguoiSuDungEdit').val("");
                 //CreateDate: $('#Ngaytao').val("");
                 EditDate: $('#Ngaysua').val("");
+
                 },
             error: function (errormessage) {
 
@@ -336,6 +344,7 @@
             dataType: "json",
             success: function (result) {
                 loadData();
+                alert(result.Message);
             },
             error: function (errormessage) {
                 alert(errormessage.responseText);
@@ -363,6 +372,8 @@
         $('#Ngaytao').val("");
         $('#Ngaysua').val("")
     }
+   
 
+  
 </script>
 

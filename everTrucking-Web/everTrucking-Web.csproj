@@ -257,10 +257,10 @@
     <Content Include="Views\DanhMuc\SaleIndex.cshtml" />
     <Content Include="Views\DanhMuc\KhoIndex.cshtml" />
     <Content Include="Views\DanhMuc\CangICDIndex.cshtml" />
-    <Content Include="Views\KeHoachVanTai\IndexPost.cshtml" />
     <Content Include="Views\KeHoachVanTai\ThemChungTu.cshtml" />
     <Content Include="Views\KeHoachVanTai\Insert.cshtml" />
     <Content Include="Views\DanhMucKhachHang\Index.cshtml" />
+    <Content Include="Views\KeHoachVanTai\test1.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

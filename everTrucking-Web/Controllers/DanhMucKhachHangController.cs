@@ -55,19 +55,19 @@ namespace everTrucking_Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                var bus = new DanhMucKhachHangBUS();
-                bool id = bus.Insert(ref model);
+                //var bus = new DanhMucKhachHangBUS();
+                //bool id = bus.Insert(ref model);
 
-                if (id)
-                {
+                //if (id)
+                //{
 
-                    return RedirectToAction("Index", "DanhMucKhachHang");
-                }
+                //    return RedirectToAction("Index", "DanhMucKhachHang");
+                //}
 
-                else
-                {
-                    ModelState.AddModelError("", "Thêm User không thành công");
-                }
+                //else
+                //{
+                //    ModelState.AddModelError("", "Thêm User không thành công");
+                //}
             }
 
             return View("Index");

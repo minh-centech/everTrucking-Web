@@ -8,6 +8,13 @@ namespace everTrucking_Web.Code
 {
     public class Common
     {
+        public class msgResponse
+        {
+            public string Status { get; set; } //00: OK, 01: Error
+            public string Data { get; set; } //Du lieu
+            public string Message { get; set; } //Thong bao
+        }
+        
         public static bool IsNull(object obj)
         {
             return (obj == null || obj == DBNull.Value || obj.ToString().Trim() == "" || obj.ToString().ToUpper() == "NULL");
@@ -190,15 +197,19 @@ namespace everTrucking_Web.Code
     public class GlobalVariables
     {
         public static object IDDanhMucNguoiSuDung = "7";
+       
         public static string webConnectionString = @"Data Source=sangtaoketnoi.vn;Initial Catalog=everTRUCKING-2021;Persist Security Info=True;User ID=everTRUCKING-2021;Password=everTRUCKING-2021;Connect Timeout=60";
         public static string IDDonVi = "1";
         //
         public static string IDDanhMucLoaiDoiTuongKhachHang = "69";
+        public static string IDDanhMucLoaiDoiTuongHangTau = "49";
         public static string IDDanhMucLoaiDoiTuongNhanSu = "268";
         public static string IDDanhMucLoaiDoiTuongKho = "12069";
         public static string IDDanhMucLoaiDoiTuongCangICD = "4054";
         //
         public static string IDDanhMucChungTuKeHoachVanTai = "151";
+        public static string IDDanhMucChungTuTrangThaiKeHoachVanTai = "197";
+
         public static string IDDanhMucChungTuDonHang = "153";
         //
         public static List<DanhMucKhachHang> listKhachHang = null;

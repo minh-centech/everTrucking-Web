@@ -19,51 +19,51 @@ namespace everTrucking_Web.Code.DTO
         public string So { get; set; }
         public string NgayLap { get; set; }
         //
-        public object IDDanhMucSale { get; set; }
-        public object TenDanhMucSale { get; set; }
-        public object IDDanhMucKhachHang { get; set; }
-        public object TenDanhMucKhachHang { get; set; }
-        public object LoaiHinh { get; set; }
-        public object TenLoaiHinh { get; set; }
-        public object LoaiHang { get; set; }
-        public object TenLoaiHang { get; set; }
-        public object IDDanhMucHangTau { get; set; }
-        public object TenDanhMucHangTau { get; set; }
-        public object IDDanhMucDiaDiemNangCont { get; set; }
-        public object TenDanhMucDiaDiemNangCont { get; set; }
-        public object NgayNangCont { get; set; }
-        public object IDDanhMucDiaDiemHaCont { get; set; }
-        public object TenDanhMucDiaDiemHaCont { get; set; }
-        public object NgayHaCont { get; set; }
-        public object SoLuongCont20 { get; set; }
-        public object SoCont20 { get; set; }
-        public object SoLuongCont40 { get; set; }
-        public object SoCont40 { get; set; }
-        public object SoLuongCont45 { get; set; }
-        public object SoCont45 { get; set; }
-        public object SoLuongContOpenTop { get; set; }
-        public object SoContOpenTop { get; set; }
-        public object SoLuongContFlatRack { get; set; }
-        public object SoContFlatRack { get; set; }
-        public object IDDanhMucDiaDiemDongHang { get; set; }
-        public object TenDanhMucDiaDiemDongHang { get; set; }
-        public object NgayDongHang { get; set; }
-        public object IDDanhMucDiaDiemTraHang { get; set; }
-        public object TenDanhMucDiaDiemTraHang { get; set; }
-        public object NgayTraHang { get; set; }
-        public object KhoiLuong { get; set; }
-        public object NguoiGiaoNhan { get; set; }
-        public object SoDienThoaiGiaoNhan { get; set; }
+        public string IDDanhMucSale { get; set; }
+        public string TenDanhMucSale { get; set; }
+        public string IDDanhMucKhachHang { get; set; }
+        public string TenDanhMucKhachHang { get; set; }
+        public string LoaiHinh { get; set; }
+        public string TenLoaiHinh { get; set; }
+        public string LoaiHang { get; set; }
+        public string TenLoaiHang { get; set; }
+        public string IDDanhMucHangTau { get; set; }
+        public string TenDanhMucHangTau { get; set; }
+        public string IDDanhMucDiaDiemNangCont { get; set; }
+        public string TenDanhMucDiaDiemNangCont { get; set; }
+        public string NgayNangCont { get; set; }
+        public string IDDanhMucDiaDiemHaCont { get; set; }
+        public string TenDanhMucDiaDiemHaCont { get; set; }
+        public string NgayHaCont { get; set; }
+        public string SoLuongCont20 { get; set; }
+        public string SoCont20 { get; set; }
+        public string SoLuongCont40 { get; set; }
+        public string SoCont40 { get; set; }
+        public string SoLuongCont45 { get; set; }
+        public string SoCont45 { get; set; }
+        public string SoLuongContOpenTop { get; set; }
+        public string SoContOpenTop { get; set; }
+        public string SoLuongContFlatRack { get; set; }
+        public string SoContFlatRack { get; set; }
+        public string IDDanhMucDiaDiemDongHang { get; set; }
+        public string TenDanhMucDiaDiemDongHang { get; set; }
+        public string NgayDongHang { get; set; }
+        public string IDDanhMucDiaDiemTraHang { get; set; }
+        public string TenDanhMucDiaDiemTraHang { get; set; }
+        public string NgayTraHang { get; set; }
+        public string KhoiLuong { get; set; }
+        public string NguoiGiaoNhan { get; set; }
+        public string SoDienThoaiGiaoNhan { get; set; }
         //
         public string GhiChu { get; set; }
         public string IDDanhMucNguoiSuDungCreate { get; set; }
         public string MaDanhMucNguoiSuDungCreate { get; set; }
         public string TenDanhMucNguoiSuDungCreate { get; set; }
-        public string CreateDate { get; set; }
+        public object CreateDate { get; set; }
         public string IDDanhMucNguoiSuDungEdit { get; set; }
         public string MaDanhMucNguoiSuDungEdit { get; set; }
         public string TenDanhMucNguoiSuDungEdit { get; set; }
-        public string EditDate { get; set; }
+        public object EditDate { get; set; }
         //
         public ctKeHoachVanTai()
         {

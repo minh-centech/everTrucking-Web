@@ -12,6 +12,7 @@ using System.Web.Mvc;
 using PagedList;
 using everTrucking_Web.Code.BUS;
 using everTrucking_Web.Code.DAO;
+using everTrucking_Web.Code;
 
 namespace everTrucking_Web.Controllers
 {
@@ -27,27 +28,22 @@ namespace everTrucking_Web.Controllers
                listKhachHang.Add(new DanhMucKhachHang()
                 {
                     ID = drKhachHang["ID"].ToString(),
-                   Ma = drKhachHang["Ma"].ToString(),
+                    Ma = drKhachHang["Ma"].ToString(),
                     Ten = drKhachHang["Ten"].ToString(),
-                   MaCS = drKhachHang["MaCS"].ToString(),
-                   IDDanhMucDonVi = drKhachHang["IDDanhMucDonVi"].ToString(),
-                   IDDanhMucLoaiDoiTuong = drKhachHang["IDDanhMucLoaiDoiTuong"].ToString(),
-                   IDDanhMucNguoiSuDungEdit = drKhachHang["IDDanhMucNguoiSuDungEdit"].ToString(),
-                   IDDanhMucNguoiSuDungCreate = drKhachHang["IDDanhMucNguoiSuDungCreate"].ToString(),
-                   TenEN = drKhachHang["TenEN"].ToString(),
-                   DiaChi = drKhachHang["DiaChi"].ToString(),
-                   MaSoThue = drKhachHang["MaSoThue"].ToString(),
-                   Nhom = drKhachHang["Nhom"].ToString(),
-                   ViTri = drKhachHang["ViTri"].ToString(),
-                   GhiChu = drKhachHang["GhiChu"].ToString(),
-                   CreateDate = drKhachHang["CreateDate"].ToString(),
-                   EditDate = drKhachHang["EditDate"].ToString(),
-
-
-
-
+                    MaCS = drKhachHang["MaCS"].ToString(),
+                    IDDanhMucDonVi = drKhachHang["IDDanhMucDonVi"].ToString(),
+                    IDDanhMucLoaiDoiTuong = drKhachHang["IDDanhMucLoaiDoiTuong"].ToString(),
+                    IDDanhMucNguoiSuDungEdit = drKhachHang["IDDanhMucNguoiSuDungEdit"].ToString(),
+                    IDDanhMucNguoiSuDungCreate = drKhachHang["IDDanhMucNguoiSuDungCreate"].ToString(),
+                    TenEN = drKhachHang["TenEN"].ToString(),
+                    DiaChi = drKhachHang["DiaChi"].ToString(),
+                    MaSoThue = drKhachHang["MaSoThue"].ToString(),
+                    Nhom = drKhachHang["Nhom"].ToString(),
+                    ViTri = drKhachHang["ViTri"].ToString(),
+                    GhiChu = drKhachHang["GhiChu"].ToString(),
+                    CreateDate = drKhachHang["CreateDate"].ToString(),
+                    EditDate = drKhachHang["EditDate"].ToString(),
                });
-
             }
             ViewBag.ListKhachHang = listKhachHang;
             return View(listKhachHang);
@@ -76,8 +72,6 @@ namespace everTrucking_Web.Controllers
                     GhiChu = drKhachHang["GhiChu"].ToString(),
                     CreateDate = drKhachHang["CreateDate"].ToString(),
                     EditDate = drKhachHang["EditDate"].ToString(),
-
-
 
 
                 });
@@ -120,19 +114,19 @@ namespace everTrucking_Web.Controllers
         }
         public JsonResult Update(DanhMucKhachHang emp)
         {
-            DanhMucKhachHangDAO empDB = new DanhMucKhachHangDAO();
-            return Json(empDB.Update(ref emp), JsonRequestBehavior.AllowGet);
+            Common.msgResponse msgResponse =  DanhMucKhachHangBUS.Update(ref emp);
+            return Json(msgResponse, JsonRequestBehavior.AllowGet);
         }
-        public JsonResult Add(DanhMucKhachHang emp)
+        public JsonResult Add(DanhMucKhachHang emp)          
         {
-            DanhMucKhachHangDAO empDB = new DanhMucKhachHangDAO();
-            return Json(empDB.Insert(ref emp), JsonRequestBehavior.AllowGet);
+
+            Common.msgResponse msgResponse = DanhMucKhachHangBUS.Insert(ref emp);
+            return Json(msgResponse, JsonRequestBehavior.AllowGet);
         }
         public JsonResult Delete(string ID)
         {
-
-            DanhMucKhachHangDAO empDB = new DanhMucKhachHangDAO();
-            return Json(empDB.Delete(ID), JsonRequestBehavior.AllowGet);
+            Common.msgResponse msgResponse =  DanhMucKhachHangBUS.Delete(ID);
+            return Json(msgResponse, JsonRequestBehavior.AllowGet);
         }
 
 
