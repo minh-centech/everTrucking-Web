@@ -26,9 +26,41 @@
                 Điều hành
             </a>
 
-            <a class="nav-link text-white" href="/KeHoachVanTai/Index">
+            <a class="nav-link text-white" data-toggle="collapse" href="#collapseExample2" aria-expanded="false" aria-controls="collapseExample2">
                 <div class="sb-nav-link-icon"><i class="fas fa-receipt text-white"></i></div>
                 Kế hoạch vận tải
+                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down text-white"></i></div>
+            </a>
+            <div class="collapse" id="collapseExample2">
+                <nav class="sb-sidenav-menu-nested nav">
+                    <a class="nav-link" data-toggle="collapse" href="#collapseExample3" aria-expanded="false" aria-controls="collapseExample3">
+                        Hàng Container
+                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down text-white"></i></div>
+                    </a>
+                    <div class="collapse" id="collapseExample3">
+                        <nav class="sb-sidenav-menu-nested nav">
+                            <a class="nav-link" href="#">Hàng nhập khẩu</a>
+                            <a class="nav-link" href="#">Hàng xuất khẩu</a>
+                            <a class="nav-link" href="#">Hàng nội địa</a>
+                        </nav>
+                    </div>
+                    <a class="nav-link" data-toggle="collapse" href="#collapseExample4" aria-expanded="false" aria-controls="collapseExample4">
+                        Hàng rời
+                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down text-white"></i></div>
+                    </a>
+                    <div class="collapse" id="collapseExample4">
+                        <nav class="sb-sidenav-menu-nested nav">
+                            <a class="nav-link" href="#">Hàng nhập khẩu</a>
+                            <a class="nav-link" href="#">Hàng xuất khẩu</a>
+                            <a class="nav-link" href="#">Hàng nội địa</a>
+                        </nav>
+                    </div>
+                </nav>
+            </div>
+
+            <a class="nav-link text-white" href="@Url.Action("KeHoachVanTaiChiTietSoContainer","Index")">
+                <div class="sb-nav-link-icon"><i class="fab fa-ubuntu text-white"></i></div>
+                Kế hoạch vận tải 2
             </a>
 
             <a class="nav-link collapsed text-white" data-toggle="collapse" href="#collapseExample1" aria-expanded="false" aria-controls="collapseExample1">

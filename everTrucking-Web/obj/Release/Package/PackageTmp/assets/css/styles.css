@@ -1982,9 +1982,7 @@ progress {
 .table > thead, .dataTable-table > thead {
   vertical-align: bottom;
 }
-.table > :not(:last-child) > :last-child > *, .dataTable-table > :not(:last-child) > :last-child > * {
-  border-bottom-color: currentColor;
-}
+
 
 .caption-top {
   caption-side: top;

@@ -17,7 +17,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
 
     <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-
+    <script src="https://kit.fontawesome.com/239d03307b.js" crossorigin="anonymous"></script>
     <link href="~/assets/css/styles.css" rel="stylesheet" />
     <link href="~/assets/Table/datatables.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.21/css/dataTables.bootstrap4.min.css" integrity="sha512-PT0RvABaDhDQugEbpNMwgYBCnGCiTZMh9yOzUsJHDgl/dMhD9yjHAwoumnUk3JydV3QTcIkNDuN40CJxik5+WQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -30,7 +30,9 @@
 
 
     <style>
-
+        .form-group label{
+            font-size:14px !important;
+        }
         td a {
             text-decoration: none;
             color: #000
@@ -47,7 +49,6 @@
             color: #000;
             font-size: 1.2rem;
         }
-
 
         .row {
             margin-top: 1rem !important;
@@ -127,419 +128,18 @@
         console.log(123)
 
         $(document).ready(function () {
-            $('#table').DataTable();
+            // $('#table').DataTable();
         });
         $(function () {
             $('.selectpicker').selectpicker();
         });
     </script>
+    
     @RenderSection("scripts", required: false)
 
 </body>
 </html>
-<!--<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <form action="@Url.Action("Index", "QuanLyDonHang")" method="post">
-                <div class="modal-header">
-                    <h4 class="modal-title" id="myModalLabel">Bảng dữ liệu</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-
-                </div>
-                <div class="modal-body">
-
-                    <div class="col">
-                        <div class="form-group">
-                            <label for="exampleFormControlInput1">Từ ngày</label>
-                            <input name="Tungay" type="date" class="form-control" />-->
-<!--</div>
-</div>
-<div class="col">
-    <div class="form-group">
-        <label for="exampleFormControlInput1">Đến ngày</label>
-        <input name="Denngay" type="date" class="form-control" />-->
-<!--</div>
-</div>
-<div class="col">
-    <div class="form-group">
-        <label for="exampleFormControlInput1">Khách hàng</label>-->
-<!--<input name="Tencongty" type="text" name="id" list="company" class="form-control" />
-                            <datalist id=company>
-                            </datalist>
-                        </div>
-                    </div>
-
-                </div>
-
-                <div class="modal-footer">
-                    <span class="error"></span>
-                    <input type="submit" id="myBtn" value="OK" class="btn btn-primary">
-                    <button type="button" data-dismiss="modal" class="btn btn-primary">Đóng</button>
-
-
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-<div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-
-
-            <div class="modal-header">
-                <h4 class="modal-title" id="myModalLabel">Bảng dữ liệu</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-
-            </div>
-            <div class="modal-body">
-                <div class="row">
-                    <div class="col-3">
-                        <div class="form-group">
-                            <label for="exampleFormControlInput1">Số chứng từ</label>
-                            <input type="text" class="form-control">
-                        </div>
-                    </div>
-                    <div class="col-3">
-                        <div class="form-group">
-                            <label for="exampleFormControlInput1">Ngày lập</label>
-                            <input type="date" class="form-control">
-
-                        </div>
-                    </div>
-                    <div class="col-3">
-                        <div class="form-group">
-
-                            <label for="inputGroupSelect01">Trạng thái</label>
-
-                            <select class="form-select" id="inputGroupSelect01">
-                                <option selected>Lập</option>
-                                <option value="1">Sửa</option>
-                                <option value="2">Thêm</option>
-
-                            </select>
-
-                        </div>
-                    </div>
-
-                    <div class="col-3">
-                        <div class="form-group">
-
-                            <label for="inputGroupSelect01">Sales</label>
-
-                            <select class="form-select" id="inputGroupSelect01">
-                                <option selected>Lập</option>
-                                <option value="1">Sửa</option>
-                                <option value="2">Thêm</option>
-
-                            </select>
-
-                        </div>
-                    </div>
-                    <div class="col-3">
-                        <div class="form-group">
-                            <label for="exampleFormControlInput1">Mã khách hàng</label>
-                            <input type="text" class="form-control">
-                        </div>
-                    </div>
-                    <div class="col-3">
-                        <div class="form-group">
-                            <label for="exampleFormControlInput1">Mã số thuế</label>
-                            <input type="text" class="form-control">
-                        </div>
-                    </div>
-
-                    <div class="col-6">
-                        <div class="form-group">
-                            <label for="exampleFormControlInput1">Khách hàng (F1)</label>
-                            <input type="text" class="form-control">
-                        </div>
-                    </div>
-
-
-                    <div class="col-3">
-                        <div class="form-group">
-                            <label for="exampleFormControlInput1">Debit Note</label>
-                            <input type="email" class="form-control">
-                        </div>
-                    </div>
-
-                    <div class="col-3">
-                        <div class="form-group">
-                            <label for="exampleFormControlInput1">Loại hàng</label>
-                            <input type="email" class="form-control">
-                        </div>
-                    </div>
-
-                    <div class="col-6">
-                        <div class="form-group">
-                            <label for="exampleFormControlInput1">Khách hàng (F2)</label>
-                            <input type="text" class="form-control">
-                        </div>
-                    </div>
-
-                    <div class="col-3">
-                        <div class="form-group">
-                            <label for="exampleFormControlInput1">Số bill/booking</label>
-                            <input type="email" class="form-control">
-                        </div>
-                    </div>
-                    <div class="col-3">
-                        <div class="form-group">
-                            <label for="inputGroupSelect01">FLC/LCL</label>
-
-                            <select class="form-select" id="inputGroupSelect01">
-                                <option selected>Lập</option>
-                                <option value="1">Sửa</option>
-                                <option value="2">Thêm</option>
-
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-3">
-                        <div class="form-group">
-                            <label for="inputGroupSelect01">Loại xe</label>
-                            <select class="form-select" id="inputGroupSelect01">
-                                <option selected>Container 16T</option>
-                                <option value="1">Container 5T</option>
-                                <option value="2">Container 6T</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="col-3">
-                        <div class="form-group">
-                            <label for="exampleFormControlInput1">Lines/FWD</label>
-                            <input type="email" class="form-control">
-                        </div>
-                    </div>
-                    <div class="col-3">
-                        <div class="form-group">
-                            <label for="exampleFormControlInput1">Số lượng</label>
-                            <input type="number" class="form-control">
-                        </div>
-                    </div>
-
-                    <div class="col-3">
-                        <div class="form-group">
-                            <label for="exampleFormControlInput1">Số kg</label>
-                            <input type="number" class="form-control">
-                        </div>
-                    </div>
-
-                    <div class="col-3">
-                        <div class="form-group">
-                            <label for="exampleFormControlInput1">CBM</label>
-                            <input type="number" class="form-control">
-                        </div>
-                    </div>
-                    <div class="col-3">
-                        <div class="form-group">
-                            <label for="exampleFormControlInput1">CBM</label>
-                            <input type="number" class="form-control">
-                        </div>
-                    </div>
-                    <div class="col-6">
-                        <div class="form-group">
-                            <label for="inputGroupSelect01">Nơi lấy cont</label>
-                            <select class="form-select" id="inputGroupSelect01">
-                                <option selected>A</option>
-                                <option value="1">B</option>
-                                <option value="2">C</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-6">
-                        <div class="form-group">
-                            <label for="inputGroupSelect01">Nơi trả cont</label>
-                            <select class="form-select" id="inputGroupSelect01">
-                                <option selected>A</option>
-                                <option value="1">B</option>
-                                <option value="2">C</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="col-3">
-                        <div class="form-group">
-                            <label for="exampleFormControlInput1">Ngày đóng hàng</label>
-                            <input type="date" class="form-control">
-                        </div>
-                    </div>
-
-                    <div class="col-3">
-                        <div class="form-group">
-                            <label for="exampleFormControlInput1">Giờ đóng hàng</label>
-                            <input type="time" class="form-control">
-                        </div>
-                    </div>
-                    <div class="col-3">
-                        <div class="form-group">
-                            <label for="exampleFormControlInput1">Ngày trả hàng</label>
-                            <input type="date" class="form-control">
-                        </div>
-                    </div>
-                    <div class="col-3">
-                        <div class="form-group">
-                            <label for="exampleFormControlInput1">Giờ đóng hàng</label>
-                            <input type="time" class="form-control">
-                        </div>
-                    </div>
-                    <div class="col-6">
-                        <div class="form-group">
-
-                            <label for="inputGroupSelect01">Nơi đóng hàng</label>
-
-                            <select class="form-select" id="inputGroupSelect01">
-                                <option selected>A</option>
-                                <option value="1">B</option>
-                                <option value="2">C</option>
-
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="col-6">
-                        <div class="form-group">
-
-                            <label for="inputGroupSelect01">Địa chỉ đóng hàng</label>
-
-                            <select class="form-select" id="inputGroupSelect01">
-                                <option selected>A</option>
-                                <option value="1">B</option>
-                                <option value="2">C</option>
-
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="col-6">
-                        <div class="form-group">
-
-                            <label for="inputGroupSelect01">Nơi trả hàng</label>
-
-                            <select class="form-select" id="inputGroupSelect01">
-                                <option selected>A</option>
-                                <option value="1">B</option>
-                                <option value="2">C</option>
-
-                            </select>
-                        </div>
-
-
-                    </div>
-                    <div class="col-6">
-                        <div class="form-group">
-
-                            <label for="inputGroupSelect01">Địa chỉ trả hàng</label>
-
-                            <select class="sel form-select" id="inputGroupSelect01">
-                                <option selected>A</option>
-                                <option value="1">B</option>
-                                <option value="2">C</option>
-
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-6">
-                        <div class="form-group">
-
-                            <label for="inputGroupSelect01">Tuyến vận tải</label>
-
-                            <select class="form-select" id="inputGroupSelect01">
-                                <option selected>A</option>
-                                <option value="1">B</option>
-                                <option value="2">C</option>
-
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="col-3">
-                        <div class="form-group">
-                            <label for="exampleFormControlInput1">Ngày cắt máng</label>
-                            <input type="datetime" class="form-control">
-                        </div>
-                    </div>
-
-                    <div class="col-3">
-                        <div class="form-group">
-                            <label for="exampleFormControlInput1">Giờ cắt máng</label>
-                            <input type="time" class="form-control">
-                        </div>
-                    </div>
-
-                    <div class="col-6">
-                        <div class="form-group">
-                            <label for="exampleFormControlInput1">Người giao nhận</label>
-                            <input type="text" class="form-control">
-                        </div>
-                    </div>
-                    <div class="col-6">
-                        <div class="form-group">
-                            <label for="exampleFormControlInput1">Điện thoại</label>
-                            <input type="tel" class="form-control">
-                        </div>
-                    </div>
-
-                    <div class="col-3">
-                        <div class="form-group">
-                            <label for="exampleFormControlInput1">Giá cước</label>
-                            <input type="number" class="form-control">
-                        </div>
-                    </div>
-                    <div class="col-3">
-                        <div class="form-group">
-                            <label for="exampleFormControlInput1">Thu thủ tục</label>
-                            <input type="text" class="form-control">
-                        </div>
-                    </div>
-
-                    <div class="col-3">
-                        <div class="form-group">
-                            <label for="exampleFormControlInput1">Thu khác</label>
-                            <input type="text" class="form-control">
-                        </div>
-                    </div>
-
-                    <div class="col-3">
-                        <div class="form-group">
-                            <label for="exampleFormControlInput1">Chi khác</label>
-                            <input type="text" class="form-control">
-                        </div>
-                    </div>
-                    <div class="col-3">
-                        <div class="form-group">
-                            <label for="exampleFormControlInput1">Hạn thanh toán</label>
-                            <input type="text" class="form-control">
-                        </div>
-                    </div>
-
-                    <div class="col-9">
-                        <div class="form-group">
-                            <label for="exampleFormControlInput1">Ghi chú</label>
-                            <input type="text" class="form-control">
-                        </div>
-                    </div>
-
-
-
-
-                </div>
-
-                <div class="modal-footer">
-                    <span class="error"></span>
-                    <input type="submit" value="OK" class="btn btn-primary">
-                    <button type="button" data-dismiss="modal" class="btn btn-primary">Đóng</button>
-
-
-                </div>
-
-            </div>
-        </div>
-    </div>
-</div>-->
-@using (Html.BeginForm("ThemChungTu", "KeHoachVanTai", FormMethod.Post))
+@*@using (Html.BeginForm("ThemChungTu", "KeHoachVanTai", FormMethod.Post))
 {
     <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog modal-lg" role="document">
@@ -556,7 +156,7 @@
                             <div class="form-group">
                                 <input type="hidden" name="ID" />
                                 <label for="exampleFormControlInput1">Số chứng từ</label>
-                                <input type="text" name="SoChungTu" class="form-control">
+                                <input type="text" id="txtSoChungTu" class="form-control">
                             </div>
                         </div>
                         <div class="col-4">
@@ -697,7 +297,7 @@
                             <div class="form-group">
                                 <label for="exampleFormControlInput1">Người giao nhận</label>
                                 <input name="NguoiGiaoNhan" type="text" class="form-control">
-                            </div>
+                            </div> 
                         </div>
                         <div class="col-4">
                             <div class="form-group">
@@ -715,7 +315,7 @@
                     </div>
                     <div class="modal-footer">
                         <span class="error"></span>
-                        <input type="submit" value="OK" class="btn btn-primary">
+                        <input type="button" id="LuuKeHoachVanTai" value="OK" class="btn btn-primary">
                         <button type="button" data-dismiss="modal" class="btn btn-primary">Đóng</button>
                     </div>
                 </div>
@@ -723,7 +323,7 @@
             </div>
         </div>
     </div>
-    }
+}
     <div class="modal fade" id="myModal3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -780,47 +380,51 @@
 
             </div>
         </div>
-    </div>
+    </div>*@
 
-    <script>
+<script>
 
-    $("#myModal").on("shown.bs.modal", function () {
-        var actionUrl = '@Url.Action("GetJsonTest", "QuanLyDonHang")';
-        $.getJSON(actionUrl, function (response) {
-            if (response != null) {
-                for (var i = 0; i < response.length; i++) {
-                    var book = response[i];
-                    $("#company").append("<option value="+book.ma+">" + book.ten + "</option>");
-                }
+$("#myModal").on("shown.bs.modal", function () {
+    var actionUrl = '@Url.Action("GetJsonTest", "QuanLyDonHang")';
+    $.getJSON(actionUrl, function (response) {
+        if (response != null) {
+            for (var i = 0; i < response.length; i++) {
+                var book = response[i];
+                $("#company").append("<option value="+book.ma+">" + book.ten + "</option>");
             }
-        });
-    });
-
-    $(function () {
-        $('.selectpicker').selectpicker();
-    });
-
-    $("#table").DataTable();
-
-    </script>
-
-    <script>
-        document.querySelector(".show").addEventListener('click', () => {
-            console.log(123)
-            $('#myModal3').modal({
-                show: true
-            });
-        })
-      
-
-
-        var ten = document.querySelectorAll(".ten");
-
-        for (let i = 0; i < ten.length; i++) {
-            ten[i].addEventListener("click", () => {
-                document.querySelector("#textName").value = ten[i].innerText;
-                $("#myModal3").modal('hide');
-            })
         }
-        $("#table1").DataTable();
-    </script>
+    });
+});
+
+$(function () {
+    $('.selectpicker').selectpicker();
+});
+  
+
+
+</script>
+
+<script>
+    //document.querySelector(".show").addEventListener('click', () => {
+    //    console.log(123)
+    //    $('#myModal3').modal({
+    //        show: true
+    //    });
+    //})
+
+    //document.querySelector("#LuuKeHoachVanTai").addEventListener('click', () => {
+    //    var objSoChungTu = document.querySelector("#txtSoChungTu");
+    //    alert(objSoChungTu.value.length);
+    //})
+
+
+    //var ten = document.querySelectorAll(".ten");
+
+    //for (let i = 0; i < ten.length; i++) {
+    //    ten[i].addEventListener("click", () => {
+    //        document.querySelector("#textName").value = ten[i].innerText;
+    //        $("#myModal3").modal('hide');
+    //    })
+    //}
+    //$("#table1").DataTable();
+</script>

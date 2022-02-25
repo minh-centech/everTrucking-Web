@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{2EFDC8F5-8EB4-46F9-9991-B09CF511C248}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>cenDTO</RootNamespace>
+    <AssemblyName>cenDTO</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="cenLogistics\ctKeHoachVanTaiChiTietSoContainer.cs" />
+    <Compile Include="cenLogistics\ctPhieuDoNhienLieu.cs" />
+    <Compile Include="cenLogistics\ctChiPhiVanTaiBoSung.cs" />
+    <Compile Include="cenLogistics\ctChiPhiVanTai.cs" />
+    <Compile Include="cenLogistics\ctChotChiPhiVanTaiBoSungGuiKeToan.cs" />
+    <Compile Include="cenLogistics\ctChotChiPhiVanTaiGuiKeToan.cs" />
+    <Compile Include="cenLogistics\ctChotDoanhThuGuiKeToan.cs" />
+    <Compile Include="cenLogistics\ctDieuHanhChiTietDonHangKetHop.cs" />
+    <Compile Include="cenLogistics\ctKeHoachVanTai.cs" />
+    <Compile Include="cenLogistics\ctInGiayVanTai.cs" />
+    <Compile Include="cenLogistics\ctHotline.cs" />
+    <Compile Include="cenLogistics\ctDieuHanh.cs" />
+    <Compile Include="cenLogistics\ctSuaChua.cs" />
+    <Compile Include="cenLogistics\ctThanhToanTamUng.cs" />
+    <Compile Include="cenLogistics\ctHopDongVanChuyen.cs" />
+    <Compile Include="cenLogistics\DanhMucDiaDiemGiaoNhan.cs" />
+    <Compile Include="cenLogistics\DanhMucThauPhu.cs" />
+    <Compile Include="cenLogistics\DanhMucXeDinhMucNhienLieu.cs" />
+    <Compile Include="cenLogistics\DanhMucDinhMucChiPhi.cs" />
+    <Compile Include="cenLogistics\DanhMucDinhMucChiPhiHaiQuan.cs" />
+    <Compile Include="cenLogistics\DanhMucKhachHang.cs" />
+    <Compile Include="cenLogistics\DanhMucMooc.cs" />
+    <Compile Include="cenLogistics\DanhMucGiaNhienLieu.cs" />
+    <Compile Include="cenLogistics\DanhMucHangHoa.cs" />
+    <Compile Include="cenLogistics\DanhMucTaiXe.cs" />
+    <Compile Include="cenLogistics\DanhMucTuyenVanTai.cs" />
+    <Compile Include="cenLogistics\DanhMucXe.cs" />
+    <Compile Include="ctDTO.cs" />
+    <Compile Include="baseDTO.cs" />
+    <Compile Include="DatabaseCore\DanhMucBaoCao.cs" />
+    <Compile Include="DatabaseCore\DanhMucDoiTuong.cs" />
+    <Compile Include="DatabaseCore\DanhMucNguoiSuDung.cs" />
+    <Compile Include="DatabaseCore\DanhMucThamSoNguoiSuDung.cs" />
+    <Compile Include="DatabaseCore\DanhMucThamSoHeThong.cs" />
+    <Compile Include="listChungTuRequest.cs" />
+    <Compile Include="DatabaseCore\NhatKyDuLieu.cs" />
+    <Compile Include="DatabaseCore\DanhMucTuDien.cs" />
+    <Compile Include="DatabaseCore\DanhMucLoaiDoiTuong.cs" />
+    <Compile Include="DatabaseCore\DanhMucDonVi.cs" />
+    <Compile Include="DatabaseCore\DanhMucMenu.cs" />
+    <Compile Include="DatabaseCore\DanhMucPhanQuyen.cs" />
+    <Compile Include="DatabaseCore\DanhMucChungTu.cs" />
+    <Compile Include="msgResponse.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="cenLogistics\ctDonHang.cs" />
+    <Compile Include="UserSession.cs" />
+    <Compile Include="UserSessionHelper.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\cenCommon\cenCommon.csproj">
+      <Project>{d88a6d1e-8aa4-4809-a4e4-6f7a268498e2}</Project>
+      <Name>cenCommon</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
