@@ -21,18 +21,20 @@
             </div>
 
 
-            <a class="nav-link text-white" href="/Home/Index">
+            <a class="nav-link text-white" href="/KeHoachVanTaiTongHop/Index">
                 <div class="sb-nav-link-icon"><i class="fab fa-ubuntu text-white"></i></div>
                 Điều hành
             </a>
 
-            <a class="nav-link text-white" data-toggle="collapse" href="#collapseExample2" aria-expanded="false" aria-controls="collapseExample2">
+            <a class="nav-link text-white" data-toggle="collapse" href="#collapseExample2" aria-expanded="false" aria-controls="collapseExample2" id="KeHoachVanTaiIndex">
                 <div class="sb-nav-link-icon"><i class="fas fa-receipt text-white"></i></div>
                 Kế hoạch vận tải
                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down text-white"></i></div>
             </a>
             <div class="collapse" id="collapseExample2">
                 <nav class="sb-sidenav-menu-nested nav">
+                    <a id="link" class="nav-link" href="@Url.Action("Index", "KeHoachVanTaiTongHop")">Kế hoạch chung</a>
+
                     <a class="nav-link" data-toggle="collapse" href="#collapseExample3" aria-expanded="false" aria-controls="collapseExample3">
                         Hàng Container
                         <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down text-white"></i></div>
@@ -58,10 +60,10 @@
                 </nav>
             </div>
 
-            <a class="nav-link text-white" href="@Url.Action("KeHoachVanTaiChiTietSoContainer","Index")">
-                <div class="sb-nav-link-icon"><i class="fab fa-ubuntu text-white"></i></div>
-                Kế hoạch vận tải 2
-            </a>
+            @*<a class="nav-link text-white" href="@Url.Action("KeHoachVanTaiChiTietSoContainer","Index")">
+                    <div class="sb-nav-link-icon"><i class="fab fa-ubuntu text-white"></i></div>
+                    Kế hoạch vận tải 2
+                </a>*@
 
             <a class="nav-link collapsed text-white" data-toggle="collapse" href="#collapseExample1" aria-expanded="false" aria-controls="collapseExample1">
                 <div class="sb-nav-link-icon"><i class="fas fa-receipt text-white"></i></div>
@@ -70,10 +72,11 @@
             </a>
             <div class="collapse" id="collapseExample1">
                 <nav class="sb-sidenav-menu-nested nav">
-                    <a id="link" class="nav-link" href="/DanhMuc/SaleIndex">Sale</a>
                     <a id="link" class="nav-link" href="/DanhMuc/KhachHangIndex">Danh mục khách hàng</a>
-                    <a id="link" class="nav-link" href="/DanhMuc/KhoIndex">Danh mục kho</a>
+                    <a id="link" class="nav-link" href="/DanhMuc/HangTauIndex">Danh mục hãng tàu</a>
                     <a id="link" class="nav-link" href="/DanhMuc/CangICDIndex">Danh mục cảng, ICD</a>
+                    <a id="link" class="nav-link" href="/DanhMuc/KhoIndex">Danh mục kho</a>
+                    <a id="link" class="nav-link" href="/DanhMuc/SaleIndex">Sale</a>
                 </nav>
             </div>
             <!-- Modal -->
@@ -85,7 +88,7 @@
 </nav>
 
 <script>
-   
+
     document.querySelector("#link").addEventListener('click', () => {
         $('#myModal').modal({
             show: true
@@ -93,14 +96,11 @@
     })
 
     document.querySelector("#donhang").addEventListener('click', () => {
-       
+
         $('#myModal1').modal({
             show: true
         });
     })
-  
-
-
 
 </script>
 

@@ -146,6 +146,12 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\DanhMucNguoiSuDungController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\KeHoachVanTaiHangRoiNhapKhauController.cs" />
+    <Compile Include="Controllers\KeHoachVanTaiHangRoiNoiDiaController.cs" />
+    <Compile Include="Controllers\KeHoachVanTaiContainerNoiDiaController.cs" />
+    <Compile Include="Controllers\KeHoachVanTaiHangRoiXuatKhauController.cs" />
+    <Compile Include="Controllers\KeHoachVanTaiContainerXuatKhauController.cs" />
+    <Compile Include="Controllers\KeHoachVanTaiContainerNhapKhauController.cs" />
     <Compile Include="Controllers\KeHoachVanTaiTongHopController.cs" />
     <Compile Include="Controllers\DanhMucController.cs" />
     <Compile Include="Global.asax.cs">
@@ -306,6 +312,12 @@
     <Content Include="Views\DanhMuc\HangTauIndex.cshtml" />
     <Content Include="Views\DanhMuc\KhoIndex.cshtml" />
     <Content Include="Views\DanhMuc\CangICDIndex.cshtml" />
+    <Content Include="Views\KeHoachVanTaiContainerNhapKhau\Index.cshtml" />
+    <Content Include="Views\KeHoachVanTaiContainerNoiDia\Index.cshtml" />
+    <Content Include="Views\KeHoachVanTaiContainerXuatKhau\Index.cshtml" />
+    <Content Include="Views\KeHoachVanTaiHangRoiNhapKhau\Index.cshtml" />
+    <Content Include="Views\KeHoachVanTaiHangRoiNoiDia\Index.cshtml" />
+    <Content Include="Views\KeHoachVanTaiHangRoiXuatKhau\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

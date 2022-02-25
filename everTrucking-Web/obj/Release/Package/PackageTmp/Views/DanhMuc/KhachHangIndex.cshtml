@@ -1,8 +1,8 @@
-﻿@model List<everTrucking_Web.Code.DTO.DanhMucKhachHang>
+﻿@model List<cenDTO.cenLogistics.DanhMucKhachHang>
 
 
 @{
-    ViewBag.Title = "Trang Chủ";
+    ViewBag.Title = "Danh mục khách hàng";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -29,9 +29,8 @@
         <div class="title d-flex justify-content-between mb-3">
             <div class="title d-flex justify-content-between">
                 <h3>Khách hàng</h3>
-
                 <div class="ml-5 form-check">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked>
                     <label class="form-check-label" for="flexRadioDefault1">
                         Tất cả
                     </label>
@@ -39,50 +38,47 @@
                 <div class=" ml-2 form-check">
                     <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
                     <label class="form-check-label" for="flexRadioDefault1">
-                        Tổ chức
+                        Khách hàng
                     </label>
                 </div>
                 <div class="ml-2 form-check ">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
                     <label class="form-check-label" for="flexRadioDefault2">
-                        Cá nhân
+                        Vendor
                     </label>
                 </div>
             </div>
             <div>
-                <button type="button" onclick="clearTextBox()" class="btn btn-primary" data-toggle="modal" data-target="#myModal2"> <i class="fa fa-plus"></i> Thêm mới</button>
+                <button type="button" onclick="clearTextBox()" class="btn btn-primary" data-toggle="modal" data-target="#frmKhachHangUpdate"> <i class="fa fa-plus"></i> Thêm mới</button>
 
             </div>
         </div>
     </div>
 </div>
 
-
-
-
 <div class="table-responsive">
-    <table class="table table-bordered" id="table5">
+    <table class="table table-bordered" id="tblDanhMucKhachHang">
         <thead>
             <tr>
                 <th style="width:15%;">Mã khách hàng</th>
                 <th>Tên khách hàng</th>
                 <th style="width:15%;">Mã CS</th>
-
+                <th style="width:15%;">Loại khách hàng</th>
                 <th style="width:10%;">Thao tác</th>
             </tr>
         </thead>
         <tbody class="tbody1">
         </tbody>
     </table>
-   
+
 </div>
 
 
-<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal fade" id="frmKhachHangUpdate" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog  modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Thêm hàng hóa mới</h5>
+                <h5 class="modal-title">Thêm khách hàng mới</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -96,58 +92,67 @@
                             <input id="IDDanhMucDonVi" type="hidden" name="IDDanhMucDonVi" class="form-control" />
                             <input id="IDDanhMucLoaiDoiTuong" type="hidden" name="IDDanhMucLoaiDoiTuong" class="form-control" />
                             <label>Mã :</label>
-                            <input id="Ma" type="text" name="Ma" value="" class="form-control" />
+                            <input id="txtMa" type="text" name="Ma" value="" class="form-control" />
                         </div>
                     </div>
                     <div class="col-6">
                         <div class="form-group">
                             <label>Tên:</label>
-                            <input id="Ten" type="text" name="Ten" value="" class="form-control" />
+                            <input id="txtTen" type="text" name="Ten" value="" class="form-control" />
                         </div>
                     </div>
                     <div class="col-6">
                         <div class="form-group">
                             <label>Tên EN:</label>
-                            <input id="TenEN" type="text" name="TenEN" value="" class="form-control" />
+                            <input id="txtTenEN" type="text" name="TenEN" value="" class="form-control" />
                         </div>
                     </div>
                     <div class="col-6">
                         <div class="form-group">
                             <label>Mã CS:</label>
-                            <input id="MaCS" type="text" name="MaCS" value="" class="form-control" />
+                            <input id="txtMaCS" type="text" name="MaCS" value="" class="form-control" />
                         </div>
                     </div>
                     <div class="col-6">
                         <div class="form-group">
                             <label>Địa chỉ:</label>
-                            <input id="Diachi" type="text" name="DiaChi" value="" class="form-control" />
+                            <input id="txtDiaChi" type="text" name="DiaChi" value="" class="form-control" />
                         </div>
                     </div>
                     <div class="col-6">
                         <div class="form-group">
                             <label>Mã số thuế:</label>
-                            <input id="Masothue" type="text" name="MaSoThue" value="" class="form-control" />
+                            <input id="txtMaSoThue" type="text" name="MaSoThue" value="" class="form-control" />
                         </div>
                     </div>
                     <div class="col-6">
                         <div class="form-group">
                             <label>Nhóm:</label>
-                            <input id="Nhom" type="text" name="Nhom" value="" class="form-control" />
+                            <input id="txtNhom" type="text" name="Nhom" value="" class="form-control" />
                         </div>
                     </div>
                     <div class="col-6">
                         <div class="form-group">
                             <label>Vị trí:</label>
-                            <input id="Vitri" type="text" name="ViTri" value="" class="form-control" />
+                            <input id="txtViTri" type="text" name="ViTri" value="" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="form-group">
+                            <label>Loại khách hàng:</label>
+                            <select class="form-control selectpicker" name="LoaiKhachHang" id="txtLoaiKhachHang">
+                                <option value=0>Chung</option>
+                                <option value=1>Khách hàng</option>
+                                <option value=2>Vendor</option>
+                            </select>
                         </div>
                     </div>
                     <div class="col-12">
                         <div class="form-group">
                             <input id="IDDanhMucNguoiSuDungCreate" type="hidden" name="IDDanhMucNguoiSuDungCreate" class="form-control" />
                             <input id="IDDanhMucNguoiSuDungEdit" type="hidden" name="IDDanhMucNguoiSuDungEdit" value="" class="form-control" />
-
                             <label>Ghi chú:</label>
-                            <textarea id="Ghichu" type="text" name="GhiChu" value="" class="form-control"></textarea>
+                            <textarea id="txtGhichu" type="text" name="GhiChu" value="" class="form-control"></textarea>
                         </div>
                     </div>
 
@@ -162,42 +167,32 @@
         </div>
     </div>
 </div>
-
-
-
-
-
-
 <script>
     $(document).ready(function () {
         loadData();
-      
     });
     function loadData() {
-        if ($.fn.dataTable.isDataTable('#table5')) {
-            $('#table5').dataTable().fnDestroy();
+        if ($.fn.dataTable.isDataTable('#tblDanhMucKhachHang')) {
+            $('#tblDanhMucKhachHang').dataTable().fnDestroy();
         }
-
         $.ajax({
-            url: "@Url.Action("List","DanhMuc")",
+            url: "@Url.Action("ListKhachHang","DanhMuc")",
             type: "GET",
             contentType: "application/json;charset=utf-8",
             dataType: "json",
             success: function (result) {
                 var html = '';
                 $.each(result, function (key, item) {
-                    html += '<tr>';
-                    html += '<td>' + item.Ma + '</td>';
-                    html += '<td>' + item.Ten + '</td>';
+                    html += '<tr id=MaKhachHang_"' + item.ID + '">';
+                    html += '<td>' + item.Ma + '</a></td>';
+                    html += '<td><a href="#" onclick="return getbyID(' + item.ID + ')">' + item.Ten + '</td>';
                     html += '<td >' + item.MaCS + '</td>';
+                    html += '<td >' + item.TenLoaiKhachHang + '</td>';
                     html += '<td><a href="#" onclick="return getbyID(' + item.ID + ')"><i class="fa fa-pen fa-1x mr-1"></i></a> | <a href="#" onclick="Delele(' + item.ID + ')"><i class="fa fa-trash fa-1x ml-1"></i></a></td>';
                     html += '</tr>';
                 });
                 $('.tbody1').html(html);
-              
-                $('#table5').DataTable();
-           
-
+                $('#tblDanhMucKhachHang').DataTable();
             },
             error: function (errorMesage) {
                 alert(errorMesage.responseText);
@@ -207,25 +202,19 @@
 
     //Add Data Function
     function Add() {
-         var empObj = {
-           // ID: $('#ID').val(),
-            //IDDanhMucDonVi: $('#IDDanhMucDonVi').val(),
-           // IDDanhMucLoaiDoiTuong: $('#IDDanhMucLoaiDoiTuong').val(),
-            Ma: $('#Ma').val(),
-            Ten: $('#Ten').val(),
-            TenEN: $('#TenEN').val(),
-            MaCS: $('#MaCS').val(),
-            DiaChi: $('#Diachi').val(),
-            MaSoThue: $('#Masothue').val(),
-            Nhom: $('#Nhom').val(),
-            ViTri: $('#Vitri').val(),
-            GhiChu: $('#Ghichu').val(),
-          //  IDDanhMucNguoiSuDungCreate: $('#IDDanhMucNguoiSuDungCreate').val(),
-         //  IDDanhMucNguoiSuDungEdit: $('#IDDanhMucNguoiSuDungEdit').val(),
-            CreateDate: $('#Ngaytao').val(),
-            EditDate: $('#Ngaysua').val(),
+        var empObj = {
+        Ma: $('#txtMa').val(),
+            Ten: $('#txtTen').val(),
+            TenEN: $('#txtTenEN').val(),
+            MaCS: $('#txtMaCS').val(),
+            DiaChi: $('#txtDiaChi').val(),
+            MaSoThue: $('#txtMaSoThue').val(),
+            Nhom: $('#txtNhom').val(),
+            ViTri: $('#txtViTri').val(),
+            LoaiKhachHang: $('#txtLoaiKhachHang').val(),
+            GhiChu: $('#txtGhiChu').val()
         };
-        var url = "@Url.Action("Add","DanhMuc")"
+        var url = "@Url.Action("AddKhachHang","DanhMuc")"
         $.ajax({
             url: url,
             data: JSON.stringify(empObj),
@@ -234,10 +223,10 @@
             dataType: "json",
             success: function (result) {
                 loadData();
-             
+
                 alert(result.Message);
-              
-                $('#myModal2').modal('hide');
+
+                $('#frmKhachHangUpdate').modal('hide');
             },
             error: function (errormessage) {
                 alert(errormessage.responseText);
@@ -248,7 +237,7 @@
     function getbyID(EmpID) {
 
         $.ajax({
-            url: "/DanhMuc/getbyID/" + EmpID,
+            url: "/DanhMuc/GetKhachHangbyID/" + EmpID,
             typr: "GET",
             contentType: "application/json;charset=UTF-8",
             dataType: "json",
@@ -256,20 +245,20 @@
                 $('#ID').val(result.ID);
                 $('#IDDanhMucDonVi').val(result.IDDanhMucDonVi);
                 $('#IDDanhMucLoaiDoiTuong').val(result.IDDanhMucLoaiDoiTuong);
-                $('#Ma').val(result.Ma);
-                $('#Ten').val(result.Ten);
-                $('#TenEN').val(result.TenEN);
-                $('#MaCS').val(result.MaCS);
-                $('#Diachi').val(result.DiaChi);
-                $('#Masothue').val(result.MaSoThue);
-                $('#Nhom').val(result.Nhom);
-                $('#Vitri').val(result.ViTri);
-                $('#Ghichu').val(result.GhiChu);
+                $('#txtMa').val(result.Ma);
+                $('#txtTen').val(result.Ten);
+                $('#txtTenEN').val(result.TenEN);
+                $('#txtMaCS').val(result.MaCS);
+                $('#txtDiachi').val(result.DiaChi);
+                $('#txtMasothue').val(result.MaSoThue);
+                $('#txtNhom').val(result.Nhom);
+                $('#txtVitri').val(result.ViTri);
+                $('#txtLoaiKhachHang').val(result.LoaiKhachHang);
+                $('#txtLoaiKhachHang').selectpicker('refresh');
+                $('#txtGhichu').val(result.GhiChu);
                 $('#IDDanhMucNguoiSuDungCreate').val(result.IDDanhMucNguoiSuDungCreate);
                 $('#IDDanhMucNguoiSuDungEdit').val(result.IDDanhMucNguoiSuDungEdit);
-                $('#Ngaytao').val(result.CreateDate);
-                $('#Ngaysua').val(result.EditDate);
-                $('#myModal2').modal('show');
+                $('#frmKhachHangUpdate').modal('show');
                 $('#btnUpdate').show();
                 $('#btnAdd').hide();
             },
@@ -286,21 +275,20 @@
             ID: $('#ID').val(),
             IDDanhMucDonVi: $('#IDDanhMucDonVi').val(),
             IDDanhMucLoaiDoiTuong: $('#IDDanhMucLoaiDoiTuong').val(),
-            Ma: $('#Ma').val(),
-            Ten: $('#Ten').val(),
-            TenEN: $('#TenEN').val(),
-            MaCS: $('#MaCS').val(),
-            DiaChi: $('#Diachi').val(),
-            Masothue: $('#Masothue').val(),
-            Nhom: $('#Nhom').val(),
-            Vitri: $('#Vitri').val(),
-            Ghichu: $('#Ghichu').val(),
+            Ma: $('#txtMa').val(),
+            Ten: $('#txtTen').val(),
+            TenEN: $('#txtTenEN').val(),
+            MaCS: $('#txtMaCS').val(),
+            DiaChi: $('#txtDiaChi').val(),
+            MaSoThue: $('#txtMaSoThue').val(),
+            Nhom: $('#txtNhom').val(),
+            ViTri: $('#txtViTri').val(),
+            LoaiKhachHang: $('#txtLoaiKhachHang').val(),
+            GhiChu: $('#Ghichu').val(),
             IDDanhMucNguoiSuDungCreate: $('#IDDanhMucNguoiSuDungCreate').val(),
             IDDanhMucNguoiSuDungEdit: $('#IDDanhMucNguoiSuDungEdit').val(),
-           // CreateDate: $('#Ngaytao').val(),
-            EditDate: $('#Ngaysua').val(),
         };
-    var url = "@Url.Action("Update","DanhMuc")"
+        var url = "@Url.Action("UpdateKhachHang","DanhMuc")"
         $.ajax({
         url: url,
             data: JSON.stringify(empObj),
@@ -308,22 +296,24 @@
             contentType: "application/json;charset=utf-8",
             dataType: "json",
             success: function (result) {
-              
+
                 loadData();
-               
+
                 alert(result.Message);
                 $('#myModal2').modal('hide');
                 ID: $('#ID').val("");
                 IDDanhMucDonVi: $('#IDDanhMucDonVi').val("");
                 IDDanhMucLoaiDoiTuong: $('#IDDanhMucLoaiDoiTuong').val("");
-                Ma: $('#Ma').val("");
-                Ten: $('#Ten').val();
-                TenEN: $('#TenEN').val("");
-                MaCS: $('#MaCS').val("");
-                DiaChi: $('#Diachi').val("");
-                MaSoThue: $('#Masothue').val("");
-                Nhom: $('#Nhom').val("");
-                ViTri: $('#Vitri').val("");
+                Ma: $('#txtMa').val("");
+                Ten: $('#txtTen').val();
+                TenEN: $('#txtTenEN').val("");
+                MaCS: $('#txtMaCS').val("");
+                DiaChi: $('#txtDiachi').val("");
+                MaSoThue: $('#txtMasothue').val("");
+                Nhom: $('#txtNhom').val("");
+                ViTri: $('#txtViTri').val("");
+                LoaiKhachHang: $('#txtLoaiKhachHang').val("0");
+                $('#txtLoaiKhachHang').selectpicker('refresh');
                 GhiChu: $('#Ghichu').val("");
                 IDDanhMucNguoiSuDungCreate: $('#IDDanhMucNguoiSuDungCreate').val("");
                 IDDanhMucNguoiSuDungEdit: $('#IDDanhMucNguoiSuDungEdit').val("");
@@ -332,43 +322,44 @@
 
                 },
             error: function (errormessage) {
-
-                alert(errormessage.responseText);
-        }
-    });
-        }
-
-      function Delele(ID) {
-    var ans = confirm("Bạn chắc chắn muốn xóa bản ghi này?");
-    if (ans) {
-        $.ajax({
-            url: "/DanhMuc/Delete/" + ID,
-            type: "POST",
-            contentType: "application/json;charset=UTF-8",
-            dataType: "json",
-            success: function (result) {
-                loadData();
-                alert(result.Message);
-            },
-            error: function (errormessage) {
                 alert(errormessage.responseText);
             }
         });
-    }
+     }
+
+    function Delele(ID) {
+    var ans = confirm("Bạn chắc chắn muốn xóa bản ghi này?");
+    if (ans) {
+            $.ajax({
+                url: "/DanhMuc/DeleteKhachHang/" + ID,
+                type: "POST",
+                contentType: "application/json;charset=UTF-8",
+                dataType: "json",
+                success: function (result) {
+                    loadData();
+                    alert(result.Message);
+                },
+                error: function (errormessage) {
+                    alert(errormessage.responseText);
+                }
+            });
+        }
     }
     function clearTextBox() {
         $('#ID').val("");
         $('#IDDanhMucDonVi').val("");
         $('#IDDanhMucLoaiDoiTuong').val("");
-        $('#Ma').val("");
-        $('#Ten').val("");
-        $('#TenEN').val("");
-        $('#MaCS').val("");
-        $('#Diachi').val("");
-        $('#Masothue').val("");
-        $('#Nhom').val("");
-        $('#Vitri').val("");
-        $('#Ghichu').val("");
+        $('#txtMa').val("");
+        $('#txtTen').val("");
+        $('#txtTenEN').val("");
+        $('#txtMaCS').val("");
+        $('#txtDiachi').val("");
+        $('#MaSoThue').val("");
+        $('#txtNhom').val("");
+        $('#txtViTri').val("");
+        $('#txtLoaiKhachHang').val("0");
+        $('#txtLoaiKhachHang').selectpicker('refresh');
+        $('#txtGhiChu').val("");
         $('#btnUpdate').hide();
         $('#btnAdd').show();
         $('#IDDanhMucNguoiSuDungCreate').val("");
@@ -376,8 +367,5 @@
         $('#Ngaytao').val("");
         $('#Ngaysua').val("")
     }
-   
-
-  
 </script>
 

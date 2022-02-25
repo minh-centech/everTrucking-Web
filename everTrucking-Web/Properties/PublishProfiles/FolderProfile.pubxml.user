@@ -4,8 +4,8 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
 -->
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <_PublishTargetUrl>D:\everTrucking-Web-new\everTrucking-Web\bin\app.publish\</_PublishTargetUrl>
-    <History>True|2022-02-19T09:38:11.3406202Z;True|2022-01-29T09:48:14.9845000+07:00;</History>
+    <_PublishTargetUrl>D:\everTrucking-Web\everTrucking-Web\bin\app.publish\</_PublishTargetUrl>
+    <History>True|2022-02-25T04:04:34.9722344Z;True|2022-02-19T16:38:11.3406202+07:00;True|2022-01-29T09:48:14.9845000+07:00;</History>
   </PropertyGroup>
   <ItemGroup>
     <File Include="assets/assets/demo/chart-area-demo.js">
@@ -23,6 +23,15 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
     <File Include="assets/assets/img/error-404-monochrome.svg">
       <publishTime>02/08/2022 10:48:06</publishTime>
     </File>
+    <File Include="assets/css/bootstrap.min.css">
+      <publishTime>02/19/2022 18:23:15</publishTime>
+    </File>
+    <File Include="assets/css/sb-admin-2.css">
+      <publishTime>02/19/2022 18:23:15</publishTime>
+    </File>
+    <File Include="assets/css/sb-admin-2.min.css">
+      <publishTime>02/19/2022 18:23:15</publishTime>
+    </File>
     <File Include="assets/css/select.css">
       <publishTime>02/08/2022 10:48:06</publishTime>
     </File>
@@ -31,6 +40,12 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
     </File>
     <File Include="assets/js/datatables-simple-demo.js">
       <publishTime>02/08/2022 10:48:06</publishTime>
+    </File>
+    <File Include="assets/js/sb-admin-2.js">
+      <publishTime>02/19/2022 18:24:01</publishTime>
+    </File>
+    <File Include="assets/js/sb-admin-2.min.js">
+      <publishTime>02/19/2022 18:24:01</publishTime>
     </File>
     <File Include="assets/js/scripts.js">
       <publishTime>02/08/2022 10:48:06</publishTime>
@@ -185,11 +200,68 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
     <File Include="bin/Antlr3.Runtime.pdb">
       <publishTime>02/08/2022 10:48:07</publishTime>
     </File>
+    <File Include="bin/cenBUS.dll">
+      <publishTime>02/25/2022 11:04:28</publishTime>
+    </File>
+    <File Include="bin/cenBUS.pdb">
+      <publishTime>02/25/2022 11:04:28</publishTime>
+    </File>
+    <File Include="bin/cenCommon.dll">
+      <publishTime>02/25/2022 11:04:26</publishTime>
+    </File>
+    <File Include="bin/cenCommon.pdb">
+      <publishTime>02/25/2022 11:04:26</publishTime>
+    </File>
+    <File Include="bin/cenDAO.dll">
+      <publishTime>02/25/2022 11:04:27</publishTime>
+    </File>
+    <File Include="bin/cenDAO.pdb">
+      <publishTime>02/25/2022 11:04:27</publishTime>
+    </File>
+    <File Include="bin/cenDTO.dll">
+      <publishTime>02/25/2022 11:04:27</publishTime>
+    </File>
+    <File Include="bin/cenDTO.pdb">
+      <publishTime>02/25/2022 11:04:27</publishTime>
+    </File>
+    <File Include="bin/ClosedXML.dll">
+      <publishTime>12/16/2020 16:59:08</publishTime>
+    </File>
+    <File Include="bin/ClosedXML.pdb">
+      <publishTime>12/16/2020 16:59:08</publishTime>
+    </File>
+    <File Include="bin/DocumentFormat.OpenXml.dll">
+      <publishTime>06/07/2017 05:59:22</publishTime>
+    </File>
     <File Include="bin/everTrucking-Web.dll">
-      <publishTime>02/19/2022 16:38:09</publishTime>
+      <publishTime>02/25/2022 11:04:28</publishTime>
     </File>
     <File Include="bin/everTrucking-Web.pdb">
-      <publishTime>02/19/2022 16:38:09</publishTime>
+      <publishTime>02/25/2022 11:04:28</publishTime>
+    </File>
+    <File Include="bin/ExcelNumberFormat.dll">
+      <publishTime>03/13/2020 16:36:50</publishTime>
+    </File>
+    <File Include="bin/Infragistics4.Documents.Core.v18.1.dll">
+      <publishTime>04/03/2018 15:53:20</publishTime>
+    </File>
+    <File Include="bin/Infragistics4.Documents.Excel.v18.1.dll">
+      <publishTime>04/03/2018 15:53:30</publishTime>
+    </File>
+    <File Include="bin/Infragistics4.Shared.v18.1.dll">
+      <publishTime>04/03/2018 15:52:54</publishTime>
+    </File>
+    <File Include="bin/Infragistics4.Win.Misc.v18.1.dll">
+      <publishTime>04/03/2018 15:53:18</publishTime>
+    </File>
+    <File Include="bin/Infragistics4.Win.UltraWinGrid.ExcelExport.v18.1.dll">
+      <publishTime>04/03/2018 15:58:30</publishTime>
+    </File>
+    <File Include="bin/Infragistics4.Win.UltraWinGrid.v18.1.dll">
+      <publishTime>04/03/2018 15:53:48</publishTime>
+    </File>
+    <File Include="bin/Infragistics4.Win.v18.1.dll">
+      <publishTime>04/03/2018 15:53:12</publishTime>
     </File>
     <File Include="bin/Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll">
       <publishTime>02/08/2022 10:48:07</publishTime>
@@ -353,6 +425,9 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
     <File Include="bin/roslyn/VBCSCompiler.exe.config">
       <publishTime>02/08/2022 10:48:07</publishTime>
     </File>
+    <File Include="bin/System.IO.Packaging.dll">
+      <publishTime>06/12/2016 06:13:48</publishTime>
+    </File>
     <File Include="bin/System.Web.Helpers.dll">
       <publishTime>02/08/2022 10:48:07</publishTime>
     </File>
@@ -406,6 +481,150 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
     </File>
     <File Include="Content/Site.css">
       <publishTime>02/08/2022 10:48:06</publishTime>
+    </File>
+    <File Include="DBScripts/001.ctKeHoachVanTai.sql">
+      <publishTime>02/23/2022 18:48:03</publishTime>
+    </File>
+    <File Include="DBScripts/001.ctKeHoachVanTaiChiTietSoContainer.sql">
+      <publishTime>02/19/2022 17:45:06</publishTime>
+    </File>
+    <File Include="DBScripts/ctChiPhiVanTai.sql">
+      <publishTime>02/19/2022 17:45:06</publishTime>
+    </File>
+    <File Include="DBScripts/ctChiPhiVanTaiBoSung.sql">
+      <publishTime>02/19/2022 17:45:06</publishTime>
+    </File>
+    <File Include="DBScripts/ctChotChiPhiVanTaiBoSungGuiKeToan.sql">
+      <publishTime>02/19/2022 17:45:06</publishTime>
+    </File>
+    <File Include="DBScripts/ctChotChiPhiVanTaiGuiKeToan.sql">
+      <publishTime>02/19/2022 17:45:06</publishTime>
+    </File>
+    <File Include="DBScripts/ctChotDoanhThuGuiKeToan.sql">
+      <publishTime>02/19/2022 17:45:06</publishTime>
+    </File>
+    <File Include="DBScripts/ctDieuHanh.sql">
+      <publishTime>02/19/2022 17:45:06</publishTime>
+    </File>
+    <File Include="DBScripts/ctDieuHanhChiTietDonHangKetHop.sql">
+      <publishTime>02/19/2022 17:45:06</publishTime>
+    </File>
+    <File Include="DBScripts/ctDonHang.sql">
+      <publishTime>02/19/2022 17:45:06</publishTime>
+    </File>
+    <File Include="DBScripts/ctDonHangCoTamUng.sql">
+      <publishTime>02/19/2022 17:45:06</publishTime>
+    </File>
+    <File Include="DBScripts/ctHopDongVanChuyen.sql">
+      <publishTime>02/19/2022 17:45:06</publishTime>
+    </File>
+    <File Include="DBScripts/ctHotline.sql">
+      <publishTime>02/19/2022 17:45:06</publishTime>
+    </File>
+    <File Include="DBScripts/ctInGiayVanTai.sql">
+      <publishTime>02/19/2022 17:45:06</publishTime>
+    </File>
+    <File Include="DBScripts/ctPhieuDoNhienLieu.sql">
+      <publishTime>02/19/2022 17:45:06</publishTime>
+    </File>
+    <File Include="DBScripts/ctSuaChua.sql">
+      <publishTime>02/19/2022 17:45:06</publishTime>
+    </File>
+    <File Include="DBScripts/ctThanhToanTamUng.sql">
+      <publishTime>02/19/2022 17:45:06</publishTime>
+    </File>
+    <File Include="DBScripts/DanhMucDiaDiemGiaoNhan.sql">
+      <publishTime>02/20/2022 16:06:49</publishTime>
+    </File>
+    <File Include="DBScripts/DanhMucDinhMucChiPhi.sql">
+      <publishTime>02/19/2022 17:45:06</publishTime>
+    </File>
+    <File Include="DBScripts/DanhMucDinhMucChiPhiHaiQuan.sql">
+      <publishTime>02/19/2022 17:45:06</publishTime>
+    </File>
+    <File Include="DBScripts/DanhMucGiaNhienLieu.sql">
+      <publishTime>02/19/2022 17:45:06</publishTime>
+    </File>
+    <File Include="DBScripts/DanhMucHangHoa.sql">
+      <publishTime>02/19/2022 17:45:06</publishTime>
+    </File>
+    <File Include="DBScripts/DanhMucKhachHang.sql">
+      <publishTime>02/24/2022 09:59:13</publishTime>
+    </File>
+    <File Include="DBScripts/DanhMucMooc.sql">
+      <publishTime>02/19/2022 17:45:06</publishTime>
+    </File>
+    <File Include="DBScripts/DanhMucNhanSu.sql">
+      <publishTime>02/19/2022 17:45:06</publishTime>
+    </File>
+    <File Include="DBScripts/DanhMucTaiXe.sql">
+      <publishTime>02/19/2022 17:45:06</publishTime>
+    </File>
+    <File Include="DBScripts/DanhMucThauPhu.sql">
+      <publishTime>02/19/2022 17:45:06</publishTime>
+    </File>
+    <File Include="DBScripts/DanhMucTuyenVanTai.sql">
+      <publishTime>02/19/2022 17:45:06</publishTime>
+    </File>
+    <File Include="DBScripts/DanhMucXe.sql">
+      <publishTime>02/19/2022 17:45:06</publishTime>
+    </File>
+    <File Include="DBScripts/DanhMucXeDinhMucNhienLieu.sql">
+      <publishTime>02/19/2022 17:45:06</publishTime>
+    </File>
+    <File Include="DBScripts/DatabaseCore/01-AutoID.sql">
+      <publishTime>02/20/2022 13:37:13</publishTime>
+    </File>
+    <File Include="DBScripts/DatabaseCore/02-DanhMucDonVi.sql">
+      <publishTime>02/20/2022 13:37:13</publishTime>
+    </File>
+    <File Include="DBScripts/DatabaseCore/03-DanhMucChungTu.sql">
+      <publishTime>02/20/2022 13:37:13</publishTime>
+    </File>
+    <File Include="DBScripts/DatabaseCore/04-DanhMucBaoCao.sql">
+      <publishTime>02/20/2022 13:37:13</publishTime>
+    </File>
+    <File Include="DBScripts/DatabaseCore/05-DanhMucLoaiDoiTuong.sql">
+      <publishTime>02/20/2022 13:37:13</publishTime>
+    </File>
+    <File Include="DBScripts/DatabaseCore/06-DanhMucPhanQuyen.sql">
+      <publishTime>02/20/2022 13:37:13</publishTime>
+    </File>
+    <File Include="DBScripts/DatabaseCore/07-NhatKyDuLieu.sql">
+      <publishTime>02/20/2022 13:37:13</publishTime>
+    </File>
+    <File Include="DBScripts/DatabaseCore/08-DanhMucNguoiSuDung.sql">
+      <publishTime>02/20/2022 13:37:13</publishTime>
+    </File>
+    <File Include="DBScripts/DatabaseCore/09-DanhMucDoiTuong.sql">
+      <publishTime>02/20/2022 13:37:13</publishTime>
+    </File>
+    <File Include="DBScripts/DatabaseCore/10-DanhMucMenu.sql">
+      <publishTime>02/20/2022 13:37:13</publishTime>
+    </File>
+    <File Include="DBScripts/DatabaseCore/11-DanhMucTuDien.sql">
+      <publishTime>02/20/2022 13:37:13</publishTime>
+    </File>
+    <File Include="DBScripts/DatabaseCore/12-DanhMucThamSoHeThong.sql">
+      <publishTime>02/20/2022 13:37:13</publishTime>
+    </File>
+    <File Include="DBScripts/DatabaseCore/13-DanhMucThamSoNguoiSuDung.sql">
+      <publishTime>02/20/2022 13:37:13</publishTime>
+    </File>
+    <File Include="DBScripts/DatabaseCore/createNewDBProcedures.sql">
+      <publishTime>02/20/2022 13:37:13</publishTime>
+    </File>
+    <File Include="DBScripts/DatabaseCore/createNewDBTables.sql">
+      <publishTime>02/20/2022 13:37:13</publishTime>
+    </File>
+    <File Include="DBScripts/DatabaseCore/insertDanhMucTuDien.sql">
+      <publishTime>02/20/2022 13:37:13</publishTime>
+    </File>
+    <File Include="DBScripts/Others.sql">
+      <publishTime>02/19/2022 17:45:06</publishTime>
+    </File>
+    <File Include="DBScripts/Reports.sql">
+      <publishTime>02/19/2022 17:45:06</publishTime>
     </File>
     <File Include="favicon.ico">
       <publishTime>02/08/2022 10:48:06</publishTime>
@@ -468,19 +687,25 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>02/08/2022 10:48:06</publishTime>
     </File>
     <File Include="Views/DanhMuc/CangICDIndex.cshtml">
-      <publishTime>02/08/2022 10:48:06</publishTime>
+      <publishTime>02/20/2022 16:22:05</publishTime>
+    </File>
+    <File Include="Views/DanhMuc/HangTauIndex.cshtml">
+      <publishTime>02/20/2022 16:01:31</publishTime>
     </File>
     <File Include="Views/DanhMuc/KhachHangIndex.cshtml">
-      <publishTime>02/19/2022 11:44:10</publishTime>
+      <publishTime>02/25/2022 11:00:02</publishTime>
     </File>
     <File Include="Views/DanhMuc/KhoIndex.cshtml">
-      <publishTime>02/08/2022 10:48:06</publishTime>
+      <publishTime>02/20/2022 16:14:02</publishTime>
     </File>
     <File Include="Views/DanhMuc/SaleIndex.cshtml">
-      <publishTime>02/08/2022 10:48:06</publishTime>
+      <publishTime>02/25/2022 11:13:44</publishTime>
     </File>
     <File Include="Views/DanhMucKhachHang/Index.cshtml">
       <publishTime>02/08/2022 15:20:57</publishTime>
+    </File>
+    <File Include="Views/DanhMucNguoiSuDung/Login.cshtml">
+      <publishTime>02/19/2022 18:24:13</publishTime>
     </File>
     <File Include="Views/Home/Index.cshtml">
       <publishTime>02/08/2022 10:48:06</publishTime>
@@ -503,6 +728,9 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
     <File Include="Views/KeHoachVanTaiChiTietSoContainer/Index.cshtml">
       <publishTime>02/19/2022 14:43:21</publishTime>
     </File>
+    <File Include="Views/KeHoachVanTaiTongHop/Index.cshtml">
+      <publishTime>02/24/2022 09:45:46</publishTime>
+    </File>
     <File Include="Views/QuanLyDonHang/Create.cshtml">
       <publishTime>02/08/2022 10:48:06</publishTime>
     </File>
@@ -510,19 +738,19 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>02/08/2022 10:48:06</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>02/19/2022 14:41:43</publishTime>
+      <publishTime>02/24/2022 09:50:02</publishTime>
     </File>
     <File Include="Views/Shared/_Navbar.cshtml">
       <publishTime>02/08/2022 10:48:06</publishTime>
     </File>
     <File Include="Views/Shared/_Sidebar.cshtml">
-      <publishTime>02/19/2022 13:29:47</publishTime>
+      <publishTime>02/25/2022 10:56:27</publishTime>
     </File>
     <File Include="Views/Web.config">
       <publishTime>02/08/2022 10:48:06</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>02/19/2022 16:38:10</publishTime>
+      <publishTime>02/25/2022 11:04:29</publishTime>
     </File>
   </ItemGroup>
 </Project>

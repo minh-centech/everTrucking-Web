@@ -104,6 +104,7 @@ namespace everTrucking_Web.Controllers
             emp.IDDanhMucLoaiDoiTuong = DanhMucLoaiDoiTuongBUS.GetID(DanhMucThamSoHeThongBUS.GetGiaTri(cenCommon.ThamSoHeThong.MaThamSoLoaiDoiTuongKhachHang));
             emp.IDDanhMucNguoiSuDungCreate = UserSessionHelper.GetSession().IDDanhMucNguoiSuDung;
             cenDTO.msgResponse msgResponse = DanhMucKhachHangBUS.Insert(ref emp);
+            msgResponse.Data = Newtonsoft.Json.JsonConvert.SerializeObject(emp);
             return Json(msgResponse, JsonRequestBehavior.AllowGet);
         }
         public JsonResult DeleteKhachHang(string ID)
@@ -254,6 +255,7 @@ namespace everTrucking_Web.Controllers
             emp.IDDanhMucLoaiDoiTuong = DanhMucLoaiDoiTuongBUS.GetID(DanhMucThamSoHeThongBUS.GetGiaTri(cenCommon.ThamSoHeThong.MaThamSoLoaiDoiTuongHangTau));
             emp.IDDanhMucNguoiSuDungCreate = UserSessionHelper.GetSession().IDDanhMucNguoiSuDung;
             cenDTO.msgResponse msgResponse = DanhMucDoiTuongBUS.Insert(ref emp);
+            msgResponse.Data = Newtonsoft.Json.JsonConvert.SerializeObject(emp);
             return Json(msgResponse, JsonRequestBehavior.AllowGet);
         }
         public JsonResult DeleteHangTau(string ID)
@@ -330,6 +332,7 @@ namespace everTrucking_Web.Controllers
             emp.IDDanhMucLoaiDoiTuong = DanhMucLoaiDoiTuongBUS.GetID(DanhMucThamSoHeThongBUS.GetGiaTri(cenCommon.ThamSoHeThong.MaThamSoLoaiDoiTuongKho));
             emp.IDDanhMucNguoiSuDungCreate = UserSessionHelper.GetSession().IDDanhMucNguoiSuDung;
             cenDTO.msgResponse msgResponse = DanhMucDiaDiemGiaoNhanBUS.Insert(ref emp);
+            msgResponse.Data = Newtonsoft.Json.JsonConvert.SerializeObject(emp);
             return Json(msgResponse, JsonRequestBehavior.AllowGet);
         }
         public JsonResult DeleteKho(string ID)
@@ -406,6 +409,7 @@ namespace everTrucking_Web.Controllers
             emp.IDDanhMucLoaiDoiTuong = DanhMucLoaiDoiTuongBUS.GetID(DanhMucThamSoHeThongBUS.GetGiaTri(cenCommon.ThamSoHeThong.MaThamSoLoaiDoiTuongCangICD));
             emp.IDDanhMucNguoiSuDungCreate = UserSessionHelper.GetSession().IDDanhMucNguoiSuDung;
             cenDTO.msgResponse msgResponse = DanhMucDiaDiemGiaoNhanBUS.Insert(ref emp);
+            msgResponse.Data = Newtonsoft.Json.JsonConvert.SerializeObject(emp);
             return Json(msgResponse, JsonRequestBehavior.AllowGet);
         }
         public JsonResult DeleteCangICD(string ID)

@@ -1,0 +1,247 @@
+﻿@model List<cenDTO.DatabaseCore.DanhMucDoiTuong>
+
+
+@{
+    ViewBag.Title = "Danh mục hãng tàu";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    .table-bordered tr th {
+        font-size: 14px;
+        font-weight: 600 !important;
+    }
+
+    .title {
+        align-items: center
+    }
+</style>
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <div>
+            <h6 class="m-0 font-weight-bold text-primary">
+                DANH MỤC HÃNG TÀU
+            </h6>
+        </div>
+    </div>
+    <div class="card-header py-3 ">
+        <div class="title d-flex justify-content-between mb-3">
+            <div>
+                <button type="button" onclick="clearTextBox()" class="btn btn-primary" data-toggle="modal" data-target="#frmHangTauUpdate"> <i class="fa fa-plus"></i> Thêm mới</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="table-responsive">
+    <table class="table table-bordered" id="tblDanhMucHangTau">
+        <thead>
+            <tr>
+                <th style="width:15%;">Mã hãng tàu</th>
+                <th>Tên hãng tàu</th>
+                <th style="width:10%;">Thao tác</th>
+            </tr>
+        </thead>
+        <tbody class="tbody1">
+        </tbody>
+    </table>
+   
+</div>
+
+
+<div class="modal fade" id="frmHangTauUpdate" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog  modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Thêm HangTau mới</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row" id="dvPartial">
+
+                    <div class="col-12">
+                        <div class="form-group">
+                            <input id="ID" type="hidden" name="ID" />
+                            <input id="IDDanhMucDonVi" type="hidden" name="IDDanhMucDonVi" class="form-control" />
+                            <input id="IDDanhMucLoaiDoiTuong" type="hidden" name="IDDanhMucLoaiDoiTuong" class="form-control" />
+                            <label>Mã :</label>
+                            <input id="txtMa" type="text" name="Ma" value="" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="form-group">
+                            <label>Tên:</label>
+                            <input id="txtTen" type="text" name="Ten" value="" class="form-control" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="btnAdd" class="btn btn-primary" onclick="Add()">Save changes</button>
+                <button type="button" class="btn btn-primary" id="btnUpdate" style="display:none;" onclick="Update();">Update</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        loadData();
+    });
+    function loadData() {
+        if ($.fn.dataTable.isDataTable('#tblDanhMucHangTau')) {
+            $('#tblDanhMucHangTau').dataTable().fnDestroy();
+        }
+        $.ajax({
+            url: "@Url.Action("ListHangTau","DanhMuc")",
+            type: "GET",
+            contentType: "application/json;charset=utf-8",
+            dataType: "json",
+            success: function (result) {
+                var html = '';
+                $.each(result, function (key, item) {
+                    html += '<tr>';
+                    html += '<td>' + item.Ma + '</td>';
+                    html += '<td>' + item.Ten + '</td>';
+                    html += '<td><a href="#" onclick="return getbyID(' + item.ID + ')"><i class="fa fa-pen fa-1x mr-1"></i></a> | <a href="#" onclick="Delele(' + item.ID + ')"><i class="fa fa-trash fa-1x ml-1"></i></a></td>';
+                    html += '</tr>';
+                });
+                $('.tbody1').html(html);
+                $('#tblDanhMucHangTau').DataTable();
+            },
+            error: function (errorMesage) {
+                alert(errorMesage.responseText);
+            }
+        });
+    }
+
+    //Add Data Function
+    function Add() {
+        var empObj = {
+            Ma: $('#txtMa').val(),
+            Ten: $('#txtTen').val()
+        };
+        var url = "@Url.Action("AddHangTau","DanhMuc")"
+        $.ajax({
+            url: url,
+            data: JSON.stringify(empObj),
+            type: "POST",
+            contentType: "application/json;charset=utf-8",
+            dataType: "json",
+            success: function (result) {
+                loadData();
+             
+                alert(result.Message);
+              
+                $('#frmHangTauUpdate').modal('hide');
+            },
+            error: function (errormessage) {
+                alert(errormessage.responseText);
+            }
+        });
+        }
+
+    function getbyID(EmpID) {
+
+        $.ajax({
+            url: "/DanhMuc/GetHangTaubyID/" + EmpID,
+            typr: "GET",
+            contentType: "application/json;charset=UTF-8",
+            dataType: "json",
+            success: function (result) {
+                $('#ID').val(result.ID);
+                $('#IDDanhMucDonVi').val(result.IDDanhMucDonVi);
+                $('#IDDanhMucLoaiDoiTuong').val(result.IDDanhMucLoaiDoiTuong);
+                $('#txtMa').val(result.Ma);
+                $('#txtTen').val(result.Ten);
+                $('#IDDanhMucNguoiSuDungCreate').val(result.IDDanhMucNguoiSuDungCreate);
+                $('#IDDanhMucNguoiSuDungEdit').val(result.IDDanhMucNguoiSuDungEdit);
+                $('#frmHangTauUpdate').modal('show');
+                $('#btnUpdate').show();
+                $('#btnAdd').hide();
+            },
+            error: function (errormessage) {
+                alert(errormessage.responseText);
+            }
+        });
+        return false;
+    }
+
+     function Update() {
+
+        var empObj = {
+            ID: $('#ID').val(),
+            IDDanhMucDonVi: $('#IDDanhMucDonVi').val(),
+            IDDanhMucLoaiDoiTuong: $('#IDDanhMucLoaiDoiTuong').val(),
+            Ma: $('#txtMa').val(),
+            Ten: $('#txtTen').val(),
+            IDDanhMucNguoiSuDungCreate: $('#IDDanhMucNguoiSuDungCreate').val(),
+            IDDanhMucNguoiSuDungEdit: $('#IDDanhMucNguoiSuDungEdit').val(),
+        };
+    var url = "@Url.Action("UpdateHangTau","DanhMuc")"
+        $.ajax({
+        url: url,
+            data: JSON.stringify(empObj),
+            type: "POST",
+            contentType: "application/json;charset=utf-8",
+            dataType: "json",
+            success: function (result) {
+              
+                loadData();
+               
+                alert(result.Message);
+                $('#myModal2').modal('hide');
+                ID: $('#ID').val("");
+                IDDanhMucDonVi: $('#IDDanhMucDonVi').val("");
+                IDDanhMucLoaiDoiTuong: $('#IDDanhMucLoaiDoiTuong').val("");
+                Ma: $('#txtMa').val("");
+                Ten: $('#txtTen').val("");
+                IDDanhMucNguoiSuDungCreate: $('#IDDanhMucNguoiSuDungCreate').val("");
+                IDDanhMucNguoiSuDungEdit: $('#IDDanhMucNguoiSuDungEdit').val("");
+                //CreateDate: $('#Ngaytao').val("");
+                EditDate: $('#Ngaysua').val("");
+
+                },
+            error: function (errormessage) {
+
+                alert(errormessage.responseText);
+        }
+    });
+        }
+
+    function Delele(ID) {
+    var ans = confirm("Bạn chắc chắn muốn xóa bản ghi này?");
+    if (ans) {
+            $.ajax({
+                url: "/DanhMuc/DeleteHangTau/" + ID,
+                type: "POST",
+                contentType: "application/json;charset=UTF-8",
+                dataType: "json",
+                success: function (result) {
+                    loadData();
+                    alert(result.Message);
+                },
+                error: function (errormessage) {
+                    alert(errormessage.responseText);
+                }
+            });
+        }
+    }
+    function clearTextBox() {
+        $('#ID').val("");
+        $('#IDDanhMucDonVi').val("");
+        $('#IDDanhMucLoaiDoiTuong').val("");
+        $('#txtMa').val("");
+        $('#txtTen').val("");
+        $('#btnUpdate').hide();
+        $('#btnAdd').show();
+        $('#IDDanhMucNguoiSuDungCreate').val("");
+        $('#IDDanhMucNguoiSuDungEdit').val("");
+        $('#Ngaytao').val("");
+        $('#Ngaysua').val("")
+    }
+</script>
+

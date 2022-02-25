@@ -27,7 +27,7 @@ namespace everTrucking_Web.Controllers
             if (Session == null)
                 return RedirectToAction("Login", "DanhMucNguoiSuDung");
 
-            DataTable dtKeHoachVanTai = ctKeHoachVanTaiBUS.ListDisplay(DanhMucChungTuBUS.GetID(DanhMucThamSoHeThongBUS.GetGiaTri(cenCommon.ThamSoHeThong.MaThamSoChungTuKeHoachVanTai)), DateTime.Now, DateTime.Now, "0", "0", null, null);
+            DataTable dtKeHoachVanTai = ctKeHoachVanTaiBUS.ListDisplay(DanhMucChungTuBUS.GetID(DanhMucThamSoHeThongBUS.GetGiaTri(cenCommon.ThamSoHeThong.MaThamSoChungTuKeHoachVanTai)), DateTime.Now, DateTime.Now, null, "0", "0", null);
             List<ctKeHoachVanTai> listKeHoachVanTai = new List<ctKeHoachVanTai>();
             foreach (DataRow drKeHoachVanTai in dtKeHoachVanTai.Rows)
             {
@@ -164,8 +164,6 @@ namespace everTrucking_Web.Controllers
 
             return View(listKeHoachVanTai);
         }
-
-
         public JsonResult List(string startDate, string endDate, string LoaiHinh, string LoaiHang)
         {
             if (cenCommon.cenCommon.IsNull(startDate))
@@ -176,8 +174,6 @@ namespace everTrucking_Web.Controllers
                 endDate = (new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day)).ToString();
             else
                 endDate = (new DateTime(cenCommon.cenCommon.intParse(endDate.Substring(6, 4)), cenCommon.cenCommon.intParse(endDate.Substring(3, 2)), cenCommon.cenCommon.intParse(endDate.Substring(0, 2)))).ToString();
-
-
 
             DataTable dtKeHoachVanTai = ctKeHoachVanTaiBUS.ListDisplay(DanhMucChungTuBUS.GetID(DanhMucThamSoHeThongBUS.GetGiaTri(cenCommon.ThamSoHeThong.MaThamSoChungTuKeHoachVanTai)), startDate, endDate, null, LoaiHinh, LoaiHang, null);
             List<ctKeHoachVanTai> listKeHoachVanTai = new List<ctKeHoachVanTai>();
@@ -295,7 +291,6 @@ namespace everTrucking_Web.Controllers
         }
         public JsonResult GetbyID(string ID)
         {
-
             DataTable dtKeHoachVanTai = ctKeHoachVanTaiBUS.List(DanhMucChungTuBUS.GetID(DanhMucThamSoHeThongBUS.GetGiaTri(cenCommon.ThamSoHeThong.MaThamSoChungTuKeHoachVanTai)), ID);
             List<ctKeHoachVanTai> listKeHoachVanTai = new List<ctKeHoachVanTai>();
             if (dtKeHoachVanTai.Rows.Count > 0)
@@ -311,7 +306,7 @@ namespace everTrucking_Web.Controllers
                         So = drKeHoachVanTai["So"].ToString(),
                         NgayLap = drKeHoachVanTai["NgayLap"].ToString(),
                         IDDanhMucSale = drKeHoachVanTai["IDDanhMucSale"].ToString(),
-                        //TenDanhMucSale = drKeHoachVanTai["TenDanhMucSale"].ToString(),
+                        TenDanhMucSale = drKeHoachVanTai["TenDanhMucSale"].ToString(),
 
                         IDDanhMucKhachHang = drKeHoachVanTai["IDDanhMucKhachHang"].ToString(),
                         TenDanhMucKhachHang = drKeHoachVanTai["TenDanhMucKhachHang"].ToString(),
@@ -320,13 +315,14 @@ namespace everTrucking_Web.Controllers
                         LoaiHang = drKeHoachVanTai["LoaiHang"].ToString(),
                         TenLoaiHang = drKeHoachVanTai["TenLoaiHang"].ToString(),
                         IDDanhMucHangTau = drKeHoachVanTai["IDDanhMucHangTau"].ToString(),
-                        //TenDanhMucHangTau = drKeHoachVanTai["TenDanhMucHangTau"].ToString(),
+                        MaDanhMucHangTau = drKeHoachVanTai["MaDanhMucHangTau"].ToString(),
+                        TenDanhMucHangTau = drKeHoachVanTai["TenDanhMucHangTau"].ToString(),
                         IDDanhMucDiaDiemNangCont = drKeHoachVanTai["IDDanhMucDiaDiemNangCont"].ToString(),
-                        //TenDanhMucDiaDiemNangCont = drKeHoachVanTai["TenDanhMucDiaDiemNangCont"].ToString(),
-                        NgayNangCont = (!cenCommon.cenCommon.IsNull(drKeHoachVanTai["NgayNangCont"])) ? Convert.ToDateTime(drKeHoachVanTai["NgayNangCont"].ToString()).Year.ToString("000#") + "-" + Convert.ToDateTime(drKeHoachVanTai["NgayNangCont"].ToString()).Month.ToString("0#") + "-" + Convert.ToDateTime(drKeHoachVanTai["NgayNangCont"].ToString()).Day.ToString("0#") : "",
+                        TenDanhMucDiaDiemNangCont = drKeHoachVanTai["TenDanhMucDiaDiemNangCont"].ToString(),
+                        NgayNangCont = drKeHoachVanTai["NgayNangCont"].ToString(),
                         IDDanhMucDiaDiemHaCont = drKeHoachVanTai["IDDanhMucDiaDiemHaCont"].ToString(),
-                        //TenDanhMucDiaDiemHaCont = drKeHoachVanTai["TenDanhMucDiaDiemHaCont"].ToString(),
-                        NgayHaCont = (!cenCommon.cenCommon.IsNull(drKeHoachVanTai["NgayHaCont"])) ? Convert.ToDateTime(drKeHoachVanTai["NgayHaCont"].ToString()).Year.ToString("000#") + "-" + Convert.ToDateTime(drKeHoachVanTai["NgayHaCont"].ToString()).Month.ToString("0#") + "-" + Convert.ToDateTime(drKeHoachVanTai["NgayHaCont"].ToString()).Day.ToString("0#") : "",
+                        TenDanhMucDiaDiemHaCont = drKeHoachVanTai["TenDanhMucDiaDiemHaCont"].ToString(),
+                        NgayHaCont = drKeHoachVanTai["NgayHaCont"].ToString(),
 
                         SoLuongCont20 = drKeHoachVanTai["SoLuongCont20"].ToString(),
                         SoCont20 = drKeHoachVanTai["SoCont20"].ToString(),
@@ -339,17 +335,18 @@ namespace everTrucking_Web.Controllers
                         SoLuongContFlatRack = drKeHoachVanTai["SoLuongContFlatRack"].ToString(),
                         SoContFlatRack = drKeHoachVanTai["SoContFlatRack"].ToString(),
                         IDDanhMucDiaDiemDongHang = drKeHoachVanTai["IDDanhMucDiaDiemDongHang"].ToString(),
-                        //TenDanhMucDiaDiemDongHang = drKeHoachVanTai["TenDanhMucDiaDiemDongHang"].ToString(),
+                        TenDanhMucDiaDiemDongHang = drKeHoachVanTai["TenDanhMucDiaDiemDongHang"].ToString(),
                         NgayDongHang = drKeHoachVanTai["NgayDongHang"].ToString(),
                         IDDanhMucDiaDiemTraHang = drKeHoachVanTai["IDDanhMucDiaDiemTraHang"].ToString(),
-                        //TenDanhMucDiaDiemTraHang = drKeHoachVanTai["TenDanhMucDiaDiemTraHang"].ToString(),
+                        TenDanhMucDiaDiemTraHang = drKeHoachVanTai["TenDanhMucDiaDiemTraHang"].ToString(),
                         NgayTraHang = drKeHoachVanTai["NgayTraHang"].ToString(),
                         KhoiLuong = drKeHoachVanTai["KhoiLuong"].ToString(),
                         NguoiGiaoNhan = drKeHoachVanTai["NguoiGiaoNhan"].ToString(),
                         SoDienThoaiGiaoNhan = drKeHoachVanTai["SoDienThoaiGiaoNhan"].ToString(),
                         GhiChu = drKeHoachVanTai["GhiChu"].ToString(),
-                        IDDanhMucNguoiSuDungCreate = drKeHoachVanTai["IDDanhMucNguoiSuDungCreate"].ToString(),
+                        TenDanhMucNguoiSuDungCreate = drKeHoachVanTai["TenDanhMucNguoiSuDungCreate"].ToString(),
                         CreateDate = drKeHoachVanTai["CreateDate"].ToString(),
+                        TenDanhMucNguoiSuDungEdit = drKeHoachVanTai["TenDanhMucNguoiSuDungEdit"].ToString(),
                         EditDate = drKeHoachVanTai["EditDate"].ToString(),
                     });
                 }
@@ -370,6 +367,69 @@ namespace everTrucking_Web.Controllers
                 emp.NgayTraHang = (new DateTime(cenCommon.cenCommon.intParse(emp.NgayTraHang.Substring(6, 4)), cenCommon.cenCommon.intParse(emp.NgayTraHang.Substring(3, 2)), cenCommon.cenCommon.intParse(emp.NgayTraHang.Substring(0, 2)))).ToString();
 
             cenDTO.msgResponse msgResponse = ctKeHoachVanTaiBUS.Update(emp);
+            if (msgResponse.Status == "00")
+            {
+                DataTable dtKeHoachVanTai = ctKeHoachVanTaiBUS.List(DanhMucChungTuBUS.GetID(DanhMucThamSoHeThongBUS.GetGiaTri(cenCommon.ThamSoHeThong.MaThamSoChungTuKeHoachVanTai)), emp.ID);
+                if (dtKeHoachVanTai.Rows.Count > 0)
+                {
+                    foreach (DataRow drKeHoachVanTai in dtKeHoachVanTai.Rows)
+                    {
+                        emp = new ctKeHoachVanTai()
+                        {
+                            ID = drKeHoachVanTai["ID"].ToString(),
+                            IDDanhMucDonVi = drKeHoachVanTai["IDDanhMucDonVi"].ToString(),
+                            IDDanhMucChungTu = drKeHoachVanTai["IDDanhMucChungTu"].ToString(),
+                            IDDanhMucChungTuTrangThai = drKeHoachVanTai["IDDanhMucChungTuTrangThai"].ToString(),
+                            So = drKeHoachVanTai["So"].ToString(),
+                            NgayLap = drKeHoachVanTai["NgayLap"].ToString(),
+                            IDDanhMucSale = drKeHoachVanTai["IDDanhMucSale"].ToString(),
+                            TenDanhMucSale = drKeHoachVanTai["TenDanhMucSale"].ToString(),
+
+                            IDDanhMucKhachHang = drKeHoachVanTai["IDDanhMucKhachHang"].ToString(),
+                            TenDanhMucKhachHang = drKeHoachVanTai["TenDanhMucKhachHang"].ToString(),
+                            LoaiHinh = drKeHoachVanTai["LoaiHinh"].ToString(),
+                            TenLoaiHinh = drKeHoachVanTai["TenLoaiHinh"].ToString(),
+                            LoaiHang = drKeHoachVanTai["LoaiHang"].ToString(),
+                            TenLoaiHang = drKeHoachVanTai["TenLoaiHang"].ToString(),
+                            IDDanhMucHangTau = drKeHoachVanTai["IDDanhMucHangTau"].ToString(),
+                            MaDanhMucHangTau = drKeHoachVanTai["MaDanhMucHangTau"].ToString(),
+                            TenDanhMucHangTau = drKeHoachVanTai["TenDanhMucHangTau"].ToString(),
+                            IDDanhMucDiaDiemNangCont = drKeHoachVanTai["IDDanhMucDiaDiemNangCont"].ToString(),
+                            TenDanhMucDiaDiemNangCont = drKeHoachVanTai["TenDanhMucDiaDiemNangCont"].ToString(),
+                            NgayNangCont = drKeHoachVanTai["NgayNangCont"].ToString(),
+                            IDDanhMucDiaDiemHaCont = drKeHoachVanTai["IDDanhMucDiaDiemHaCont"].ToString(),
+                            TenDanhMucDiaDiemHaCont = drKeHoachVanTai["TenDanhMucDiaDiemHaCont"].ToString(),
+                            NgayHaCont = drKeHoachVanTai["NgayHaCont"].ToString(),
+
+                            SoLuongCont20 = drKeHoachVanTai["SoLuongCont20"].ToString(),
+                            SoCont20 = drKeHoachVanTai["SoCont20"].ToString(),
+                            SoLuongCont40 = drKeHoachVanTai["SoLuongCont40"].ToString(),
+                            SoCont40 = drKeHoachVanTai["SoCont40"].ToString(),
+                            SoLuongCont45 = drKeHoachVanTai["SoLuongCont45"].ToString(),
+                            SoCont45 = drKeHoachVanTai["SoCont45"].ToString(),
+                            SoLuongContOpenTop = drKeHoachVanTai["SoLuongContOpenTop"].ToString(),
+                            SoContOpenTop = drKeHoachVanTai["SoContOpenTop"].ToString(),
+                            SoLuongContFlatRack = drKeHoachVanTai["SoLuongContFlatRack"].ToString(),
+                            SoContFlatRack = drKeHoachVanTai["SoContFlatRack"].ToString(),
+                            IDDanhMucDiaDiemDongHang = drKeHoachVanTai["IDDanhMucDiaDiemDongHang"].ToString(),
+                            TenDanhMucDiaDiemDongHang = drKeHoachVanTai["TenDanhMucDiaDiemDongHang"].ToString(),
+                            NgayDongHang = drKeHoachVanTai["NgayDongHang"].ToString(),
+                            IDDanhMucDiaDiemTraHang = drKeHoachVanTai["IDDanhMucDiaDiemTraHang"].ToString(),
+                            TenDanhMucDiaDiemTraHang = drKeHoachVanTai["TenDanhMucDiaDiemTraHang"].ToString(),
+                            NgayTraHang = drKeHoachVanTai["NgayTraHang"].ToString(),
+                            KhoiLuong = drKeHoachVanTai["KhoiLuong"].ToString(),
+                            NguoiGiaoNhan = drKeHoachVanTai["NguoiGiaoNhan"].ToString(),
+                            SoDienThoaiGiaoNhan = drKeHoachVanTai["SoDienThoaiGiaoNhan"].ToString(),
+                            GhiChu = drKeHoachVanTai["GhiChu"].ToString(),
+                            TenDanhMucNguoiSuDungCreate = drKeHoachVanTai["TenDanhMucNguoiSuDungCreate"].ToString(),
+                            CreateDate = drKeHoachVanTai["CreateDate"].ToString(),
+                            TenDanhMucNguoiSuDungEdit = drKeHoachVanTai["TenDanhMucNguoiSuDungEdit"].ToString(),
+                            EditDate = drKeHoachVanTai["EditDate"].ToString(),
+                        };
+                    }
+                }
+            }
+            msgResponse.Data = Newtonsoft.Json.JsonConvert.SerializeObject(emp);
             return Json(msgResponse, JsonRequestBehavior.AllowGet);
         }
         public JsonResult Add(ctKeHoachVanTai emp)
@@ -387,6 +447,69 @@ namespace everTrucking_Web.Controllers
                 emp.NgayTraHang = (new DateTime(cenCommon.cenCommon.intParse(emp.NgayTraHang.Substring(6, 4)), cenCommon.cenCommon.intParse(emp.NgayTraHang.Substring(3, 2)), cenCommon.cenCommon.intParse(emp.NgayTraHang.Substring(0, 2)))).ToString();
 
             cenDTO.msgResponse msgResponse = ctKeHoachVanTaiBUS.Insert(emp);
+            if (msgResponse.Status == "00")
+            {
+                DataTable dtKeHoachVanTai = ctKeHoachVanTaiBUS.List(DanhMucChungTuBUS.GetID(DanhMucThamSoHeThongBUS.GetGiaTri(cenCommon.ThamSoHeThong.MaThamSoChungTuKeHoachVanTai)), emp.ID);
+                if (dtKeHoachVanTai.Rows.Count > 0)
+                {
+                    foreach (DataRow drKeHoachVanTai in dtKeHoachVanTai.Rows)
+                    {
+                        emp = new ctKeHoachVanTai()
+                        {
+                            ID = drKeHoachVanTai["ID"].ToString(),
+                            IDDanhMucDonVi = drKeHoachVanTai["IDDanhMucDonVi"].ToString(),
+                            IDDanhMucChungTu = drKeHoachVanTai["IDDanhMucChungTu"].ToString(),
+                            IDDanhMucChungTuTrangThai = drKeHoachVanTai["IDDanhMucChungTuTrangThai"].ToString(),
+                            So = drKeHoachVanTai["So"].ToString(),
+                            NgayLap = drKeHoachVanTai["NgayLap"].ToString(),
+                            IDDanhMucSale = drKeHoachVanTai["IDDanhMucSale"].ToString(),
+                            TenDanhMucSale = drKeHoachVanTai["TenDanhMucSale"].ToString(),
+
+                            IDDanhMucKhachHang = drKeHoachVanTai["IDDanhMucKhachHang"].ToString(),
+                            TenDanhMucKhachHang = drKeHoachVanTai["TenDanhMucKhachHang"].ToString(),
+                            LoaiHinh = drKeHoachVanTai["LoaiHinh"].ToString(),
+                            TenLoaiHinh = drKeHoachVanTai["TenLoaiHinh"].ToString(),
+                            LoaiHang = drKeHoachVanTai["LoaiHang"].ToString(),
+                            TenLoaiHang = drKeHoachVanTai["TenLoaiHang"].ToString(),
+                            IDDanhMucHangTau = drKeHoachVanTai["IDDanhMucHangTau"].ToString(),
+                            MaDanhMucHangTau = drKeHoachVanTai["MaDanhMucHangTau"].ToString(),
+                            TenDanhMucHangTau = drKeHoachVanTai["TenDanhMucHangTau"].ToString(),
+                            IDDanhMucDiaDiemNangCont = drKeHoachVanTai["IDDanhMucDiaDiemNangCont"].ToString(),
+                            TenDanhMucDiaDiemNangCont = drKeHoachVanTai["TenDanhMucDiaDiemNangCont"].ToString(),
+                            NgayNangCont = drKeHoachVanTai["NgayNangCont"].ToString(),
+                            IDDanhMucDiaDiemHaCont = drKeHoachVanTai["IDDanhMucDiaDiemHaCont"].ToString(),
+                            TenDanhMucDiaDiemHaCont = drKeHoachVanTai["TenDanhMucDiaDiemHaCont"].ToString(),
+                            NgayHaCont = drKeHoachVanTai["NgayHaCont"].ToString(),
+
+                            SoLuongCont20 = drKeHoachVanTai["SoLuongCont20"].ToString(),
+                            SoCont20 = drKeHoachVanTai["SoCont20"].ToString(),
+                            SoLuongCont40 = drKeHoachVanTai["SoLuongCont40"].ToString(),
+                            SoCont40 = drKeHoachVanTai["SoCont40"].ToString(),
+                            SoLuongCont45 = drKeHoachVanTai["SoLuongCont45"].ToString(),
+                            SoCont45 = drKeHoachVanTai["SoCont45"].ToString(),
+                            SoLuongContOpenTop = drKeHoachVanTai["SoLuongContOpenTop"].ToString(),
+                            SoContOpenTop = drKeHoachVanTai["SoContOpenTop"].ToString(),
+                            SoLuongContFlatRack = drKeHoachVanTai["SoLuongContFlatRack"].ToString(),
+                            SoContFlatRack = drKeHoachVanTai["SoContFlatRack"].ToString(),
+                            IDDanhMucDiaDiemDongHang = drKeHoachVanTai["IDDanhMucDiaDiemDongHang"].ToString(),
+                            TenDanhMucDiaDiemDongHang = drKeHoachVanTai["TenDanhMucDiaDiemDongHang"].ToString(),
+                            NgayDongHang = drKeHoachVanTai["NgayDongHang"].ToString(),
+                            IDDanhMucDiaDiemTraHang = drKeHoachVanTai["IDDanhMucDiaDiemTraHang"].ToString(),
+                            TenDanhMucDiaDiemTraHang = drKeHoachVanTai["TenDanhMucDiaDiemTraHang"].ToString(),
+                            NgayTraHang = drKeHoachVanTai["NgayTraHang"].ToString(),
+                            KhoiLuong = drKeHoachVanTai["KhoiLuong"].ToString(),
+                            NguoiGiaoNhan = drKeHoachVanTai["NguoiGiaoNhan"].ToString(),
+                            SoDienThoaiGiaoNhan = drKeHoachVanTai["SoDienThoaiGiaoNhan"].ToString(),
+                            GhiChu = drKeHoachVanTai["GhiChu"].ToString(),
+                            TenDanhMucNguoiSuDungCreate = drKeHoachVanTai["TenDanhMucNguoiSuDungCreate"].ToString(),
+                            CreateDate = drKeHoachVanTai["CreateDate"].ToString(),
+                            TenDanhMucNguoiSuDungEdit = drKeHoachVanTai["TenDanhMucNguoiSuDungEdit"].ToString(),
+                            EditDate = drKeHoachVanTai["EditDate"].ToString(),
+                        };
+                    }
+                }
+            }
+            msgResponse.Data = Newtonsoft.Json.JsonConvert.SerializeObject(emp);
             return Json(msgResponse, JsonRequestBehavior.AllowGet);
         }
         public JsonResult Delete(string ID)
