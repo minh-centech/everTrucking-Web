@@ -21,13 +21,13 @@
         <div class="col-sm-6">
             <label>Từ ngày</label>
             <div class="input-group date" id="TuNgay">
-            <input class="form-control ngay-vn" placeholder="dd/mm/yyyy" id="txtTuNgay"/>
-            <div class="input-group-append">
-                <span class="input-group-text">
-                    <i class="fa fa-calendar"></i>
-                </span>
+                <input class="form-control ngay-vn" placeholder="dd/mm/yyyy" id="txtTuNgay" />
+                <div class="input-group-append">
+                    <span class="input-group-text">
+                        <i class="fa fa-calendar"></i>
+                    </span>
+                </div>
             </div>
-        </div>
         </div>
         <div class="col-sm-6">
             <label>Đến ngày</label>
@@ -61,12 +61,12 @@
     </div>
     <button type="button" class="btn btn-default btn-success mb-3" style="background: #4e73df" onclick="loadData()">Tìm kiếm</button>
     <a type="button" class="btn btn-default btn-success mb-3" style="background: #4e73df" href="/KeHoachVanTaiTongHop/DownloadExcelDocument">Xuất Excel</a>
-    <button type="button" onclick="clearTextBox()" class="btn btn-primary mb-3" data-toggle="modal" data-target="#myModal3" data-backdrop="static" data-keyboard="false"> <i class="fa fa-plus"></i> Thêm mới</button>
+    <button type="button" onclick="clearTextBox()" class="btn btn-primary mb-3" data-toggle="modal" data-target="#frmKeHoachVanTaiUpdate" data-backdrop="static" data-keyboard="false"> <i class="fa fa-plus"></i> Thêm mới</button>
 </div>
 
 
 <div class="table-responsive">
-    <table class="table table-bordered" id="table3">
+    <table class="table table-bordered" id="tblKeHoachVanTai">
         <thead>
             <tr>
                 <th>Số</th>
@@ -92,18 +92,15 @@
     </table>
 </div>
 
-<div class="modal fade" id="myModal3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal fade" id="frmKeHoachVanTaiUpdate" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title">THÊM MỚI KẾ HOẠCH VẬN TẢI</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-
             </div>
             <div class="modal-body">
                 <div class="row">
-
-
                     <div class="col-12">
                         <div class="form-group">
                             <input type="hidden" id="ID" name="ID" class="form-control">
@@ -137,13 +134,13 @@
                     <div class="col-6">
                         <div class="form-group">
                             <label for="inputGroupSelect01">Loại hàng</label>
-                            <select class="form-control selectpicker"  id="LoaiHang">
+                            <select class="form-control selectpicker" id="LoaiHang">
                                 <option value=1 selected="selected">Hàng container</option>
                                 <option value=2>Hàng rời</option>
                             </select>
                         </div>
                     </div>
-                    <div class="col-6">
+                    <div class="col-12">
                         <div class="form-group">
                             <label for="exampleFormControlInput1">Khách hàng</label>
                             <div class="input-group mb-3">
@@ -154,14 +151,14 @@
                                         <option value=@item.ID>@item.Ten</option>
                                     }
                                 </select>
-                                <div class="input-group-prepend">
+                                @*<div class="input-group-prepend">
                                     <span style="cursor:pointer" class="show input-group-text" id="basic-addon1"><i class=" fa fa-search"></i></span>
-                                </div>
+                                </div>*@
                             </div>
                         </div>
                     </div>
 
-                    <div class="col-6">
+                    <div class="col-12">
                         <div class="form-group">
                             <label for="exampleFormControlInput1">Hãng tàu</label>
                             <select data-live-search="true" class="form-control selectpicker" name="IDDanhMucHangTau" id="IDDanhMucHangTau">
@@ -420,8 +417,8 @@
             LoaiHang: $('#txtLoaiHang').val()
         };
         //console.log(JSON.stringify(data));
-        if ($.fn.dataTable.isDataTable('#table3')) {
-            $('#table3').dataTable().fnDestroy();
+        if ($.fn.dataTable.isDataTable('#tblKeHoachVanTai')) {
+            $('#tblKeHoachVanTai').dataTable().fnDestroy();
         }
         $.ajax({
             url: "@Url.Action("List","KeHoachVanTaiTongHop")",
@@ -433,28 +430,28 @@
             success: function (result) {
                 var html = '';
                 $.each(result, function (key, item) {
-                    html += '<tr>';
-                    html += '<td>' + item.So + '</td>';
-                    html += '<td class="ngaylap">' + item.NgayLap + '</td>';
-                    html += '<td >' + item.TenLoaiHinh + '</td>';
-                    html += '<td >' + item.TenLoaiHang + '</td>';
-                    html += '<td >' + item.TenDanhMucKhachHang + '</td>';
-                    html += '<td >' + item.TenDanhMucHangTau + '</td>';
-                    html += '<td >' + item.TenDanhMucDiaDiemNangCont + '</td>';
-                    html += '<td >' + item.NgayNangCont + '</td>';
-                    html += '<td >' + item.TenDanhMucDiaDiemHaCont + '</td>';
-                    html += '<td >' + item.NgayHaCont + '</td>';
-                    html += '<td >' + item.TenDanhMucDiaDiemDongHang + '</td>';
-                    html += '<td >' + item.NgayDongHang + '</td>';
-                    html += '<td >' + item.TenDanhMucDiaDiemTraHang + '</td>';
-                    html += '<td >' + item.NgayTraHang + '</td>';
-                    html += '<td >' + item.TenDanhMucNguoiSuDungCreate + '</td>';
+                    html += '<tr id="IDKeHoach_' + item.ID + '">';
+                    html += '<td id="SoKeHoach_' + item.ID + '"><a href="#" onclick="return getbyID(' + item.ID + ')">' + item.So + '</td>';
+                    html += '<td id="NgayLapKeHoach_' + item.ID + '"class="ngaylap">' + item.NgayLap + '</td>';
+                    html += '<td id="LoaiHinhKeHoach_' + item.ID + '">' + item.TenLoaiHinh + '</td>';
+                    html += '<td id="LoaiHangKeHoach_' + item.ID + '">' + item.TenLoaiHang + '</td>';
+                    html += '<td id="TenDanhMucKhachHangKeHoach_' + item.ID + '">' + item.TenDanhMucKhachHang + '</td>';
+                    html += '<td id="TenDanhMucHangTauKeHoach_' + item.ID + '">' + item.TenDanhMucHangTau + '</td>';
+                    html += '<td id="TenDanhMucDiaDiemNangContKeHoach_' + item.ID + '">' + item.TenDanhMucDiaDiemNangCont + '</td>';
+                    html += '<td id="NgayNangContKeHoach_' + item.ID + '">' + item.NgayNangCont + '</td>';
+                    html += '<td id="TenDanhMucDiaDiemHaContKeHoach_' + item.ID + '">' + item.TenDanhMucDiaDiemHaCont + '</td>';
+                    html += '<td id="NgayHaContKeHoach_' + item.ID + '">' + item.NgayHaCont + '</td>';
+                    html += '<td id="TenDanhMucDiaDiemDongHangKeHoach_' + item.ID + '">' + item.TenDanhMucDiaDiemDongHang + '</td>';
+                    html += '<td id="NgayDongHangKeHoach_' + item.ID + '">' + item.NgayDongHang + '</td>';
+                    html += '<td id="TenDanhMucDiaDiemTraHangKeHoach_' + item.ID + '">' + item.TenDanhMucDiaDiemTraHang + '</td>';
+                    html += '<td id="NgayTraHangKeHoach_' + item.ID + '">' + item.NgayTraHang + '</td>';
+                    html += '<td id="TenDanhMucNguoiSuDungCreateKeHoach_' + item.ID + '">' + item.TenDanhMucNguoiSuDungCreate + '</td>';
                     html += '<td><a href="#" onclick="return getbyID(' + item.ID + ')"><i class="fa fa-pen fa-1x mr-1"></i></a> | <a href="#" onclick="Delele(' + item.ID + ')"><i class="fa fa-trash  fa-1x ml-1"></i></a></td>';
                     html += '</tr>';
 
                 });
                 $('.tbody').html(html);
-                $('#table3').DataTable();
+                $('#tblKeHoachVanTai').DataTable();
             },
             error: function (errorMesage) {
                 alert(errorMesage.responseText);
@@ -465,9 +462,9 @@
     }
     function Add() {
         var empObj = {
-        // ID: $('#ID').val(),
-        //IDDanhMucDonVi: $('#IDDanhMucDonVi').val(),
-        // IDDanhMucLoaiDoiTuong: $('#IDDanhMucLoaiDoiTuong').val(),
+            //ID: $('#ID').val(),
+            //IDDanhMucDonVi: $('#IDDanhMucDonVi').val(),
+            //IDDanhMucLoaiDoiTuong: $('#IDDanhMucLoaiDoiTuong').val(),
             NgayLap: $('#NgayLap').val(),
             IDDanhMucSale: $('#IDDanhMucSale').val(),
             IDDanhMucKhachHang: $('#IDDanhMucKhachHang').val(),
@@ -507,9 +504,38 @@
             contentType: "application/json;charset=utf-8",
             dataType: "json",
             success: function (result) {
-                loadData();
-                alert(result.Message);
-                $('#myModal3').modal('hide');
+                if (result.Status == '00') {
+
+                    var added = JSON.parse(result.Data);
+
+                    var html = '';
+                    html += '<tr id="IDKeHoach_' + added.ID + '">';
+                    html += '<td id="SoKeHoach_' + added.ID + '"><a href="#" onclick="return getbyID(' + added.ID + ')">' + added.So + '</td>';
+                    html += '<td id="NgayLapKeHoach_' + added.ID + '"class="ngaylap">' + added.NgayLap + '</td>';
+                    html += '<td id="LoaiHinhKeHoach_' + added.ID + '">' + added.TenLoaiHinh + '</td>';
+                    html += '<td id="LoaiHangKeHoach_' + added.ID + '">' + added.TenLoaiHang + '</td>';
+                    html += '<td id="TenDanhMucKhachHangKeHoach_' + added.ID + '">' + added.TenDanhMucKhachHang + '</td>';
+                    html += '<td id="TenDanhMucHangTauKeHoach_' + added.ID + '">' + added.TenDanhMucHangTau + '</td>';
+                    html += '<td id="TenDanhMucDiaDiemNangContKeHoach_' + added.ID + '">' + added.TenDanhMucDiaDiemNangCont + '</td>';
+                    html += '<td id="NgayNangContKeHoach_' + added.ID + '">' + added.NgayNangCont + '</td>';
+                    html += '<td id="TenDanhMucDiaDiemHaContKeHoach_' + added.ID + '">' + added.TenDanhMucDiaDiemHaCont + '</td>';
+                    html += '<td id="NgayHaContKeHoach_' + added.ID + '">' + added.NgayHaCont + '</td>';
+                    html += '<td id="TenDanhMucDiaDiemDongHangKeHoach_' + added.ID + '">' + added.TenDanhMucDiaDiemDongHang + '</td>';
+                    html += '<td id="NgayDongHangKeHoach_' + added.ID + '">' + added.NgayDongHang + '</td>';
+                    html += '<td id="TenDanhMucDiaDiemTraHangKeHoach_' + added.ID + '">' + added.TenDanhMucDiaDiemTraHang + '</td>';
+                    html += '<td id="NgayTraHangKeHoach_' + added.ID + '">' + added.NgayTraHang + '</td>';
+                    html += '<td id="TenDanhMucNguoiSuDungCreateKeHoach_' + added.ID + '">' + added.TenDanhMucNguoiSuDungCreate + '</td>';
+                    html += '<td><a href="#" onclick="return getbyID(' + added.ID + ')"><i class="fa fa-pen fa-1x mr-1"></i></a> | <a href="#" onclick="Delele(' + added.ID + ')"><i class="fa fa-trash  fa-1x ml-1"></i></a></td>';
+                    html += '</tr>';
+
+                    var dataTable = $('#tblKeHoachVanTai').DataTable();
+                    dataTable.row.add($(html)).draw(true);
+                    clearTextBox();
+                    $('#frmKeHoachVanTaiUpdate').modal('hide');
+                }
+                else {
+                    alert('Lỗi thêm: ' + result.Message);
+                }
              },
             error: function (errormessage) {
                 alert(errormessage.responseText);
@@ -545,10 +571,7 @@
                 $('#IDDanhMucHangTau').selectpicker('refresh');
                 $('#IDDanhMucDiaDiemNangCont').val(result.IDDanhMucDiaDiemNangCont);
                 $('#IDDanhMucDiaDiemNangCont').selectpicker('refresh');
-
                 $("#NgayNangCont").val(result.NgayNangCont);
-               // $("#NgayNangCont").datepicker('refresh');
-
                 $('#IDDanhMucDiaDiemHaCont').val(result.IDDanhMucDiaDiemHaCont);
                 $('#IDDanhMucDiaDiemHaCont').selectpicker('refresh');
                 $('#NgayHaCont').val(result.NgayHaCont);
@@ -573,11 +596,11 @@
                 $('#SoDienThoaiGiaoNhan').val(result.SoDienThoaiGiaoNhan);
                 $('#GhiChu').val(result.GhiChu);
 
-                $('#myModal3').modal('show');
+                $('#frmKeHoachVanTaiUpdate').modal('show');
                 $('#btnUpdate').show();
                 $('#btnAdd').hide();
 
-                console.log("Ngày nâng:" + result.NgayNangCont);
+                //console.log("Ngày nâng:" + result.NgayNangCont);
             },
             error: function (errormessage) {
                 alert(errormessage.responseText);
@@ -632,15 +655,42 @@
                 contentType: "application/json;charset=utf-8",
                 dataType: "json",
                 success: function (result) {
-                    loadData();
-                    alert(result.Message);
-                    $('#myModal3').modal('hide');
-                    clearTextBox();
+                    if (result.Status == '00') {
+
+                        ID: $('#ID').val("");
+                        IDDanhMucDonVi: $('#IDDanhMucDonVi').val("");
+                        IDDanhMucLoaiDoiTuong: $('#IDDanhMucLoaiDoiTuong').val("");
+                        Ma: $('#txtMa').val("");
+                        Ten: $('#txtTen').val("");
+                        IDDanhMucNguoiSuDungCreate: $('#IDDanhMucNguoiSuDungCreate').val("");
+                        IDDanhMucNguoiSuDungEdit: $('#IDDanhMucNguoiSuDungEdit').val("");
+                        EditDate: $('#Ngaysua').val("");
+
+                        var updateObj = JSON.parse(result.Data);
+
+                        $('#LoaiHinhKeHoach_' + updateObj.ID).html(updateObj.TenLoaiHinh);
+                        $('#LoaiHangKeHoach_' + updateObj.ID).html(updateObj.TenLoaiHang);
+                        $('#TenDanhMucKhachHangKeHoach_' + updateObj.ID).html(updateObj.TenDanhMucKhachHang);
+                        $('#TenDanhMucHangTauKeHoach_' + updateObj.ID).html(updateObj.TenDanhMucHangTau);
+                        $('#TenDanhMucDiaDiemNangContKeHoach_' + updateObj.ID).html(updateObj.TenDanhMucDiaDiemNangCont);
+                        $('#NgayNangContKeHoach_' + updateObj.ID).html(updateObj.NgayNangCont);
+                        $('#TenDanhMucDiaDiemHaContKeHoach_' + updateObj.ID).html(updateObj.TenDanhMucDiaDiemHaCont);
+                        $('#NgayHaContKeHoach_' + updateObj.ID).html(updateObj.NgayHaCont);
+                        $('#TenDanhMucDiaDiemDongHangKeHoach_' + updateObj.ID).html(updateObj.TenDanhMucDiaDiemDongHang);
+                        $('#NgayDongHangKeHoach_' + updateObj.ID).html(updateObj.NgayDongHang);
+                        $('#TenDanhMucDiaDiemTraHangKeHoach_' + updateObj.ID).html(updateObj.TenDanhMucDiaDiemTraHang);
+                        $('#NgayTraHangKeHoach_' + updateObj.ID).html(updateObj.NgayTraHang);
+                        clearTextBox();
+                        $('#frmKeHoachVanTaiUpdate').modal('hide');
+                    }
+                    else {
+                        alert('Lỗi sửa: ' + result.Message);
+                    }
                 },
                 error: function (errormessage) {
                     alert(errormessage.responseText);
                 }
-            });
+        });
     }
 
     function Delele(ID) {
@@ -652,9 +702,14 @@
                 contentType: "application/json;charset=UTF-8",
                 dataType: "json",
                 success: function (result) {
-
-                    loadData();
-                    alert(result.Message);
+                    if (result.Status == '00') {
+                        var dataTable = $('#tblKeHoachVanTai').DataTable();
+                        dataTable.$('#IDKeHoach_' + ID).addClass('selected');
+                        dataTable.row('.selected').remove().draw(false);
+                    }
+                    else {
+                        alert('Lỗi xóa: ' + result.Message);
+                    }
                 },
                 error: function (errormessage) {
                     alert(errormessage.responseText);
@@ -719,15 +774,15 @@
         var mm = ("0" + (today.getMonth() + 1)).slice(-2);
         var yyyy = today.getFullYear();
         today = yyyy + '-' + mm + '-' + dd;
-        console.log(today)
-      
+        //console.log(today)
+
         $("#NgayNangCont").val(today);
         //$("#NgayNangCont").datepicker('refresh');
         $("#NgayHaCont").val(today);
         //$("#NgayHaCont").datepicker('refresh');
         $("#NgayDongHang").val(today);
         $("#NgayTraHang").val(today);
-  
+
 
     }
 </script>

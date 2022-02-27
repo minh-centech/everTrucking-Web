@@ -27,63 +27,6 @@ namespace everTrucking_Web.Controllers
             if (Session == null)
                 return RedirectToAction("Login", "DanhMucNguoiSuDung");
 
-            DataTable dtKeHoachVanTai = ctKeHoachVanTaiBUS.ListDisplay(DanhMucChungTuBUS.GetID(DanhMucThamSoHeThongBUS.GetGiaTri(cenCommon.ThamSoHeThong.MaThamSoChungTuKeHoachVanTai)), DateTime.Now, DateTime.Now, null, "2", "1", null);
-            List<ctKeHoachVanTai> listKeHoachVanTai = new List<ctKeHoachVanTai>();
-            foreach (DataRow drKeHoachVanTai in dtKeHoachVanTai.Rows)
-            {
-                listKeHoachVanTai.Add(new ctKeHoachVanTai()
-                {
-                    ID = drKeHoachVanTai["ID"].ToString(),
-                    IDDanhMucDonVi = drKeHoachVanTai["IDDanhMucDonVi"].ToString(),
-                    IDDanhMucChungTu = drKeHoachVanTai["IDDanhMucChungTu"].ToString(),
-                    IDDanhMucChungTuTrangThai = drKeHoachVanTai["IDDanhMucChungTuTrangThai"].ToString(),
-                    So = drKeHoachVanTai["So"].ToString(),
-                    NgayLap = drKeHoachVanTai["NgayLap"].ToString(),
-                    IDDanhMucSale = drKeHoachVanTai["IDDanhMucSale"].ToString(),
-                    TenDanhMucSale = drKeHoachVanTai["TenDanhMucSale"].ToString(),
-
-                    IDDanhMucKhachHang = drKeHoachVanTai["IDDanhMucKhachHang"].ToString(),
-                    TenDanhMucKhachHang = drKeHoachVanTai["TenDanhMucKhachHang"].ToString(),
-                    LoaiHinh = drKeHoachVanTai["LoaiHinh"].ToString(),
-                    TenLoaiHinh = drKeHoachVanTai["TenLoaiHinh"].ToString(),
-                    LoaiHang = drKeHoachVanTai["LoaiHang"].ToString(),
-                    TenLoaiHang = drKeHoachVanTai["TenLoaiHang"].ToString(),
-                    IDDanhMucHangTau = drKeHoachVanTai["IDDanhMucHangTau"].ToString(),
-                    MaDanhMucHangTau = drKeHoachVanTai["MaDanhMucHangTau"].ToString(),
-                    TenDanhMucHangTau = drKeHoachVanTai["TenDanhMucHangTau"].ToString(),
-                    IDDanhMucDiaDiemNangCont = drKeHoachVanTai["IDDanhMucDiaDiemNangCont"].ToString(),
-                    TenDanhMucDiaDiemNangCont = drKeHoachVanTai["TenDanhMucDiaDiemNangCont"].ToString(),
-                    NgayNangCont = drKeHoachVanTai["NgayNangCont"].ToString(),
-                    IDDanhMucDiaDiemHaCont = drKeHoachVanTai["IDDanhMucDiaDiemHaCont"].ToString(),
-                    TenDanhMucDiaDiemHaCont = drKeHoachVanTai["TenDanhMucDiaDiemHaCont"].ToString(),
-                    NgayHaCont = drKeHoachVanTai["NgayHaCont"].ToString(),
-
-                    SoLuongCont20 = drKeHoachVanTai["SoLuongCont20"].ToString(),
-                    SoCont20 = drKeHoachVanTai["SoCont20"].ToString(),
-                    SoLuongCont40 = drKeHoachVanTai["SoLuongCont40"].ToString(),
-                    SoCont40 = drKeHoachVanTai["SoCont40"].ToString(),
-                    SoLuongCont45 = drKeHoachVanTai["SoLuongCont45"].ToString(),
-                    SoCont45 = drKeHoachVanTai["SoCont45"].ToString(),
-                    SoLuongContOpenTop = drKeHoachVanTai["SoLuongContOpenTop"].ToString(),
-                    SoContOpenTop = drKeHoachVanTai["SoContOpenTop"].ToString(),
-                    SoLuongContFlatRack = drKeHoachVanTai["SoLuongContFlatRack"].ToString(),
-                    SoContFlatRack = drKeHoachVanTai["SoContFlatRack"].ToString(),
-                    IDDanhMucDiaDiemDongHang = drKeHoachVanTai["IDDanhMucDiaDiemDongHang"].ToString(),
-                    TenDanhMucDiaDiemDongHang = drKeHoachVanTai["TenDanhMucDiaDiemDongHang"].ToString(),
-                    NgayDongHang = drKeHoachVanTai["NgayDongHang"].ToString(),
-                    IDDanhMucDiaDiemTraHang = drKeHoachVanTai["IDDanhMucDiaDiemTraHang"].ToString(),
-                    TenDanhMucDiaDiemTraHang = drKeHoachVanTai["TenDanhMucDiaDiemTraHang"].ToString(),
-                    NgayTraHang = drKeHoachVanTai["NgayTraHang"].ToString(),
-                    KhoiLuong = drKeHoachVanTai["KhoiLuong"].ToString(),
-                    NguoiGiaoNhan = drKeHoachVanTai["NguoiGiaoNhan"].ToString(),
-                    SoDienThoaiGiaoNhan = drKeHoachVanTai["SoDienThoaiGiaoNhan"].ToString(),
-                    GhiChu = drKeHoachVanTai["GhiChu"].ToString(),
-                    TenDanhMucNguoiSuDungCreate = drKeHoachVanTai["TenDanhMucNguoiSuDungCreate"].ToString(),
-                    CreateDate = drKeHoachVanTai["CreateDate"].ToString(),
-                    TenDanhMucNguoiSuDungEdit = drKeHoachVanTai["TenDanhMucNguoiSuDungEdit"].ToString(),
-                    EditDate = drKeHoachVanTai["EditDate"].ToString(),
-                });
-            }
 
             DataTable dtDanhMucSale = DanhMucDoiTuongBUS.List(null, DanhMucLoaiDoiTuongBUS.GetID(DanhMucThamSoHeThongBUS.GetGiaTri(cenCommon.ThamSoHeThong.MaThamSoLoaiDoiTuongNhanSu)), null);
             ViewBag.IDDanhMucSale = string.Empty;
@@ -162,7 +105,7 @@ namespace everTrucking_Web.Controllers
             ViewBag.listDiaDiemNangHaCont = listDiaDiemNangHaCont;
             ViewBag.listDiaDiemDongTraHang = listDiaDiemDongTraHang;
 
-            return View(listKeHoachVanTai);
+            return View();
         }
         public JsonResult List(string startDate, string endDate, string LoaiHinh, string LoaiHang)
         {
@@ -180,112 +123,59 @@ namespace everTrucking_Web.Controllers
             DataTable dtKeHoachVanTai = ctKeHoachVanTaiBUS.ListDisplay(DanhMucChungTuBUS.GetID(DanhMucThamSoHeThongBUS.GetGiaTri(cenCommon.ThamSoHeThong.MaThamSoChungTuKeHoachVanTai)), startDate, endDate, null, "2", "1", null);
             List<ctKeHoachVanTai> listKeHoachVanTai = new List<ctKeHoachVanTai>();
 
-            if (dtKeHoachVanTai.Rows.Count > 0)
-            {
-                foreach (DataRow drKeHoachVanTai in dtKeHoachVanTai.Rows)
-                {
-                    listKeHoachVanTai.Add(new ctKeHoachVanTai()
-                    {
-                        ID = drKeHoachVanTai["ID"].ToString(),
-                        IDDanhMucDonVi = drKeHoachVanTai["IDDanhMucDonVi"].ToString(),
-                        IDDanhMucChungTu = drKeHoachVanTai["IDDanhMucChungTu"].ToString(),
-                        IDDanhMucChungTuTrangThai = drKeHoachVanTai["IDDanhMucChungTuTrangThai"].ToString(),
-                        So = drKeHoachVanTai["So"].ToString(),
-                        NgayLap = drKeHoachVanTai["NgayLap"].ToString(),
-                        IDDanhMucSale = drKeHoachVanTai["IDDanhMucSale"].ToString(),
-                        TenDanhMucSale = drKeHoachVanTai["TenDanhMucSale"].ToString(),
-
-                        IDDanhMucKhachHang = drKeHoachVanTai["IDDanhMucKhachHang"].ToString(),
-                        TenDanhMucKhachHang = drKeHoachVanTai["TenDanhMucKhachHang"].ToString(),
-                        LoaiHinh = drKeHoachVanTai["LoaiHinh"].ToString(),
-                        TenLoaiHinh = drKeHoachVanTai["TenLoaiHinh"].ToString(),
-                        LoaiHang = drKeHoachVanTai["LoaiHang"].ToString(),
-                        TenLoaiHang = drKeHoachVanTai["TenLoaiHang"].ToString(),
-                        IDDanhMucHangTau = drKeHoachVanTai["IDDanhMucHangTau"].ToString(),
-                        MaDanhMucHangTau = drKeHoachVanTai["MaDanhMucHangTau"].ToString(),
-                        TenDanhMucHangTau = drKeHoachVanTai["TenDanhMucHangTau"].ToString(),
-                        IDDanhMucDiaDiemNangCont = drKeHoachVanTai["IDDanhMucDiaDiemNangCont"].ToString(),
-                        TenDanhMucDiaDiemNangCont = drKeHoachVanTai["TenDanhMucDiaDiemNangCont"].ToString(),
-                        NgayNangCont = drKeHoachVanTai["NgayNangCont"].ToString(),
-                        IDDanhMucDiaDiemHaCont = drKeHoachVanTai["IDDanhMucDiaDiemHaCont"].ToString(),
-                        TenDanhMucDiaDiemHaCont = drKeHoachVanTai["TenDanhMucDiaDiemHaCont"].ToString(),
-                        NgayHaCont = drKeHoachVanTai["NgayHaCont"].ToString(),
-
-                        SoLuongCont20 = drKeHoachVanTai["SoLuongCont20"].ToString(),
-                        SoCont20 = drKeHoachVanTai["SoCont20"].ToString(),
-                        SoLuongCont40 = drKeHoachVanTai["SoLuongCont40"].ToString(),
-                        SoCont40 = drKeHoachVanTai["SoCont40"].ToString(),
-                        SoLuongCont45 = drKeHoachVanTai["SoLuongCont45"].ToString(),
-                        SoCont45 = drKeHoachVanTai["SoCont45"].ToString(),
-                        SoLuongContOpenTop = drKeHoachVanTai["SoLuongContOpenTop"].ToString(),
-                        SoContOpenTop = drKeHoachVanTai["SoContOpenTop"].ToString(),
-                        SoLuongContFlatRack = drKeHoachVanTai["SoLuongContFlatRack"].ToString(),
-                        SoContFlatRack = drKeHoachVanTai["SoContFlatRack"].ToString(),
-                        IDDanhMucDiaDiemDongHang = drKeHoachVanTai["IDDanhMucDiaDiemDongHang"].ToString(),
-                        TenDanhMucDiaDiemDongHang = drKeHoachVanTai["TenDanhMucDiaDiemDongHang"].ToString(),
-                        NgayDongHang = drKeHoachVanTai["NgayDongHang"].ToString(),
-                        IDDanhMucDiaDiemTraHang = drKeHoachVanTai["IDDanhMucDiaDiemTraHang"].ToString(),
-                        TenDanhMucDiaDiemTraHang = drKeHoachVanTai["TenDanhMucDiaDiemTraHang"].ToString(),
-                        NgayTraHang = drKeHoachVanTai["NgayTraHang"].ToString(),
-                        KhoiLuong = drKeHoachVanTai["KhoiLuong"].ToString(),
-                        NguoiGiaoNhan = drKeHoachVanTai["NguoiGiaoNhan"].ToString(),
-                        SoDienThoaiGiaoNhan = drKeHoachVanTai["SoDienThoaiGiaoNhan"].ToString(),
-                        GhiChu = drKeHoachVanTai["GhiChu"].ToString(),
-                        TenDanhMucNguoiSuDungCreate = drKeHoachVanTai["TenDanhMucNguoiSuDungCreate"].ToString(),
-                        CreateDate = drKeHoachVanTai["CreateDate"].ToString(),
-                        TenDanhMucNguoiSuDungEdit = drKeHoachVanTai["TenDanhMucNguoiSuDungEdit"].ToString(),
-                        EditDate = drKeHoachVanTai["EditDate"].ToString(),
-                    });
-                }
-            }
-            else
+            foreach (DataRow drKeHoachVanTai in dtKeHoachVanTai.Rows)
             {
                 listKeHoachVanTai.Add(new ctKeHoachVanTai()
                 {
-                    ID = string.Empty,
-                    IDDanhMucDonVi = string.Empty,
-                    IDDanhMucChungTu = string.Empty,
-                    IDDanhMucChungTuTrangThai = string.Empty,
-                    So = string.Empty,
-                    NgayLap = string.Empty,
-                    IDDanhMucSale = string.Empty,
+                    ID = drKeHoachVanTai["ID"].ToString(),
+                    IDDanhMucDonVi = drKeHoachVanTai["IDDanhMucDonVi"].ToString(),
+                    IDDanhMucChungTu = drKeHoachVanTai["IDDanhMucChungTu"].ToString(),
+                    IDDanhMucChungTuTrangThai = drKeHoachVanTai["IDDanhMucChungTuTrangThai"].ToString(),
+                    So = drKeHoachVanTai["So"].ToString(),
+                    NgayLap = drKeHoachVanTai["NgayLap"].ToString(),
+                    IDDanhMucSale = drKeHoachVanTai["IDDanhMucSale"].ToString(),
+                    TenDanhMucSale = drKeHoachVanTai["TenDanhMucSale"].ToString(),
 
-                    IDDanhMucKhachHang = string.Empty,
+                    IDDanhMucKhachHang = drKeHoachVanTai["IDDanhMucKhachHang"].ToString(),
+                    TenDanhMucKhachHang = drKeHoachVanTai["TenDanhMucKhachHang"].ToString(),
+                    LoaiHinh = drKeHoachVanTai["LoaiHinh"].ToString(),
+                    TenLoaiHinh = drKeHoachVanTai["TenLoaiHinh"].ToString(),
+                    LoaiHang = drKeHoachVanTai["LoaiHang"].ToString(),
+                    TenLoaiHang = drKeHoachVanTai["TenLoaiHang"].ToString(),
+                    IDDanhMucHangTau = drKeHoachVanTai["IDDanhMucHangTau"].ToString(),
+                    MaDanhMucHangTau = drKeHoachVanTai["MaDanhMucHangTau"].ToString(),
+                    TenDanhMucHangTau = drKeHoachVanTai["TenDanhMucHangTau"].ToString(),
+                    IDDanhMucDiaDiemNangCont = drKeHoachVanTai["IDDanhMucDiaDiemNangCont"].ToString(),
+                    TenDanhMucDiaDiemNangCont = drKeHoachVanTai["TenDanhMucDiaDiemNangCont"].ToString(),
+                    NgayNangCont = drKeHoachVanTai["NgayNangCont"].ToString(),
+                    IDDanhMucDiaDiemHaCont = drKeHoachVanTai["IDDanhMucDiaDiemHaCont"].ToString(),
+                    TenDanhMucDiaDiemHaCont = drKeHoachVanTai["TenDanhMucDiaDiemHaCont"].ToString(),
+                    NgayHaCont = drKeHoachVanTai["NgayHaCont"].ToString(),
 
-                    LoaiHinh = string.Empty,
-
-                    LoaiHang = string.Empty,
-
-                    IDDanhMucHangTau = string.Empty,
-
-                    IDDanhMucDiaDiemNangCont = string.Empty,
-
-                    NgayNangCont = string.Empty,
-                    IDDanhMucDiaDiemHaCont = string.Empty,
-
-                    NgayHaCont = string.Empty,
-                     
-                    SoLuongCont20 = string.Empty,
-                    SoCont20 = string.Empty,
-                    SoLuongCont40 = string.Empty,
-                    SoCont40 = string.Empty,
-                    SoLuongCont45 = string.Empty,
-                    SoCont45 = string.Empty,
-                    SoLuongContOpenTop = string.Empty,
-                    SoContOpenTop = string.Empty,
-                    SoLuongContFlatRack = string.Empty,
-                    SoContFlatRack = string.Empty,
-                    IDDanhMucDiaDiemDongHang = string.Empty,
-
-                    NgayDongHang = string.Empty,
-                    IDDanhMucDiaDiemTraHang = string.Empty,
-
-                    NgayTraHang = string.Empty,
-                    KhoiLuong = string.Empty,
-                    NguoiGiaoNhan = string.Empty,
-                    SoDienThoaiGiaoNhan = string.Empty,
-                    GhiChu = string.Empty,
-                    TenDanhMucNguoiSuDungCreate = string.Empty
+                    SoLuongCont20 = drKeHoachVanTai["SoLuongCont20"].ToString(),
+                    SoCont20 = drKeHoachVanTai["SoCont20"].ToString(),
+                    SoLuongCont40 = drKeHoachVanTai["SoLuongCont40"].ToString(),
+                    SoCont40 = drKeHoachVanTai["SoCont40"].ToString(),
+                    SoLuongCont45 = drKeHoachVanTai["SoLuongCont45"].ToString(),
+                    SoCont45 = drKeHoachVanTai["SoCont45"].ToString(),
+                    SoLuongContOpenTop = drKeHoachVanTai["SoLuongContOpenTop"].ToString(),
+                    SoContOpenTop = drKeHoachVanTai["SoContOpenTop"].ToString(),
+                    SoLuongContFlatRack = drKeHoachVanTai["SoLuongContFlatRack"].ToString(),
+                    SoContFlatRack = drKeHoachVanTai["SoContFlatRack"].ToString(),
+                    IDDanhMucDiaDiemDongHang = drKeHoachVanTai["IDDanhMucDiaDiemDongHang"].ToString(),
+                    TenDanhMucDiaDiemDongHang = drKeHoachVanTai["TenDanhMucDiaDiemDongHang"].ToString(),
+                    NgayDongHang = drKeHoachVanTai["NgayDongHang"].ToString(),
+                    IDDanhMucDiaDiemTraHang = drKeHoachVanTai["IDDanhMucDiaDiemTraHang"].ToString(),
+                    TenDanhMucDiaDiemTraHang = drKeHoachVanTai["TenDanhMucDiaDiemTraHang"].ToString(),
+                    NgayTraHang = drKeHoachVanTai["NgayTraHang"].ToString(),
+                    KhoiLuong = drKeHoachVanTai["KhoiLuong"].ToString(),
+                    NguoiGiaoNhan = drKeHoachVanTai["NguoiGiaoNhan"].ToString(),
+                    SoDienThoaiGiaoNhan = drKeHoachVanTai["SoDienThoaiGiaoNhan"].ToString(),
+                    GhiChu = drKeHoachVanTai["GhiChu"].ToString(),
+                    TenDanhMucNguoiSuDungCreate = drKeHoachVanTai["TenDanhMucNguoiSuDungCreate"].ToString(),
+                    CreateDate = drKeHoachVanTai["CreateDate"].ToString(),
+                    TenDanhMucNguoiSuDungEdit = drKeHoachVanTai["TenDanhMucNguoiSuDungEdit"].ToString(),
+                    EditDate = drKeHoachVanTai["EditDate"].ToString(),
                 });
             }
             return Json(listKeHoachVanTai, JsonRequestBehavior.AllowGet);

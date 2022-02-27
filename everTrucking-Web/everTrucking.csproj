@@ -312,12 +312,12 @@
     <Content Include="Views\DanhMuc\HangTauIndex.cshtml" />
     <Content Include="Views\DanhMuc\KhoIndex.cshtml" />
     <Content Include="Views\DanhMuc\CangICDIndex.cshtml" />
-    <Content Include="Views\KeHoachVanTaiContainerNhapKhau\Index.cshtml" />
-    <Content Include="Views\KeHoachVanTaiContainerNoiDia\Index.cshtml" />
-    <Content Include="Views\KeHoachVanTaiContainerXuatKhau\Index.cshtml" />
     <Content Include="Views\KeHoachVanTaiHangRoiNhapKhau\Index.cshtml" />
     <Content Include="Views\KeHoachVanTaiHangRoiNoiDia\Index.cshtml" />
     <Content Include="Views\KeHoachVanTaiHangRoiXuatKhau\Index.cshtml" />
+    <Content Include="Views\KeHoachVanTaiContainerNhapKhau\Index.cshtml" />
+    <Content Include="Views\KeHoachVanTaiContainerNoiDia\Index.cshtml" />
+    <Content Include="Views\KeHoachVanTaiContainerXuatKhau\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

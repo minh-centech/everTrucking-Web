@@ -69,6 +69,18 @@
             max-width: 100% !important;
         }
 
+        .table-bordered tr th {
+            font-size: 14px;
+            font-weight: 600 !important;
+        }
+
+        .table-bordered tr td {
+            font-size: 14px;
+        }
+
+        table.table-bordered.dataTable tbody th, table.table-bordered.dataTable tbody td {
+            border-bottom: 1px solid #ccc;
+        }
         @@media only screen and (max-width: 600px) {
             .row {
                 display: block !important;
@@ -144,6 +156,8 @@
         $(function () {
             $('.selectpicker').selectpicker();
         });
+
+     
     </script>
 
     @RenderSection("scripts", required: false)
