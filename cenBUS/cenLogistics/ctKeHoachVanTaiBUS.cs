@@ -119,6 +119,17 @@ namespace cenBUS
             }
             return msgResponse;
         }
-        
+        public static DataTable rptKeHoachVanTaiTongHop(object IDDanhMucChungTu, object TuNgay, object DenNgay, object IDDanhMucKhachHang, object LoaiHinh, object LoaiHang)
+        {
+            try
+            {
+                ctKeHoachVanTaiDAO dao = new ctKeHoachVanTaiDAO();
+                return dao.rptKeHoachVanTaiTongHop(IDDanhMucChungTu, TuNgay, DenNgay, IDDanhMucKhachHang, LoaiHinh, LoaiHang);
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
     }
 }

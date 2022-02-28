@@ -109,16 +109,21 @@
             dataType: "json",
             success: function (result) {
                 var html = '';
-                $.each(result, function (key, item) {
-                    html += '<tr id="IDCang_' + item.ID + '">';
-                    html += '<td id="MaCang_' + item.ID + '">' + item.Ma + '</td>';
-                    html += '<td id="TenCang_' + item.ID + '">' + item.Ten + '</td>';
-                    html += '<td id="DiaChiCang_' + item.ID + '">' + item.DiaChi + '</td>';
-                    html += '<td><a href="#" onclick="return getbyID(' + item.ID + ')"><i class="fa fa-pen fa-1x mr-1"></i></a> | <a href="#" onclick="Delele(' + item.ID + ')"><i class="fa fa-trash fa-1x ml-1"></i></a></td>';
-                    html += '</tr>';
-                });
+                if (result.length > 0) {
+                    $.each(result, function (key, item) {
+                        html += '<tr id="IDCang_' + item.ID + '">';
+                        html += '<td id="MaCang_' + item.ID + '">' + item.Ma + '</td>';
+                        html += '<td id="TenCang_' + item.ID + '">' + item.Ten + '</td>';
+                        html += '<td id="DiaChiCang_' + item.ID + '">' + item.DiaChi + '</td>';
+                        html += '<td><a href="#" onclick="return getbyID(' + item.ID + ')"><i class="fa fa-pen fa-1x mr-1"></i></a> | <a href="#" onclick="Delele(' + item.ID + ')"><i class="fa fa-trash fa-1x ml-1"></i></a></td>';
+                        html += '</tr>';
+                    });
+                }
                 $('.tbody1').html(html);
-                $('#tblDanhMucCangICD').DataTable();
+                $('#tblDanhMucCangICD').DataTable({
+                    "aLengthMenu": [[25, 50, 75, -1], [25, 50, 75, "All"]],
+                    "iDisplayLength": 25
+                });
             },
             error: function (errorMesage) {
                 alert(errorMesage.responseText);

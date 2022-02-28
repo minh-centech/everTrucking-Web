@@ -229,5 +229,27 @@ namespace cenDAO
                 return "01:" + ex.Message;
             }
         }
+
+        public DataTable rptKeHoachVanTaiTongHop(object IDDanhMucChungTu, object TuNgay, object DenNgay, object IDDanhMucKhachHang, object LoaiHinh, object LoaiHang)
+        {
+            try
+            {
+                ConnectionDAO dao = new ConnectionDAO();
+                SqlParameter[] sqlParameters = new SqlParameter[7];
+                sqlParameters[0] = new SqlParameter("@IDDanhMucDonVi", cenCommon.GlobalVariables.IDDonVi);
+                sqlParameters[1] = new SqlParameter("@IDDanhMucChungTu", IDDanhMucChungTu);
+                sqlParameters[2] = new SqlParameter("@TuNgay", TuNgay);
+                sqlParameters[3] = new SqlParameter("@DenNgay", DenNgay);
+                sqlParameters[4] = new SqlParameter("@IDDanhMucKhachHang", IDDanhMucKhachHang);
+                sqlParameters[5] = new SqlParameter("@LoaiHinh", LoaiHinh);
+                sqlParameters[6] = new SqlParameter("@LoaiHang", LoaiHang);
+                DataTable dt = dao.tableList(sqlParameters, cenDTO.rptKeHoachVanTaiTongHop.listProcedureName , cenDTO.rptKeHoachVanTaiTongHop.listProcedureName);
+                return dt;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
     }
 }

@@ -119,4 +119,33 @@ namespace cenDTO
            
         }
     }
+    public class rptKeHoachVanTaiTongHop
+    {
+        public const string listProcedureName = "rptKeHoachVanTaiTongHop";
+        public string Stt { get; set; }
+        public string NgayLap { get; set; }
+        public string TenLoaiHinh { get; set; }
+        public string LoaiContainer { get; set; }
+        public string SoContainer { get; set; }
+        public string TenDanhMucKhachHang { get; set; }
+        public string KhoiLuong { get; set; }
+        public string TenDanhMucHangTau { get; set; }
+        public string GhiChu { get; set; }
+        public string TenDanhMucDiaDiemDongTra { get; set; }
+        public string TenDanhMucDiaDiemNangHa { get; set; }
+        public rptKeHoachVanTaiTongHop()
+        {
+            Stt = null;
+            NgayLap = null;
+            TenLoaiHinh = null;
+            LoaiContainer = null;
+            SoContainer = null;
+            TenDanhMucKhachHang = null;
+            KhoiLuong = null;
+            TenDanhMucHangTau = null;
+            GhiChu = null;
+            TenDanhMucDiaDiemDongTra = null;
+            TenDanhMucDiaDiemNangHa = null;
+        }
+    }
 }

@@ -255,7 +255,7 @@ namespace everTrucking_Web.Controllers
             if (!cenCommon.cenCommon.IsNull(emp.NgayHaCont))
                 emp.NgayHaCont = (new DateTime(cenCommon.cenCommon.intParse(emp.NgayHaCont.Substring(6, 4)), cenCommon.cenCommon.intParse(emp.NgayHaCont.Substring(3, 2)), cenCommon.cenCommon.intParse(emp.NgayHaCont.Substring(0, 2)))).ToString();
             if (!cenCommon.cenCommon.IsNull(emp.NgayDongHang))
-                emp.NgayNangCont = (new DateTime(cenCommon.cenCommon.intParse(emp.NgayNangCont.Substring(6, 4)), cenCommon.cenCommon.intParse(emp.NgayNangCont.Substring(3, 2)), cenCommon.cenCommon.intParse(emp.NgayNangCont.Substring(0, 2)))).ToString();
+                emp.NgayDongHang = (new DateTime(cenCommon.cenCommon.intParse(emp.NgayDongHang.Substring(6, 4)), cenCommon.cenCommon.intParse(emp.NgayDongHang.Substring(3, 2)), cenCommon.cenCommon.intParse(emp.NgayDongHang.Substring(0, 2)))).ToString();
             if (!cenCommon.cenCommon.IsNull(emp.NgayTraHang))
                 emp.NgayTraHang = (new DateTime(cenCommon.cenCommon.intParse(emp.NgayTraHang.Substring(6, 4)), cenCommon.cenCommon.intParse(emp.NgayTraHang.Substring(3, 2)), cenCommon.cenCommon.intParse(emp.NgayTraHang.Substring(0, 2)))).ToString();
 
@@ -335,7 +335,7 @@ namespace everTrucking_Web.Controllers
             if (!cenCommon.cenCommon.IsNull(emp.NgayHaCont))
                 emp.NgayHaCont = (new DateTime(cenCommon.cenCommon.intParse(emp.NgayHaCont.Substring(6, 4)), cenCommon.cenCommon.intParse(emp.NgayHaCont.Substring(3, 2)), cenCommon.cenCommon.intParse(emp.NgayHaCont.Substring(0, 2)))).ToString();
             if (!cenCommon.cenCommon.IsNull(emp.NgayDongHang))
-                emp.NgayNangCont = (new DateTime(cenCommon.cenCommon.intParse(emp.NgayNangCont.Substring(6, 4)), cenCommon.cenCommon.intParse(emp.NgayNangCont.Substring(3, 2)), cenCommon.cenCommon.intParse(emp.NgayNangCont.Substring(0, 2)))).ToString();
+                emp.NgayDongHang = (new DateTime(cenCommon.cenCommon.intParse(emp.NgayDongHang.Substring(6, 4)), cenCommon.cenCommon.intParse(emp.NgayDongHang.Substring(3, 2)), cenCommon.cenCommon.intParse(emp.NgayDongHang.Substring(0, 2)))).ToString();
             if (!cenCommon.cenCommon.IsNull(emp.NgayTraHang))
                 emp.NgayTraHang = (new DateTime(cenCommon.cenCommon.intParse(emp.NgayTraHang.Substring(6, 4)), cenCommon.cenCommon.intParse(emp.NgayTraHang.Substring(3, 2)), cenCommon.cenCommon.intParse(emp.NgayTraHang.Substring(0, 2)))).ToString();
 
@@ -432,161 +432,78 @@ namespace everTrucking_Web.Controllers
             return View();
         }
         [HttpGet]
-        public ActionResult DownloadExcelDocument()
+        public ActionResult DownloadExcelDocument(string startDate, string endDate, string LoaiHinh, string LoaiHang)
         {
+            if (cenCommon.cenCommon.IsNull(startDate))
+                startDate = (new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day)).ToString();
+            else
+                startDate = (new DateTime(cenCommon.cenCommon.intParse(startDate.Substring(6, 4)), cenCommon.cenCommon.intParse(startDate.Substring(3, 2)), cenCommon.cenCommon.intParse(startDate.Substring(0, 2)))).ToString();
+            if (cenCommon.cenCommon.IsNull(endDate))
+                endDate = (new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day)).ToString();
+            else
+                endDate = (new DateTime(cenCommon.cenCommon.intParse(endDate.Substring(6, 4)), cenCommon.cenCommon.intParse(endDate.Substring(3, 2)), cenCommon.cenCommon.intParse(endDate.Substring(0, 2)))).ToString();
+
+
             string contentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
             string fileName = "KeHoachVanTaiTongHop.xlsx";
 
             // Taken List of data from json file which we want to export to excel.
-            DataTable dtKeHoachVanTai = ctKeHoachVanTaiBUS.ListDisplay(DanhMucChungTuBUS.GetID(DanhMucThamSoHeThongBUS.GetGiaTri(cenCommon.ThamSoHeThong.MaThamSoChungTuKeHoachVanTai)), "2022-01-01", "2022-12-31", null, "0", "0", null);
-            List<ctKeHoachVanTai> listKeHoachVanTai = new List<ctKeHoachVanTai>();
+            DataTable dtKeHoachVanTai = ctKeHoachVanTaiBUS.rptKeHoachVanTaiTongHop(DanhMucChungTuBUS.GetID(DanhMucThamSoHeThongBUS.GetGiaTri(cenCommon.ThamSoHeThong.MaThamSoChungTuKeHoachVanTai)), startDate, endDate, null, "2", "1");
+            List<rptKeHoachVanTaiTongHop> listKeHoachVanTai = new List<rptKeHoachVanTaiTongHop>();
 
             if (dtKeHoachVanTai.Rows.Count > 0)
             {
                 foreach (DataRow drKeHoachVanTai in dtKeHoachVanTai.Rows)
                 {
-                    listKeHoachVanTai.Add(new ctKeHoachVanTai()
+                    listKeHoachVanTai.Add(new rptKeHoachVanTaiTongHop()
                     {
-                        ID = drKeHoachVanTai["ID"].ToString(),
-                        IDDanhMucDonVi = drKeHoachVanTai["IDDanhMucDonVi"].ToString(),
-                        IDDanhMucChungTu = drKeHoachVanTai["IDDanhMucChungTu"].ToString(),
-                        IDDanhMucChungTuTrangThai = drKeHoachVanTai["IDDanhMucChungTuTrangThai"].ToString(),
-                        So = drKeHoachVanTai["So"].ToString(),
+                        Stt = drKeHoachVanTai["Stt"].ToString(),
                         NgayLap = drKeHoachVanTai["NgayLap"].ToString(),
-                        IDDanhMucSale = drKeHoachVanTai["IDDanhMucSale"].ToString(),
-                        TenDanhMucSale = drKeHoachVanTai["TenDanhMucSale"].ToString(),
-                        IDDanhMucKhachHang = drKeHoachVanTai["IDDanhMucKhachHang"].ToString(),
-                        MaDanhMucKhachHang = drKeHoachVanTai["MaDanhMucKhachHang"].ToString(),
-                        TenDanhMucKhachHang = drKeHoachVanTai["TenDanhMucKhachHang"].ToString(),
-                        LoaiHinh = drKeHoachVanTai["LoaiHinh"].ToString(),
                         TenLoaiHinh = drKeHoachVanTai["TenLoaiHinh"].ToString(),
-                        LoaiHang = drKeHoachVanTai["LoaiHang"].ToString(),
-                        TenLoaiHang = drKeHoachVanTai["TenLoaiHang"].ToString(),
-                        IDDanhMucHangTau = drKeHoachVanTai["IDDanhMucHangTau"].ToString(),
-                        MaDanhMucHangTau = drKeHoachVanTai["MaDanhMucHangTau"].ToString(),
-                        IDDanhMucDiaDiemNangCont = drKeHoachVanTai["IDDanhMucDiaDiemNangCont"].ToString(),
-                        TenDanhMucDiaDiemNangCont = drKeHoachVanTai["TenDanhMucDiaDiemNangCont"].ToString(),
-                        NgayNangCont = drKeHoachVanTai["NgayNangCont"].ToString(),
-                        IDDanhMucDiaDiemHaCont = drKeHoachVanTai["IDDanhMucDiaDiemHaCont"].ToString(),
-                        TenDanhMucDiaDiemHaCont = drKeHoachVanTai["TenDanhMucDiaDiemHaCont"].ToString(),
-                        NgayHaCont = drKeHoachVanTai["NgayHaCont"].ToString(),
-                        SoLuongCont20 = drKeHoachVanTai["SoLuongCont20"].ToString(),
-                        SoCont20 = drKeHoachVanTai["SoCont20"].ToString(),
-                        SoLuongCont40 = drKeHoachVanTai["SoLuongCont40"].ToString(),
-                        SoCont40 = drKeHoachVanTai["SoCont40"].ToString(),
-                        SoLuongCont45 = drKeHoachVanTai["SoLuongCont45"].ToString(),
-                        SoCont45 = drKeHoachVanTai["SoCont45"].ToString(),
-                        SoLuongContOpenTop = drKeHoachVanTai["SoLuongContOpenTop"].ToString(),
-                        SoContOpenTop = drKeHoachVanTai["SoContOpenTop"].ToString(),
-                        SoLuongContFlatRack = drKeHoachVanTai["SoLuongContFlatRack"].ToString(),
-                        SoContFlatRack = drKeHoachVanTai["SoContFlatRack"].ToString(),
-                        IDDanhMucDiaDiemDongHang = drKeHoachVanTai["IDDanhMucDiaDiemDongHang"].ToString(),
-                        TenDanhMucDiaDiemDongHang = drKeHoachVanTai["TenDanhMucDiaDiemDongHang"].ToString(),
-                        NgayDongHang = drKeHoachVanTai["NgayDongHang"].ToString(),
-                        IDDanhMucDiaDiemTraHang = drKeHoachVanTai["IDDanhMucDiaDiemTraHang"].ToString(),
-                        TenDanhMucDiaDiemTraHang = drKeHoachVanTai["TenDanhMucDiaDiemTraHang"].ToString(),
-                        NgayTraHang = drKeHoachVanTai["NgayTraHang"].ToString(),
+                        LoaiContainer = drKeHoachVanTai["LoaiContainer"].ToString(),
+                        SoContainer = drKeHoachVanTai["SoContainer"].ToString(),
+                        TenDanhMucKhachHang = drKeHoachVanTai["TenDanhMucKhachHang"].ToString(),
                         KhoiLuong = drKeHoachVanTai["KhoiLuong"].ToString(),
-                        NguoiGiaoNhan = drKeHoachVanTai["NguoiGiaoNhan"].ToString(),
-                        SoDienThoaiGiaoNhan = drKeHoachVanTai["SoDienThoaiGiaoNhan"].ToString(),
+                        TenDanhMucHangTau = drKeHoachVanTai["TenDanhMucHangTau"].ToString(),
                         GhiChu = drKeHoachVanTai["GhiChu"].ToString(),
-                        IDDanhMucNguoiSuDungCreate = drKeHoachVanTai["IDDanhMucNguoiSuDungCreate"].ToString(),
-                        CreateDate = drKeHoachVanTai["CreateDate"].ToString(),
-                        EditDate = drKeHoachVanTai["EditDate"].ToString(),
+                        TenDanhMucDiaDiemNangHa = drKeHoachVanTai["TenDanhMucDiaDiemNangHa"].ToString(),
+                        TenDanhMucDiaDiemDongTra = drKeHoachVanTai["TenDanhMucDiaDiemDongTra"].ToString()
                     });
                 }
             }
-            else
-            {
-                listKeHoachVanTai.Add(new ctKeHoachVanTai()
-                {
-                    ID = string.Empty,
-                    IDDanhMucDonVi = string.Empty,
-                    IDDanhMucChungTu = string.Empty,
-                    IDDanhMucChungTuTrangThai = string.Empty,
-                    So = string.Empty,
-                    NgayLap = string.Empty,
-                    IDDanhMucSale = string.Empty,
-                    IDDanhMucKhachHang = string.Empty,
-                    LoaiHinh = string.Empty,
-                    LoaiHang = string.Empty,
-                    IDDanhMucHangTau = string.Empty,
-                    IDDanhMucDiaDiemNangCont = string.Empty,
-                    NgayNangCont = string.Empty,
-                    IDDanhMucDiaDiemHaCont = string.Empty,
-                    NgayHaCont = string.Empty,
-                    SoLuongCont20 = string.Empty,
-                    SoCont20 = string.Empty,
-                    SoLuongCont40 = string.Empty,
-                    SoCont40 = string.Empty,
-                    SoLuongCont45 = string.Empty,
-                    SoCont45 = string.Empty,
-                    SoLuongContOpenTop = string.Empty,
-                    SoContOpenTop = string.Empty,
-                    SoLuongContFlatRack = string.Empty,
-                    SoContFlatRack = string.Empty,
-                    IDDanhMucDiaDiemDongHang = string.Empty,
-                    NgayDongHang = string.Empty,
-                    IDDanhMucDiaDiemTraHang = string.Empty,
-                    NgayTraHang = string.Empty,
-                    KhoiLuong = string.Empty,
-                    NguoiGiaoNhan = string.Empty,
-                    SoDienThoaiGiaoNhan = string.Empty,
-                    GhiChu = string.Empty,
-                    IDDanhMucNguoiSuDungCreate = string.Empty
-                });
-            }
-            
+
             using (var workbook = new XLWorkbook())
             {
                 IXLWorksheet worksheet =
                 workbook.Worksheets.Add("KeHoachVanTai");
                 worksheet.Cell(1, 1).Value = "STT";
-                worksheet.Cell(1, 2).Value = "Số kế hoạch";
-                worksheet.Cell(1, 3).Value = "Ngày lập";
-                worksheet.Cell(1, 4).Value = "Mã khách hàng";
-                worksheet.Cell(1, 5).Value = "Tên khách hàng";
-                worksheet.Cell(1, 6).Value = "Loại hình";
-                worksheet.Cell(1, 7).Value = "Loại hàng";
-                worksheet.Cell(1, 8).Value = "Số cont 20";
-                worksheet.Cell(1, 9).Value = "Số cont 40";
-                worksheet.Cell(1, 10).Value = "Số cont 45";
-                worksheet.Cell(1, 11).Value = "Số cont open top";
-                worksheet.Cell(1, 12).Value = "Số cont flat rack";
-                worksheet.Cell(1, 13).Value = "Địa điểm nâng cont";
-                worksheet.Cell(1, 14).Value = "Ngày nâng cont";
-                worksheet.Cell(1, 15).Value = "Địa điểm hạ cont";
-                worksheet.Cell(1, 16).Value = "Ngày hạ cont";
-                worksheet.Cell(1, 17).Value = "Địa điểm đóng hàng";
-                worksheet.Cell(1, 18).Value = "Ngày đóng hàng";
-                worksheet.Cell(1, 19).Value = "Địa điểm trả hàng";
-                worksheet.Cell(1, 20).Value = "Ngày trả hàng";
-                for (int index = 1; index <= 21; index++)
+                worksheet.Cell(1, 2).Value = "Ngày lập";
+                worksheet.Cell(1, 3).Value = "Loại hình";
+                worksheet.Cell(1, 4).Value = "Loại cont";
+                worksheet.Cell(1, 5).Value = "Số container";
+                worksheet.Cell(1, 6).Value = "Tên khách hàng";
+                worksheet.Cell(1, 7).Value = "Trọng lượng";
+                worksheet.Cell(1, 8).Value = "Hãng tàu";
+                worksheet.Cell(1, 9).Value = "Ghi chú";
+                worksheet.Cell(1, 10).Value = "Địa chỉ giao nhận";
+                worksheet.Cell(1, 11).Value = "Cảng nâng/hạ";
+                for (int index = 1; index <= 11; index++)
                 {
                     worksheet.Cell(1, index).Style.Font.Bold = true;
                 }
                 for (int index = 0; index <= listKeHoachVanTai.Count - 1; index++)
                 {
                     worksheet.Cell(index + 2, 1).Value = index + 1;
-                    worksheet.Cell(index + 2, 2).Value = listKeHoachVanTai[index].So;
-                    worksheet.Cell(index + 2, 3).Value = listKeHoachVanTai[index].NgayLap;
-                    worksheet.Cell(index + 2, 4).Value = listKeHoachVanTai[index].MaDanhMucKhachHang;
-                    worksheet.Cell(index + 2, 5).Value = listKeHoachVanTai[index].TenDanhMucKhachHang;
-                    worksheet.Cell(index + 2, 6).Value = listKeHoachVanTai[index].TenLoaiHinh;
-                    worksheet.Cell(index + 2, 7).Value = listKeHoachVanTai[index].TenLoaiHang;
-                    worksheet.Cell(index + 2, 8).Value = listKeHoachVanTai[index].SoCont20;
-                    worksheet.Cell(index + 2, 9).Value = listKeHoachVanTai[index].SoCont40;
-                    worksheet.Cell(index + 2, 10).Value = listKeHoachVanTai[index].SoCont45;
-                    worksheet.Cell(index + 2, 11).Value = listKeHoachVanTai[index].SoContOpenTop;
-                    worksheet.Cell(index + 2, 12).Value = listKeHoachVanTai[index].SoContFlatRack;
-                    worksheet.Cell(index + 2, 13).Value = listKeHoachVanTai[index].TenDanhMucDiaDiemNangCont;
-                    worksheet.Cell(index + 2, 14).Value = listKeHoachVanTai[index].NgayNangCont;
-                    worksheet.Cell(index + 2, 15).Value = listKeHoachVanTai[index].TenDanhMucDiaDiemHaCont;
-                    worksheet.Cell(index + 2, 16).Value = listKeHoachVanTai[index].NgayHaCont;
-                    worksheet.Cell(index + 2, 17).Value = listKeHoachVanTai[index].TenDanhMucDiaDiemDongHang;
-                    worksheet.Cell(index + 2, 18).Value = listKeHoachVanTai[index].NgayDongHang;
-                    worksheet.Cell(index + 2, 19).Value = listKeHoachVanTai[index].TenDanhMucDiaDiemTraHang;
-                    worksheet.Cell(index + 2, 20).Value = listKeHoachVanTai[index].NgayTraHang;
+                    worksheet.Cell(index + 2, 2).Value = listKeHoachVanTai[index].NgayLap;
+                    worksheet.Cell(index + 2, 3).Value = listKeHoachVanTai[index].TenLoaiHinh;
+                    worksheet.Cell(index + 2, 4).Value = listKeHoachVanTai[index].LoaiContainer;
+                    worksheet.Cell(index + 2, 5).Value = listKeHoachVanTai[index].SoContainer;
+                    worksheet.Cell(index + 2, 6).Value = listKeHoachVanTai[index].TenDanhMucKhachHang;
+                    worksheet.Cell(index + 2, 7).Value = listKeHoachVanTai[index].KhoiLuong;
+                    worksheet.Cell(index + 2, 8).Value = listKeHoachVanTai[index].TenDanhMucHangTau;
+                    worksheet.Cell(index + 2, 9).Value = listKeHoachVanTai[index].GhiChu;
+                    worksheet.Cell(index + 2, 10).Value = listKeHoachVanTai[index].TenDanhMucDiaDiemDongTra;
+                    worksheet.Cell(index + 2, 11).Value = listKeHoachVanTai[index].TenDanhMucDiaDiemNangHa;
                 }
                 using (var stream = new MemoryStream())
                 {

@@ -42,7 +42,7 @@
         </div>
     </div>
     <button type="button" class="btn btn-default btn-success mb-3" style="background: #4e73df" onclick="loadData()">Tìm kiếm</button>
-    <a type="button" class="btn btn-default btn-success mb-3" style="background: #4e73df" href="/KeHoachVanTaiHangRoiNhapKhau/DownloadExcelDocument">Xuất Excel</a>
+    <button type="button" class="btn btn-default btn-success mb-3" style="background: #4e73df" onclick="exportXLS()">Xuất Excel</button>
     <button type="button" onclick="clearTextBox()" class="btn btn-primary mb-3" data-toggle="modal" data-target="#frmKeHoachVanTaiUpdate" data-backdrop="static" data-keyboard="false"> <i class="fa fa-plus"></i> Thêm mới</button>
 </div>
 
@@ -282,6 +282,19 @@
         });
 
     }
+
+    function exportXLS() {
+
+        var data = {
+            startDate: $('#txtTuNgay').val(),
+            endDate: $('#txtDenNgay').val(),
+            LoaiHinh: $('#txtLoaiHinh').val(),
+            LoaiHang: $('#txtLoaiHang').val()
+        };
+
+        window.location = "/KeHoachVanTaiTongHop/DownloadExcelDocument/?startDate=" + data.startDate + "&endDate=" + data.endDate + "&LoaiHinh=" + data.LoaiHinh + "&LoaiHang=" + data.LoaiHang;
+    }
+
     function Add() {
         var empObj = {
             //ID: $('#ID').val(),

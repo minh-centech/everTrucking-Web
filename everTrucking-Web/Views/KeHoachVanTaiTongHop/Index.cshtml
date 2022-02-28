@@ -16,23 +16,23 @@
         <div class="col-sm-6">
             <label>Từ ngày</label>
             <div class="input-group date" id="TuNgay">
-                <input class="form-control ngay-vn" placeholder="dd/mm/yyyy" id="txtTuNgay" />
-                <div class="input-group-append">
-                    <span class="input-group-text calen">
-                        <i class="fa fa-calendar"></i>
+                <input class="form-control ngay-vn" placeholder="dd/mm/yyyy" id="txtTuNgay"/>
+                @*<div class="input-group-append">
+                    <span class="input-group-text">
+                        <i onclick="setDatepicker(this)" class="fa fa-calendar"></i>
                     </span>
-                </div>
+                </div>*@
             </div>
         </div>
         <div class="col-sm-6">
             <label>Đến ngày</label>
             <div class="input-group date" id="DenNgay">
                 <input class="form-control ngay-vn" placeholder="dd/mm/yyyy" id="txtDenNgay" />
-                <div class="input-group-append">
-                    <span class="input-group-text calen">
+                @*<div class="input-group-append">
+                    <span class="input-group-text ngay-vn">
                         <i class="fa fa-calendar"></i>
                     </span>
-                </div>
+                </div>*@
             </div>
         </div>
         <div class="col-sm-6">
@@ -55,7 +55,7 @@
 
     </div>
     <button type="button" class="btn btn-default btn-success mb-3" style="background: #4e73df" onclick="loadData()">Tìm kiếm</button>
-    <a type="button" class="btn btn-default btn-success mb-3" style="background: #4e73df" href="/KeHoachVanTaiTongHop/DownloadExcelDocument">Xuất Excel</a>
+    <button type="button" class="btn btn-default btn-success mb-3" style="background: #4e73df" onclick="exportXLS()">Xuất Excel</button>
     <button type="button" onclick="clearTextBox()" class="btn btn-primary mb-3" data-toggle="modal" data-target="#frmKeHoachVanTaiUpdate" data-backdrop="static" data-keyboard="false"> <i class="fa fa-plus"></i> Thêm mới</button>
 </div>
 
@@ -181,13 +181,13 @@
                     <div class="col-4">
                         <div class="form-group date" id="NgayNang">
                             <label>Ngày nâng cont</label>
-                            <div class="input-group mb-3  mb-3">
+                            <div class="input-group mb-3">
                                 <input class="form-control ngay-vn NgayNang" placeholder="dd/mm/yyyy" id="txtNgayNang" />
-                                <div class="input-group-append">
+                                @*<div class="input-group-append">
                                     <span class="input-group-text">
                                         <i class="fa fa-calendar"></i>
                                     </span>
-                                </div>
+                                </div>*@
                             </div>
                         </div>
                     </div>
@@ -207,13 +207,13 @@
                     <div class="col-4">
                         <div class="form-group date" id="NgayHa">
                             <label>Ngày hạ cont</label>
-                            <div class="input-group mb-3  mb-3">
+                            <div class="input-group mb-3">
                                 <input class="form-control ngay-vn NgayHa" placeholder="dd/mm/yyyy" id="txtNgayHa" />
-                                <div class="input-group-append">
+                                @*<div class="input-group-append">
                                     <span class="input-group-text">
                                         <i class="fa fa-calendar"></i>
                                     </span>
-                                </div>
+                                </div>*@
                             </div>
                         </div>
                     </div>
@@ -302,11 +302,11 @@
                             <label>Ngày đóng hàng</label>
                             <div class="input-group mb-3  mb-3">
                                 <input class="form-control ngay-vn NgayDong" placeholder="dd/mm/yyyy" id="txtNgayDong" />
-                                <div class="input-group-append">
+                                @*<div class="input-group-append">
                                     <span class="input-group-text">
                                         <i class="fa fa-calendar"></i>
                                     </span>
-                                </div>
+                                </div>*@
                             </div>
                         </div>
                     </div>
@@ -328,11 +328,11 @@
                         <label>Ngày trả hàng</label>
                         <div class="input-group mb-3  mb-3">
                             <input class="form-control ngay-vn NgayTra" placeholder="dd/mm/yyyy" id="txtNgayTra" />
-                            <div class="input-group-append">
+                            @*<div class="input-group-append">
                                 <span class="input-group-text">
                                     <i class="fa fa-calendar"></i>
                                 </span>
-                            </div>
+                            </div>*@
                         </div>
                     </div>
 
@@ -377,10 +377,11 @@
 <script type="text/javascript">
     $(document).ready(function () {
 
-        var datePicker = document.querySelectorAll(".ngay-vn");
-        for (let i = 0; i < datePicker.length; i++) {
-            $('#' + datePicker[i].getAttribute("id")).datepicker({ format: 'dd/mm/yyyy', language: 'vi' });
-        };
+        //var datePicker = document.querySelectorAll(".ngay-vn");
+        //for (let i = 0; i < datePicker.length; i++) {
+        //    $('#' + datePicker[i].getAttribute("id")).datepicker({ format: 'dd/mm/yyyy', language: 'vi' });
+        //};
+
 
         var cleaveDate = document.querySelectorAll(".ngay-vn");
         for (let i = 0; i < cleaveDate.length; i++) {
@@ -403,6 +404,23 @@
 
         loadData();
     });
+
+
+    function setDatepicker(_this) {
+        //Get the parent class name so we can show date picker
+        let className = $(_this).parent().parent().parent().attr('class');
+        console.log(className)
+        //Remove space and add `.`
+        let removeSpace = className.replace(' ', '.')
+        $("." + removeSpace).datepicker({
+            format: "dd/mm/yyyy",
+            orientation: "bottom auto",
+            autoclose: true,
+            showOnFocus: "false"
+        })
+    }
+
+
 
     function loadData() {
 
@@ -448,7 +466,7 @@
 
                     });
                 }
-                
+
                 $('.tbody').html(html);
                 $('#tblKeHoachVanTai').DataTable({
                     "aLengthMenu": [[25, 50, 75, -1], [25, 50, 75, "All"]],
@@ -463,6 +481,20 @@
         });
 
     }
+
+    function exportXLS() {
+
+        var data = {
+            startDate: $('#txtTuNgay').val(),
+            endDate: $('#txtDenNgay').val(),
+            LoaiHinh: $('#txtLoaiHinh').val(),
+            LoaiHang: $('#txtLoaiHang').val()
+        };
+
+        window.location = "/KeHoachVanTaiTongHop/DownloadExcelDocument/?startDate=" + data.startDate + "&endDate=" + data.endDate + "&LoaiHinh=" + data.LoaiHinh + "&LoaiHang=" + data.LoaiHang;
+    }
+
+
     function Add() {
         var empObj = {
             //ID: $('#ID').val(),
@@ -554,7 +586,6 @@
             url: "/KeHoachVanTaiTongHop/getbyID/" + EmpID,
             typr: "GET",
             contentType: "application/json;charset=UTF-8",
-
             dataType: "json",
             success: function (result) {
 
@@ -788,8 +819,4 @@
 
 
     }
-</script>
-
-<script>
-
 </script>

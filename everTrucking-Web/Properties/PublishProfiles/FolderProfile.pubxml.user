@@ -5,7 +5,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <_PublishTargetUrl>D:\everTrucking-Web\everTrucking-Web\bin\app.publish\</_PublishTargetUrl>
-    <History>True|2022-02-25T10:39:53.7385556Z;True|2022-02-25T11:04:34.9722344+07:00;True|2022-02-19T16:38:11.3406202+07:00;True|2022-01-29T09:48:14.9845000+07:00;</History>
+    <History>True|2022-02-27T03:54:17.3123787Z;True|2022-02-25T17:39:53.7385556+07:00;True|2022-02-25T11:04:34.9722344+07:00;True|2022-02-19T16:38:11.3406202+07:00;True|2022-01-29T09:48:14.9845000+07:00;</History>
   </PropertyGroup>
   <ItemGroup>
     <File Include="assets/assets/demo/chart-area-demo.js">
@@ -234,10 +234,10 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>06/07/2017 05:59:22</publishTime>
     </File>
     <File Include="bin/everTrucking-Web.dll">
-      <publishTime>02/25/2022 17:39:51</publishTime>
+      <publishTime>02/27/2022 10:54:15</publishTime>
     </File>
     <File Include="bin/everTrucking-Web.pdb">
-      <publishTime>02/25/2022 17:39:51</publishTime>
+      <publishTime>02/27/2022 10:54:15</publishTime>
     </File>
     <File Include="bin/ExcelNumberFormat.dll">
       <publishTime>03/13/2020 16:36:50</publishTime>
@@ -483,7 +483,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>02/08/2022 10:48:06</publishTime>
     </File>
     <File Include="DBScripts/001.ctKeHoachVanTai.sql">
-      <publishTime>02/25/2022 16:48:02</publishTime>
+      <publishTime>02/27/2022 09:44:01</publishTime>
     </File>
     <File Include="DBScripts/001.ctKeHoachVanTaiChiTietSoContainer.sql">
       <publishTime>02/19/2022 17:45:06</publishTime>
@@ -687,19 +687,19 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>02/08/2022 10:48:06</publishTime>
     </File>
     <File Include="Views/DanhMuc/CangICDIndex.cshtml">
-      <publishTime>02/25/2022 16:54:57</publishTime>
+      <publishTime>02/27/2022 10:22:59</publishTime>
     </File>
     <File Include="Views/DanhMuc/HangTauIndex.cshtml">
-      <publishTime>02/25/2022 16:54:57</publishTime>
+      <publishTime>02/27/2022 10:23:15</publishTime>
     </File>
     <File Include="Views/DanhMuc/KhachHangIndex.cshtml">
-      <publishTime>02/25/2022 16:54:57</publishTime>
+      <publishTime>02/27/2022 10:26:20</publishTime>
     </File>
     <File Include="Views/DanhMuc/KhoIndex.cshtml">
-      <publishTime>02/25/2022 16:54:57</publishTime>
+      <publishTime>02/27/2022 10:23:43</publishTime>
     </File>
     <File Include="Views/DanhMuc/SaleIndex.cshtml">
-      <publishTime>02/25/2022 16:54:57</publishTime>
+      <publishTime>02/27/2022 10:23:53</publishTime>
     </File>
     <File Include="Views/DanhMucKhachHang/Index.cshtml">
       <publishTime>02/08/2022 15:20:57</publishTime>
@@ -729,25 +729,25 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>02/19/2022 14:43:21</publishTime>
     </File>
     <File Include="Views/KeHoachVanTaiContainerNhapKhau/Index.cshtml">
-      <publishTime>02/25/2022 17:29:45</publishTime>
+      <publishTime>02/27/2022 09:35:35</publishTime>
     </File>
     <File Include="Views/KeHoachVanTaiContainerNoiDia/Index.cshtml">
-      <publishTime>02/25/2022 17:31:08</publishTime>
+      <publishTime>02/27/2022 09:33:23</publishTime>
     </File>
     <File Include="Views/KeHoachVanTaiContainerXuatKhau/Index.cshtml">
-      <publishTime>02/25/2022 17:31:35</publishTime>
+      <publishTime>02/27/2022 09:33:23</publishTime>
     </File>
     <File Include="Views/KeHoachVanTaiHangRoiNhapKhau/Index.cshtml">
-      <publishTime>02/25/2022 17:35:21</publishTime>
+      <publishTime>02/27/2022 09:30:47</publishTime>
     </File>
     <File Include="Views/KeHoachVanTaiHangRoiNoiDia/Index.cshtml">
-      <publishTime>02/25/2022 17:36:12</publishTime>
+      <publishTime>02/27/2022 09:30:20</publishTime>
     </File>
     <File Include="Views/KeHoachVanTaiHangRoiXuatKhau/Index.cshtml">
-      <publishTime>02/25/2022 17:36:11</publishTime>
+      <publishTime>02/27/2022 09:30:07</publishTime>
     </File>
     <File Include="Views/KeHoachVanTaiTongHop/Index.cshtml">
-      <publishTime>02/25/2022 16:54:57</publishTime>
+      <publishTime>02/27/2022 10:53:34</publishTime>
     </File>
     <File Include="Views/QuanLyDonHang/Create.cshtml">
       <publishTime>02/08/2022 10:48:06</publishTime>
@@ -756,7 +756,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>02/08/2022 10:48:06</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>02/25/2022 14:46:37</publishTime>
+      <publishTime>02/26/2022 14:18:33</publishTime>
     </File>
     <File Include="Views/Shared/_Navbar.cshtml">
       <publishTime>02/08/2022 10:48:06</publishTime>
