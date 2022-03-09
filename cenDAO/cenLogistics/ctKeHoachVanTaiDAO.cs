@@ -60,7 +60,7 @@ namespace cenDAO
                 transaction = connection.BeginTransaction();
                 command = new SqlCommand(ctKeHoachVanTai.insertProcedureName, connection, transaction);
                 command.CommandType = CommandType.StoredProcedure;
-                SqlParameter[] sqlParameters = new SqlParameter[34];
+                SqlParameter[] sqlParameters = new SqlParameter[25];
                 sqlParameters[0] = new SqlParameter("@ID", DBNull.Value)
                 { 
                     Direction = ParameterDirection.Output,
@@ -81,30 +81,21 @@ namespace cenDAO
                 sqlParameters[8] = new SqlParameter("@LoaiHinh", obj.LoaiHinh);
                 sqlParameters[9] = new SqlParameter("@LoaiHang", obj.LoaiHang);
                 sqlParameters[10] = new SqlParameter("@IDDanhMucHangTau", obj.IDDanhMucHangTau);
-                sqlParameters[11] = new SqlParameter("@IDDanhMucDiaDiemNangCont", obj.IDDanhMucDiaDiemNangCont);
-                sqlParameters[12] = new SqlParameter("@NgayNangCont", obj.NgayNangCont);
-                sqlParameters[13] = new SqlParameter("@IDDanhMucDiaDiemHaCont", obj.IDDanhMucDiaDiemHaCont);
-                sqlParameters[14] = new SqlParameter("@NgayHaCont", obj.NgayHaCont);
-                sqlParameters[15] = new SqlParameter("@SoLuongCont20", obj.SoLuongCont20);
-                sqlParameters[16] = new SqlParameter("@SoCont20", obj.SoCont20);
-                sqlParameters[17] = new SqlParameter("@SoLuongCont40", obj.SoLuongCont40);
-                sqlParameters[18] = new SqlParameter("@SoCont40", obj.SoCont40);
-                sqlParameters[19] = new SqlParameter("@SoLuongCont45", obj.SoLuongCont45);
-                sqlParameters[20] = new SqlParameter("@SoCont45", obj.SoCont45);
-                sqlParameters[21] = new SqlParameter("@SoLuongContOpenTop", obj.SoLuongContOpenTop);
-                sqlParameters[22] = new SqlParameter("@SoContOpenTop", obj.SoContOpenTop);
-                sqlParameters[23] = new SqlParameter("@SoLuongContFlatRack", obj.SoLuongContFlatRack);
-                sqlParameters[24] = new SqlParameter("@SoContFlatRack", obj.SoContFlatRack);
-                sqlParameters[25] = new SqlParameter("@IDDanhMucDiaDiemDongHang", obj.IDDanhMucDiaDiemDongHang);
-                sqlParameters[26] = new SqlParameter("@NgayDongHang", obj.NgayDongHang);
-                sqlParameters[27] = new SqlParameter("@IDDanhMucDiaDiemTraHang", obj.IDDanhMucDiaDiemTraHang);
-                sqlParameters[28] = new SqlParameter("@NgayTraHang", obj.NgayTraHang);
-                sqlParameters[29] = new SqlParameter("@KhoiLuong", obj.KhoiLuong);
-                sqlParameters[30] = new SqlParameter("@NguoiGiaoNhan", obj.NguoiGiaoNhan);
-                sqlParameters[31] = new SqlParameter("@SoDienThoaiGiaoNhan", obj.SoDienThoaiGiaoNhan);
+                sqlParameters[11] = new SqlParameter("@IDDanhMucLoaiContainer", obj.IDDanhMucLoaiContainer);
+                sqlParameters[12] = new SqlParameter("@SoLuongContainer", obj.SoLuongContainer);
+                sqlParameters[13] = new SqlParameter("@SoContainer", obj.SoContainer);
+                sqlParameters[14] = new SqlParameter("@KhoiLuong", obj.KhoiLuong);
+                sqlParameters[15] = new SqlParameter("@IDDanhMucDiaDiemNangCont", obj.IDDanhMucDiaDiemNangCont);
+                sqlParameters[16] = new SqlParameter("@NgayNangCont", obj.NgayNangCont);
+                sqlParameters[17] = new SqlParameter("@IDDanhMucDiaDiemHaCont", obj.IDDanhMucDiaDiemHaCont);
+                sqlParameters[18] = new SqlParameter("@NgayHaCont", obj.NgayHaCont);
+                sqlParameters[19] = new SqlParameter("@IDDanhMucDiaDiemGiaoNhan", obj.IDDanhMucDiaDiemGiaoNhan);
+                sqlParameters[20] = new SqlParameter("@NgayGiaoNhan", obj.NgayGiaoNhan);
+                sqlParameters[21] = new SqlParameter("@NguoiGiaoNhan", obj.NguoiGiaoNhan);
+                sqlParameters[22] = new SqlParameter("@SoDienThoaiGiaoNhan", obj.SoDienThoaiGiaoNhan);
                 //
-                sqlParameters[32] = new SqlParameter("@GhiChu", obj.GhiChu);
-                sqlParameters[33] = new SqlParameter("@IDDanhMucNguoiSuDungCreate", obj.IDDanhMucNguoiSuDungCreate);
+                sqlParameters[23] = new SqlParameter("@GhiChu", obj.GhiChu);
+                sqlParameters[24] = new SqlParameter("@IDDanhMucNguoiSuDungCreate", obj.IDDanhMucNguoiSuDungCreate);
                 command.Parameters.Clear();
                 command.Parameters.AddRange(sqlParameters);
                 int rowAffected = command.ExecuteNonQuery();
@@ -141,7 +132,7 @@ namespace cenDAO
 
                 command = new SqlCommand(ctKeHoachVanTai.updateProcedureName, connection, transaction);
                 command.CommandType = CommandType.StoredProcedure;
-                sqlParameters = new SqlParameter[34];
+                sqlParameters = new SqlParameter[25];
                 sqlParameters[0] = new SqlParameter("@ID", obj.ID);
                 sqlParameters[1] = new SqlParameter("@IDDanhMucDonVi", cenCommon.GlobalVariables.IDDonVi);
                 sqlParameters[2] = new SqlParameter("@IDDanhMucChungTu", obj.IDDanhMucChungTu);
@@ -154,30 +145,21 @@ namespace cenDAO
                 sqlParameters[8] = new SqlParameter("@LoaiHinh", obj.LoaiHinh);
                 sqlParameters[9] = new SqlParameter("@LoaiHang", obj.LoaiHang);
                 sqlParameters[10] = new SqlParameter("@IDDanhMucHangTau", obj.IDDanhMucHangTau);
-                sqlParameters[11] = new SqlParameter("@IDDanhMucDiaDiemNangCont", obj.IDDanhMucDiaDiemNangCont);
-                sqlParameters[12] = new SqlParameter("@NgayNangCont", obj.NgayNangCont);
-                sqlParameters[13] = new SqlParameter("@IDDanhMucDiaDiemHaCont", obj.IDDanhMucDiaDiemHaCont);
-                sqlParameters[14] = new SqlParameter("@NgayHaCont", obj.NgayHaCont);
-                sqlParameters[15] = new SqlParameter("@SoLuongCont20", obj.SoLuongCont20);
-                sqlParameters[16] = new SqlParameter("@SoCont20", obj.SoCont20);
-                sqlParameters[17] = new SqlParameter("@SoLuongCont40", obj.SoLuongCont40);
-                sqlParameters[18] = new SqlParameter("@SoCont40", obj.SoCont40);
-                sqlParameters[19] = new SqlParameter("@SoLuongCont45", obj.SoLuongCont45);
-                sqlParameters[20] = new SqlParameter("@SoCont45", obj.SoCont45);
-                sqlParameters[21] = new SqlParameter("@SoLuongContOpenTop", obj.SoLuongContOpenTop);
-                sqlParameters[22] = new SqlParameter("@SoContOpenTop", obj.SoContOpenTop);
-                sqlParameters[23] = new SqlParameter("@SoLuongContFlatRack", obj.SoLuongContFlatRack);
-                sqlParameters[24] = new SqlParameter("@SoContFlatRack", obj.SoContFlatRack);
-                sqlParameters[25] = new SqlParameter("@IDDanhMucDiaDiemDongHang", obj.IDDanhMucDiaDiemDongHang);
-                sqlParameters[26] = new SqlParameter("@NgayDongHang", obj.NgayDongHang);
-                sqlParameters[27] = new SqlParameter("@IDDanhMucDiaDiemTraHang", obj.IDDanhMucDiaDiemTraHang);
-                sqlParameters[28] = new SqlParameter("@NgayTraHang", obj.NgayTraHang);
-                sqlParameters[29] = new SqlParameter("@KhoiLuong", obj.KhoiLuong);
-                sqlParameters[30] = new SqlParameter("@NguoiGiaoNhan", obj.NguoiGiaoNhan);
-                sqlParameters[31] = new SqlParameter("@SoDienThoaiGiaoNhan", obj.SoDienThoaiGiaoNhan);
+                sqlParameters[11] = new SqlParameter("@IDDanhMucLoaiContainer", obj.IDDanhMucLoaiContainer);
+                sqlParameters[12] = new SqlParameter("@SoLuongContainer", obj.SoLuongContainer);
+                sqlParameters[13] = new SqlParameter("@SoContainer", obj.SoContainer);
+                sqlParameters[14] = new SqlParameter("@KhoiLuong", obj.KhoiLuong);
+                sqlParameters[15] = new SqlParameter("@IDDanhMucDiaDiemNangCont", obj.IDDanhMucDiaDiemNangCont);
+                sqlParameters[16] = new SqlParameter("@NgayNangCont", obj.NgayNangCont);
+                sqlParameters[17] = new SqlParameter("@IDDanhMucDiaDiemHaCont", obj.IDDanhMucDiaDiemHaCont);
+                sqlParameters[18] = new SqlParameter("@NgayHaCont", obj.NgayHaCont);
+                sqlParameters[19] = new SqlParameter("@IDDanhMucDiaDiemGiaoNhan", obj.IDDanhMucDiaDiemGiaoNhan);
+                sqlParameters[20] = new SqlParameter("@NgayGiaoNhan", obj.NgayGiaoNhan);
+                sqlParameters[21] = new SqlParameter("@NguoiGiaoNhan", obj.NguoiGiaoNhan);
+                sqlParameters[22] = new SqlParameter("@SoDienThoaiGiaoNhan", obj.SoDienThoaiGiaoNhan);
                 //
-                sqlParameters[32] = new SqlParameter("@GhiChu", obj.GhiChu);
-                sqlParameters[33] = new SqlParameter("@IDDanhMucNguoiSuDungEdit", obj.IDDanhMucNguoiSuDungEdit);
+                sqlParameters[23] = new SqlParameter("@GhiChu", obj.GhiChu);
+                sqlParameters[24] = new SqlParameter("@IDDanhMucNguoiSuDungEdit", obj.IDDanhMucNguoiSuDungEdit);
                
                 command.Parameters.Clear();
                 command.Parameters.AddRange(sqlParameters);

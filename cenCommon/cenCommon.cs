@@ -795,6 +795,7 @@ namespace cenCommon
         public const String MaThamSoLoaiDoiTuongKho = "MaLoaiDoiTuong_Kho";
         public const String MaThamSoLoaiDoiTuongThauPhu = "MaLoaiDoiTuong_ThauPhu";
         public const String MaThamSoLoaiDoiTuongDonViCungCapNhienLieu = "MaLoaiDoiTuong_DonViCungCapNhienLieu";
+        public const String MaThamSoLoaiDoiTuongLoaiContainer = "MaLoaiDoiTuong_LoaiContainer";
         //Tham số danh mục chứng từ
         public const string MaThamSoChungTuHopDongVanChuyen = "MaChungTu_HopDongVanChuyen";
         public const string MaThamSoChungTuDonHang = "MaChungTu_DonHang";

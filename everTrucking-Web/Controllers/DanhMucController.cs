@@ -187,7 +187,6 @@ namespace everTrucking_Web.Controllers
             cenDTO.msgResponse msgResponse = DanhMucDoiTuongBUS.Delete(ID);
             return Json(msgResponse, JsonRequestBehavior.AllowGet);
         }
-
         //HÃNG TÀU
         public ActionResult HangTauIndex()
         {
@@ -415,6 +414,81 @@ namespace everTrucking_Web.Controllers
         public JsonResult DeleteCangICD(string ID)
         {
             cenDTO.msgResponse msgResponse = DanhMucDiaDiemGiaoNhanBUS.Delete(ID);
+            return Json(msgResponse, JsonRequestBehavior.AllowGet);
+        }
+        //LOẠI CONTAINER
+        public ActionResult LoaiContainerIndex()
+        {
+            UserSession Session = UserSessionHelper.GetSession();
+            if (Session == null)
+                return RedirectToAction("Login", "DanhMucNguoiSuDung");
+            return View();
+        }
+        public JsonResult ListLoaiContainer()
+        {
+            DataTable dtDanhMucLoaiContainer = DanhMucDoiTuongBUS.List(null, DanhMucLoaiDoiTuongBUS.GetID(DanhMucThamSoHeThongBUS.GetGiaTri(cenCommon.ThamSoHeThong.MaThamSoLoaiDoiTuongLoaiContainer)), null);
+            List<DanhMucDoiTuong> listLoaiContainer = new List<DanhMucDoiTuong>();
+            foreach (DataRow drLoaiContainer in dtDanhMucLoaiContainer.Rows)
+            {
+                listLoaiContainer.Add(new DanhMucDoiTuong()
+                {
+                    ID = drLoaiContainer["ID"].ToString(),
+                    IDDanhMucDonVi = drLoaiContainer["IDDanhMucDonVi"].ToString(),
+                    IDDanhMucLoaiDoiTuong = drLoaiContainer["IDDanhMucLoaiDoiTuong"].ToString(),
+                    Ma = drLoaiContainer["Ma"].ToString(),
+                    Ten = drLoaiContainer["Ten"].ToString(),
+                    IDDanhMucNguoiSuDungEdit = drLoaiContainer["IDDanhMucNguoiSuDungEdit"].ToString(),
+                    IDDanhMucNguoiSuDungCreate = drLoaiContainer["IDDanhMucNguoiSuDungCreate"].ToString(),
+                    CreateDate = drLoaiContainer["CreateDate"].ToString(),
+                    EditDate = drLoaiContainer["EditDate"].ToString(),
+                });
+
+            }
+            ViewBag.ListLoaiContainer = listLoaiContainer;
+
+            return Json(listLoaiContainer, JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult GetLoaiContainerbyID(string ID)
+        {
+            DataTable dtDanhMucLoaiContainer = DanhMucDoiTuongBUS.List(ID, DanhMucLoaiDoiTuongBUS.GetID(DanhMucThamSoHeThongBUS.GetGiaTri(cenCommon.ThamSoHeThong.MaThamSoLoaiDoiTuongLoaiContainer)), null);
+            DanhMucDoiTuong obj = null;
+            if (dtDanhMucLoaiContainer.Rows.Count == 1)
+            {
+                obj = new DanhMucDoiTuong()
+                {
+                    ID = cenCommon.cenCommon.stringParse(dtDanhMucLoaiContainer.Rows[0]["ID"]),
+                    IDDanhMucDonVi = cenCommon.cenCommon.stringParse(dtDanhMucLoaiContainer.Rows[0]["IDDanhMucDonVi"]),
+                    IDDanhMucLoaiDoiTuong = cenCommon.cenCommon.stringParse(dtDanhMucLoaiContainer.Rows[0]["IDDanhMucLoaiDoiTuong"]),
+                    Ma = cenCommon.cenCommon.stringParse(dtDanhMucLoaiContainer.Rows[0]["Ma"]),
+                    Ten = cenCommon.cenCommon.stringParse(dtDanhMucLoaiContainer.Rows[0]["Ten"]),
+                    IDDanhMucNguoiSuDungCreate = cenCommon.cenCommon.stringParse(dtDanhMucLoaiContainer.Rows[0]["IDDanhMucNguoiSuDungCreate"]),
+                    IDDanhMucNguoiSuDungEdit = cenCommon.cenCommon.stringParse(dtDanhMucLoaiContainer.Rows[0]["IDDanhMucNguoiSuDungEdit"]),
+                    CreateDate = cenCommon.cenCommon.stringParse(dtDanhMucLoaiContainer.Rows[0]["CreateDate"]),
+                    EditDate = cenCommon.cenCommon.stringParse(dtDanhMucLoaiContainer.Rows[0]["EditDate"]),
+                };
+            }
+
+            var Employee = obj;
+            return Json(Employee, JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult UpdateLoaiContainer(DanhMucDoiTuong emp)
+        {
+            emp.IDDanhMucNguoiSuDungEdit = UserSessionHelper.GetSession().IDDanhMucNguoiSuDung;
+            cenDTO.msgResponse msgResponse = DanhMucDoiTuongBUS.Update(ref emp);
+            return Json(msgResponse, JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult AddLoaiContainer(DanhMucDoiTuong emp)
+        {
+            emp.IDDanhMucDonVi = cenCommon.GlobalVariables.IDDonVi;
+            emp.IDDanhMucLoaiDoiTuong = DanhMucLoaiDoiTuongBUS.GetID(DanhMucThamSoHeThongBUS.GetGiaTri(cenCommon.ThamSoHeThong.MaThamSoLoaiDoiTuongLoaiContainer));
+            emp.IDDanhMucNguoiSuDungCreate = UserSessionHelper.GetSession().IDDanhMucNguoiSuDung;
+            cenDTO.msgResponse msgResponse = DanhMucDoiTuongBUS.Insert(ref emp);
+            msgResponse.Data = Newtonsoft.Json.JsonConvert.SerializeObject(emp);
+            return Json(msgResponse, JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult DeleteLoaiContainer(string ID)
+        {
+            cenDTO.msgResponse msgResponse = DanhMucDoiTuongBUS.Delete(ID);
             return Json(msgResponse, JsonRequestBehavior.AllowGet);
         }
     }

@@ -5,7 +5,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <_PublishTargetUrl>D:\everTrucking-Web\everTrucking-Web\bin\app.publish\</_PublishTargetUrl>
-    <History>True|2022-02-27T03:54:17.3123787Z;True|2022-02-25T17:39:53.7385556+07:00;True|2022-02-25T11:04:34.9722344+07:00;True|2022-02-19T16:38:11.3406202+07:00;True|2022-01-29T09:48:14.9845000+07:00;</History>
+    <History>True|2022-03-09T03:29:32.2002150Z;True|2022-03-09T10:18:13.8353978+07:00;True|2022-02-28T10:08:15.7154805+07:00;True|2022-02-27T10:54:17.3123787+07:00;True|2022-02-25T17:39:53.7385556+07:00;True|2022-02-25T11:04:34.9722344+07:00;True|2022-02-19T16:38:11.3406202+07:00;True|2022-01-29T09:48:14.9845000+07:00;</History>
   </PropertyGroup>
   <ItemGroup>
     <File Include="assets/assets/demo/chart-area-demo.js">
@@ -201,28 +201,28 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>02/08/2022 10:48:07</publishTime>
     </File>
     <File Include="bin/cenBUS.dll">
-      <publishTime>02/25/2022 11:04:28</publishTime>
+      <publishTime>03/09/2022 10:18:11</publishTime>
     </File>
     <File Include="bin/cenBUS.pdb">
-      <publishTime>02/25/2022 11:04:28</publishTime>
+      <publishTime>03/09/2022 10:18:11</publishTime>
     </File>
     <File Include="bin/cenCommon.dll">
-      <publishTime>02/25/2022 11:04:26</publishTime>
+      <publishTime>03/09/2022 10:18:09</publishTime>
     </File>
     <File Include="bin/cenCommon.pdb">
-      <publishTime>02/25/2022 11:04:26</publishTime>
+      <publishTime>03/09/2022 10:18:09</publishTime>
     </File>
     <File Include="bin/cenDAO.dll">
-      <publishTime>02/25/2022 11:04:27</publishTime>
+      <publishTime>03/09/2022 10:18:10</publishTime>
     </File>
     <File Include="bin/cenDAO.pdb">
-      <publishTime>02/25/2022 11:04:27</publishTime>
+      <publishTime>03/09/2022 10:18:10</publishTime>
     </File>
     <File Include="bin/cenDTO.dll">
-      <publishTime>02/25/2022 11:04:27</publishTime>
+      <publishTime>03/09/2022 10:18:10</publishTime>
     </File>
     <File Include="bin/cenDTO.pdb">
-      <publishTime>02/25/2022 11:04:27</publishTime>
+      <publishTime>03/09/2022 10:18:10</publishTime>
     </File>
     <File Include="bin/ClosedXML.dll">
       <publishTime>12/16/2020 16:59:08</publishTime>
@@ -234,10 +234,10 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>06/07/2017 05:59:22</publishTime>
     </File>
     <File Include="bin/everTrucking-Web.dll">
-      <publishTime>02/27/2022 10:54:15</publishTime>
+      <publishTime>03/09/2022 10:18:11</publishTime>
     </File>
     <File Include="bin/everTrucking-Web.pdb">
-      <publishTime>02/27/2022 10:54:15</publishTime>
+      <publishTime>03/09/2022 10:18:11</publishTime>
     </File>
     <File Include="bin/ExcelNumberFormat.dll">
       <publishTime>03/13/2020 16:36:50</publishTime>
@@ -483,7 +483,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>02/08/2022 10:48:06</publishTime>
     </File>
     <File Include="DBScripts/001.ctKeHoachVanTai.sql">
-      <publishTime>02/27/2022 09:44:01</publishTime>
+      <publishTime>03/08/2022 15:01:56</publishTime>
     </File>
     <File Include="DBScripts/001.ctKeHoachVanTaiChiTietSoContainer.sql">
       <publishTime>02/19/2022 17:45:06</publishTime>
@@ -621,10 +621,10 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>02/20/2022 13:37:13</publishTime>
     </File>
     <File Include="DBScripts/Others.sql">
-      <publishTime>02/19/2022 17:45:06</publishTime>
+      <publishTime>02/28/2022 08:43:00</publishTime>
     </File>
     <File Include="DBScripts/Reports.sql">
-      <publishTime>02/19/2022 17:45:06</publishTime>
+      <publishTime>03/09/2022 10:29:18</publishTime>
     </File>
     <File Include="favicon.ico">
       <publishTime>02/08/2022 10:48:06</publishTime>
@@ -698,6 +698,9 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
     <File Include="Views/DanhMuc/KhoIndex.cshtml">
       <publishTime>02/27/2022 10:23:43</publishTime>
     </File>
+    <File Include="Views/DanhMuc/LoaiContainerIndex.cshtml">
+      <publishTime>03/08/2022 09:48:03</publishTime>
+    </File>
     <File Include="Views/DanhMuc/SaleIndex.cshtml">
       <publishTime>02/27/2022 10:23:53</publishTime>
     </File>
@@ -729,25 +732,25 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>02/19/2022 14:43:21</publishTime>
     </File>
     <File Include="Views/KeHoachVanTaiContainerNhapKhau/Index.cshtml">
-      <publishTime>02/27/2022 09:35:35</publishTime>
+      <publishTime>03/08/2022 17:24:02</publishTime>
     </File>
     <File Include="Views/KeHoachVanTaiContainerNoiDia/Index.cshtml">
-      <publishTime>02/27/2022 09:33:23</publishTime>
+      <publishTime>03/08/2022 17:24:14</publishTime>
     </File>
     <File Include="Views/KeHoachVanTaiContainerXuatKhau/Index.cshtml">
-      <publishTime>02/27/2022 09:33:23</publishTime>
+      <publishTime>03/08/2022 17:24:25</publishTime>
     </File>
     <File Include="Views/KeHoachVanTaiHangRoiNhapKhau/Index.cshtml">
-      <publishTime>02/27/2022 09:30:47</publishTime>
+      <publishTime>03/09/2022 11:35:37</publishTime>
     </File>
     <File Include="Views/KeHoachVanTaiHangRoiNoiDia/Index.cshtml">
-      <publishTime>02/27/2022 09:30:20</publishTime>
+      <publishTime>03/09/2022 11:37:42</publishTime>
     </File>
     <File Include="Views/KeHoachVanTaiHangRoiXuatKhau/Index.cshtml">
-      <publishTime>02/27/2022 09:30:07</publishTime>
+      <publishTime>03/09/2022 11:37:29</publishTime>
     </File>
     <File Include="Views/KeHoachVanTaiTongHop/Index.cshtml">
-      <publishTime>02/27/2022 10:53:34</publishTime>
+      <publishTime>03/09/2022 11:31:14</publishTime>
     </File>
     <File Include="Views/QuanLyDonHang/Create.cshtml">
       <publishTime>02/08/2022 10:48:06</publishTime>
@@ -756,13 +759,13 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>02/08/2022 10:48:06</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>02/26/2022 14:18:33</publishTime>
+      <publishTime>03/08/2022 15:28:58</publishTime>
     </File>
     <File Include="Views/Shared/_Navbar.cshtml">
       <publishTime>02/08/2022 10:48:06</publishTime>
     </File>
     <File Include="Views/Shared/_Sidebar.cshtml">
-      <publishTime>02/25/2022 17:21:19</publishTime>
+      <publishTime>03/08/2022 09:41:09</publishTime>
     </File>
     <File Include="Views/Web.config">
       <publishTime>02/08/2022 10:48:06</publishTime>

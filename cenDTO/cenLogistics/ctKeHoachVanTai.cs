@@ -31,29 +31,21 @@ namespace cenDTO
         public string IDDanhMucHangTau { get; set; }
         public string MaDanhMucHangTau { get; set; }
         public string TenDanhMucHangTau { get; set; }
+        public string IDDanhMucLoaiContainer { get; set; }
+        public string MaDanhMucLoaiContainer { get; set; }
+        public string SoLuongContainer { get; set; }
+        public string SoContainer { get; set; }
+        public string KhoiLuong { get; set; }
         public string IDDanhMucDiaDiemNangCont { get; set; }
         public string TenDanhMucDiaDiemNangCont { get; set; }
         public string NgayNangCont { get; set; }
         public string IDDanhMucDiaDiemHaCont { get; set; }
         public string TenDanhMucDiaDiemHaCont { get; set; }
         public string NgayHaCont { get; set; }
-        public string SoLuongCont20 { get; set; }
-        public string SoCont20 { get; set; }
-        public string SoLuongCont40 { get; set; }
-        public string SoCont40 { get; set; }
-        public string SoLuongCont45 { get; set; }
-        public string SoCont45 { get; set; }
-        public string SoLuongContOpenTop { get; set; }
-        public string SoContOpenTop { get; set; }
-        public string SoLuongContFlatRack { get; set; }
-        public string SoContFlatRack { get; set; }
-        public string IDDanhMucDiaDiemDongHang { get; set; }
-        public string TenDanhMucDiaDiemDongHang { get; set; }
-        public string NgayDongHang { get; set; }
-        public string IDDanhMucDiaDiemTraHang { get; set; }
-        public string TenDanhMucDiaDiemTraHang { get; set; }
-        public string NgayTraHang { get; set; }
-        public string KhoiLuong { get; set; }
+        public string IDDanhMucDiaDiemGiaoNhan { get; set; }
+        public string MaDanhMucDiaDiemGiaoNhan { get; set; }
+        public string TenDanhMucDiaDiemGiaoNhan { get; set; }
+        public string NgayGiaoNhan { get; set; }
         public string NguoiGiaoNhan { get; set; }
         public string SoDienThoaiGiaoNhan { get; set; }
         //
@@ -86,24 +78,22 @@ namespace cenDTO
             TenLoaiHang = null;
             IDDanhMucHangTau = null;
             MaDanhMucHangTau = null;
+            TenDanhMucHangTau = null;
+            IDDanhMucLoaiContainer = null;
+            MaDanhMucLoaiContainer = null;
+            SoLuongContainer = null;
+            SoContainer = null;
+            KhoiLuong = null;
             IDDanhMucDiaDiemNangCont = null;
             TenDanhMucDiaDiemNangCont = null;
             NgayNangCont = null;
             IDDanhMucDiaDiemHaCont = null;
             TenDanhMucDiaDiemHaCont = null;
             NgayHaCont = null;
-            SoLuongCont20 = null;
-            SoCont20 = null;
-            SoLuongCont40 = null;
-            SoCont40 = null;
-            SoLuongCont45 = null;
-            SoCont45 = null;
-            IDDanhMucDiaDiemDongHang = null;
-            TenDanhMucDiaDiemDongHang = null;
-            NgayDongHang = null;
-            IDDanhMucDiaDiemTraHang = null;
-            TenDanhMucDiaDiemTraHang = null;
-            NgayTraHang = null;
+            IDDanhMucDiaDiemGiaoNhan = null;
+            MaDanhMucDiaDiemGiaoNhan = null;
+            TenDanhMucDiaDiemGiaoNhan = null;
+            NgayGiaoNhan = null;
             KhoiLuong = null;
             NguoiGiaoNhan = null;
             SoDienThoaiGiaoNhan = null;
@@ -126,26 +116,28 @@ namespace cenDTO
         public string NgayLap { get; set; }
         public string TenLoaiHinh { get; set; }
         public string LoaiContainer { get; set; }
+        public string SoLuongContainer { get; set; }
         public string SoContainer { get; set; }
         public string TenDanhMucKhachHang { get; set; }
         public string KhoiLuong { get; set; }
         public string TenDanhMucHangTau { get; set; }
         public string GhiChu { get; set; }
-        public string TenDanhMucDiaDiemDongTra { get; set; }
         public string TenDanhMucDiaDiemNangHa { get; set; }
+        public string TenDanhMucDiaDiemGiaoNhan { get; set; }
         public rptKeHoachVanTaiTongHop()
         {
             Stt = null;
             NgayLap = null;
             TenLoaiHinh = null;
             LoaiContainer = null;
+            SoLuongContainer = null;
             SoContainer = null;
             TenDanhMucKhachHang = null;
             KhoiLuong = null;
             TenDanhMucHangTau = null;
             GhiChu = null;
-            TenDanhMucDiaDiemDongTra = null;
             TenDanhMucDiaDiemNangHa = null;
+            TenDanhMucDiaDiemGiaoNhan = null;
         }
     }
 }
