@@ -75,22 +75,22 @@
                             <input type="hidden" id="IDDanhMucChungTu" name="IDDanhMucChungTu" class="form-control">
                             <input type="hidden" id="IDDanhMucChungTuTrangThai" name="IDDanhMucChungTuTrangThai" class="form-control">
                             <input type="hidden" id="So" name="So" class="form-control">
-                            <input type="hidden" id="NgayLap" name="NgayLap" class="form-control">
 
                             <input type="hidden" id="LoaiHinh" name="LoaiHinh" value="3">
                             <input type="hidden" id="LoaiHang" name="LoaiHang" value="1">
 
-                            <label for="inputGroupSelect01">Sales</label>
-
-                            <select data-live-search="true" class="form-control selectpicker" name="IDDanhMucSale" id="IDDanhMucSale">
-                                <option value="" selected="selected" disabled>Chọn sale</option>
-                                @foreach (var item in ViewBag.ListSale)
-                                {
-                                    <option value=@item.ID>@item.Ten</option>
-                                }
-                            </select>
                         </div>
                     </div>
+
+                    <div class="col-12">
+                        <div class="form-group">
+                            <label>Ngày kế hoạch</label>
+                            <div class="input-group" id="NgayLap">
+                                <input class="form-control ngay-vn" type="text" id="txtNgayLap" autocomplete="off" />
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="col-12">
                         <div class="form-group">
                             <label for="exampleFormControlInput1">Khách hàng</label>
@@ -170,7 +170,7 @@
                     <div class="col-4">
                         <label>Ngày nâng cont</label>
                         <div class="input-group" id="NgayNang">
-                            <input class="form-control ngay-vn" type="text" id="txtNgayNang" autocomplete="off"/>
+                            <input class="form-control ngay-vn" type="text" id="txtNgayNang" autocomplete="off" />
                         </div>
                     </div>
                     <div class="col-8">
@@ -354,8 +354,8 @@
 
     function Add() {
         var empObj = {
-            NgayLap: $('#NgayLap').val(),
-            IDDanhMucSale: $('#IDDanhMucSale').val(),
+            NgayLap: $('#txtNgayLap').val(),
+            //IDDanhMucSale: $('#IDDanhMucSale').val(),
             IDDanhMucKhachHang: $('#IDDanhMucKhachHang').val(),
             LoaiHinh: $('#LoaiHinh').val(),
             LoaiHang: $('#LoaiHang').val(),
@@ -436,9 +436,9 @@
                 $('#IDDanhMucChungTu').val(result.IDDanhMucChungTu);
                 $('#IDDanhMucChungTuTrangThai').val(result.IDDanhMucChungTuTrangThai);
                 $('#So').val(result.So);
-                $('#NgayLap').val(result.NgayLap);
-                $('#IDDanhMucSale').val(result.IDDanhMucSale);
-                $('#IDDanhMucSale').selectpicker('refresh');
+                $('#txtNgayLap').val(result.NgayLap);
+                //$('#IDDanhMucSale').val(result.IDDanhMucSale);
+                //$('#IDDanhMucSale').selectpicker('refresh');
                 $('#IDDanhMucKhachHang').val(result.IDDanhMucKhachHang);
                 $('#IDDanhMucKhachHang').selectpicker('refresh');
                 $('#LoaiHinh').val(result.LoaiHinh);
@@ -485,8 +485,8 @@
             IDDanhMucChungTu: $('#IDDanhMucChungTu').val(),
             IDDanhMucChungTuTrangThai: $('#IDDanhMucChungTuTrangThai').val(),
             So: $('#So').val(),
-            NgayLap: $('#NgayLap').val(),
-            IDDanhMucSale: $('#IDDanhMucSale').val(),
+            NgayLap: $('#txtNgayLap').val(),
+            //IDDanhMucSale: $('#IDDanhMucSale').val(),
             IDDanhMucKhachHang: $('#IDDanhMucKhachHang').val(),
             LoaiHinh: $('#LoaiHinh').val(),
             LoaiHang: $('#LoaiHang').val(),
@@ -576,8 +576,8 @@
     function clearTextBox() {
 
         $('#So').val("");
-        $('#NgayLap').val("");
-        $('#IDDanhMucSale').val("");
+        $('#txtNgayLap').val("");
+        //$('#IDDanhMucSale').val("");
         $('#LoaiHinh').val("3");
         $('#LoaiHang').val("1");
         $('#SoLuongContainer').val("");
@@ -592,8 +592,8 @@
         $('#IDDanhMucHangTau').selectpicker('refresh');
         $("#IDDanhMucKhachHang").val('@(ViewBag.IDDanhMucHangTauDefault)');
         $('#IDDanhMucKhachHang').selectpicker('refresh');
-        $("#IDDanhMucSale").val('@(ViewBag.IDDanhMucSale)');
-        $('#IDDanhMucSale').selectpicker('refresh');
+        @*$("#IDDanhMucSale").val('@(ViewBag.IDDanhMucSale)');
+        $('#IDDanhMucSale').selectpicker('refresh');*@
         $("#IDDanhMucDiaDiemNangCont").val('@(ViewBag.IDDanhMucDiaDiemNangHaCont)');
         $('#IDDanhMucDiaDiemNangCont').selectpicker('refresh');
         $("#IDDanhMucDiaDiemHaCont").val('@(ViewBag.IDDanhMucDiaDiemNangHaCont)');
@@ -606,5 +606,13 @@
         $("#txtNgayNang").val('');
         $("#txtNgayHa").val('');
         $("#txtNgayGiaoNhan").val('');
+
+        var today = new Date();
+        var dd = ("0" + (today.getDate())).slice(-2);
+        var mm = ("0" + (today.getMonth() + 1)).slice(-2);
+        var yyyy = today.getFullYear();
+        var strtoday = dd + '/' + mm + '/' + yyyy;
+
+        $("#txtNgayLap").val(strtoday);
     }
 </script>

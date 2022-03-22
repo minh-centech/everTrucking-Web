@@ -25,19 +25,6 @@ namespace everTrucking_Web.Controllers
             if (Session == null)
                 return RedirectToAction("Login", "DanhMucNguoiSuDung");
 
-            DataTable dtDanhMucSale = DanhMucDoiTuongBUS.List(null, DanhMucLoaiDoiTuongBUS.GetID(DanhMucThamSoHeThongBUS.GetGiaTri(cenCommon.ThamSoHeThong.MaThamSoLoaiDoiTuongNhanSu)), null);
-            ViewBag.IDDanhMucSale = string.Empty;
-            List<DanhMucDoiTuong> listSale = new List<DanhMucDoiTuong>();
-            foreach (DataRow drSale in dtDanhMucSale.Rows)
-            {
-                listSale.Add(new DanhMucDoiTuong()
-                {
-                    ID = drSale["ID"].ToString(),
-                    Ma = drSale["Ma"].ToString(),
-                    Ten = drSale["Ten"].ToString(),
-                });
-
-            }
 
             DataTable dtDanhMucKhachHang = DanhMucKhachHangBUS.List(null, DanhMucLoaiDoiTuongBUS.GetID(DanhMucThamSoHeThongBUS.GetGiaTri(cenCommon.ThamSoHeThong.MaThamSoLoaiDoiTuongKhachHang)), null);
             ViewBag.IDDanhMucKhachHang = string.Empty;
@@ -111,7 +98,6 @@ namespace everTrucking_Web.Controllers
 
 
             ViewBag.ListKhachHang = listKhachHang;
-            ViewBag.ListSale = listSale;
             ViewBag.ListHangTau = listHangTau;
             ViewBag.ListLoaiContainer = listLoaiContainer;
             ViewBag.listDiaDiemNangHaCont = listDiaDiemNangHaCont;
@@ -256,6 +242,10 @@ namespace everTrucking_Web.Controllers
         public JsonResult Update(ctKeHoachVanTai emp)
         {
             emp.IDDanhMucNguoiSuDungEdit = UserSessionHelper.GetSession().IDDanhMucNguoiSuDung;
+
+            if (!cenCommon.cenCommon.IsNull(emp.NgayLap))
+                emp.NgayLap = (new DateTime(cenCommon.cenCommon.intParse(emp.NgayLap.Substring(6, 4)), cenCommon.cenCommon.intParse(emp.NgayLap.Substring(3, 2)), cenCommon.cenCommon.intParse(emp.NgayLap.Substring(0, 2)))).ToString();
+
             if (!cenCommon.cenCommon.IsNull(emp.NgayNangCont))
                 emp.NgayNangCont = (new DateTime(cenCommon.cenCommon.intParse(emp.NgayNangCont.Substring(6, 4)), cenCommon.cenCommon.intParse(emp.NgayNangCont.Substring(3, 2)), cenCommon.cenCommon.intParse(emp.NgayNangCont.Substring(0, 2)))).ToString();
             if (!cenCommon.cenCommon.IsNull(emp.NgayHaCont))
@@ -332,12 +322,19 @@ namespace everTrucking_Web.Controllers
             emp.IDDanhMucChungTu = DanhMucChungTuBUS.GetID(DanhMucThamSoHeThongBUS.GetGiaTri(cenCommon.ThamSoHeThong.MaThamSoChungTuKeHoachVanTai)).ToString();
             emp.IDDanhMucChungTuTrangThai = DanhMucChungTuTrangThaiBUS.List(null, DanhMucChungTuBUS.GetID(DanhMucThamSoHeThongBUS.GetGiaTri(cenCommon.ThamSoHeThong.MaThamSoChungTuKeHoachVanTai))).Rows[0]["ID"].ToString();
             emp.IDDanhMucNguoiSuDungCreate = UserSessionHelper.GetSession().IDDanhMucNguoiSuDung;
+
+            if (!cenCommon.cenCommon.IsNull(emp.NgayLap))
+                emp.NgayLap = (new DateTime(cenCommon.cenCommon.intParse(emp.NgayLap.Substring(6, 4)), cenCommon.cenCommon.intParse(emp.NgayLap.Substring(3, 2)), cenCommon.cenCommon.intParse(emp.NgayLap.Substring(0, 2)))).ToString();
+
             if (!cenCommon.cenCommon.IsNull(emp.NgayNangCont))
                 emp.NgayNangCont = (new DateTime(cenCommon.cenCommon.intParse(emp.NgayNangCont.Substring(6, 4)), cenCommon.cenCommon.intParse(emp.NgayNangCont.Substring(3, 2)), cenCommon.cenCommon.intParse(emp.NgayNangCont.Substring(0, 2)))).ToString();
             if (!cenCommon.cenCommon.IsNull(emp.NgayHaCont))
                 emp.NgayHaCont = (new DateTime(cenCommon.cenCommon.intParse(emp.NgayHaCont.Substring(6, 4)), cenCommon.cenCommon.intParse(emp.NgayHaCont.Substring(3, 2)), cenCommon.cenCommon.intParse(emp.NgayHaCont.Substring(0, 2)))).ToString();
             if (!cenCommon.cenCommon.IsNull(emp.NgayGiaoNhan))
                 emp.NgayGiaoNhan = (new DateTime(cenCommon.cenCommon.intParse(emp.NgayGiaoNhan.Substring(6, 4)), cenCommon.cenCommon.intParse(emp.NgayGiaoNhan.Substring(3, 2)), cenCommon.cenCommon.intParse(emp.NgayGiaoNhan.Substring(0, 2)))).ToString();
+
+
+
 
             cenDTO.msgResponse msgResponse = ctKeHoachVanTaiBUS.Insert(emp);
             if (msgResponse.Status == "00")

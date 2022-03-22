@@ -74,7 +74,7 @@ namespace cenDAO
                     Direction = ParameterDirection.InputOutput,
                     Size = 35
                 };
-                sqlParameters[5] = new SqlParameter("@NgayLap", DateTime.Now);
+                sqlParameters[5] = new SqlParameter("@NgayLap", obj.NgayLap);
                 //
                 sqlParameters[6] = new SqlParameter("@IDDanhMucSale", obj.IDDanhMucSale);
                 sqlParameters[7] = new SqlParameter("@IDDanhMucKhachHang", obj.IDDanhMucKhachHang);
